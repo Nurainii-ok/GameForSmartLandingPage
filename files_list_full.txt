@@ -1,0 +1,26 @@
+﻿
+Name                                   LastWriteTime          Length
+----                                   -------------          ------
+astronaut-mascot-transparent.png       2/27/2026 9:44:40 AM   321497
+banner-mascot-quiz.png                 2/27/2026 9:12:04 AM   555084
+banner-bg-quiz.png                     2/27/2026 9:05:48 AM   646955
+lomba-cerdas-cermat-malangraya-new.png 2/27/2026 7:59:40 AM   612199
+lomba-cerdas-cermat-nasional.jpg       2/23/2026 10:23:43 AM  384748
+lomba-cerdas-cermat-jawatimur.jpg      2/23/2026 10:19:39 AM  452193
+malang-raya-competition.png            2/22/2026 9:32:52 PM   143995
+lomba-cerdas-cermat-malangraya.png     2/22/2026 8:56:12 PM  1514041
+gameforsmartlogo.webp                  2/11/2026 9:46:58 PM    84648
+gameforsmart-icon.png                  2/11/2026 9:36:19 PM    58614
+astronaut-mascot.png                   2/11/2026 8:56:49 PM   134015
+runner-mascot.png                      2/11/2026 8:56:49 PM   190031
+star.png                               2/10/2026 2:09:15 PM      989
+tropy2.png                             2/10/2026 2:09:15 PM     1929
+chess-queen.png                        2/10/2026 2:09:15 PM      298
+team-thumb1.png                        2/10/2026 2:09:14 PM    16095
+wallet2.png                            2/10/2026 2:09:14 PM      523
+team-x.png                             2/10/2026 2:09:13 PM   259867
+winner-prize.png                       2/10/2026 2:09:12 PM     6436
+msg-sender6.png                        2/10/2026 1:32:03 PM     2721
+
+
+
