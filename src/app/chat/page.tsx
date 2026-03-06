@@ -1,5 +1,5 @@
-import Header from '@/components/Header';
-import Sidebar from '@/components/Sidebar';
+import Header from "@/components/shared/Header";
+import Sidebar from "@/components/shared/Sidebar";
 
 const chatList = [
     { id: 1, name: "Bessie Cooper", lastMsg: "Let’s play now!", time: "2d", online: true, img: "/assets/img/msg-sender1.png" },

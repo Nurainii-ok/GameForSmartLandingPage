@@ -19,7 +19,6 @@
     ================================== */
 /* ============= plugin styles ============== */
 
-
 :root {
   --body-font: "Poppins", sans-serif;
   --head-font: "Chakra Petch", sans-serif;
@@ -34,10 +33,23 @@
   --n4: 13, 15, 18;
   --n5: 23, 25, 28;
   --n6: 181, 181, 181;
-  --gradient1: linear-gradient(218deg, #F76D1F 0%, #F6471C 100%, #F62F1A 100%);
-  --gradient2: linear-gradient(1deg, #F54C0A 0.43%, rgba(232, 81, 23, 0.20) 99.55%);
-  --gradient3: linear-gradient(188deg, rgba(247, 109, 31, 0.15) 5.73%, rgba(246, 71, 28, 0.00) 92.87%, rgba(246, 47, 26, 0.15) 92.87%);
-  --gradient4: linear-gradient(180deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.80) 100%);
+  --gradient1: linear-gradient(218deg, #f76d1f 0%, #f6471c 100%, #f62f1a 100%);
+  --gradient2: linear-gradient(
+    1deg,
+    #f54c0a 0.43%,
+    rgba(232, 81, 23, 0.2) 99.55%
+  );
+  --gradient3: linear-gradient(
+    188deg,
+    rgba(247, 109, 31, 0.15) 5.73%,
+    rgba(246, 71, 28, 0) 92.87%,
+    rgba(246, 47, 26, 0.15) 92.87%
+  );
+  --gradient4: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
   --transition: all 0.5s ease-in-out;
 }
 
@@ -51,6 +63,7 @@ html {
   height: auto;
   min-height: 100%;
   width: 100%;
+  /* overflow-x: hidden; */ /* Menghapus ini agar sticky sidebar berfungsi */
 }
 
 body {
@@ -62,6 +75,7 @@ body {
   background: rgb(var(--n0));
   min-height: 100vh;
   position: relative;
+  /* overflow-x: hidden; */ /* Menghapus ini agar sticky sidebar berfungsi */
 }
 
 body::-webkit-scrollbar {
@@ -101,10 +115,13 @@ footer {
 }
 
 .call-to-action,
-footer.footer,
+footer.footer {
+  overflow: hidden;
+}
+
 .main-content,
 .main-container {
-  overflow: visible !important;
+  overflow: visible;
 }
 
 .display-one {
@@ -139,42 +156,42 @@ footer.footer,
 
 .fs-one,
 h1,
-h1>a {
+h1 > a {
   font-size: 48px;
   line-height: 120%;
 }
 
 .fs-two,
 h2,
-h2>a {
+h2 > a {
   font-size: 40px;
   line-height: 120%;
 }
 
 .fs-three,
 h3,
-h3>a {
+h3 > a {
   font-size: 32px;
   line-height: 120%;
 }
 
 .fs-four,
 h4,
-h4>a {
+h4 > a {
   font-size: 24px;
   line-height: 130%;
 }
 
 .fs-five,
 h5,
-h5>a {
+h5 > a {
   font-size: 20px;
   line-height: 130%;
 }
 
 .fs-six,
 h6,
-h6>a {
+h6 > a {
   font-size: 16px;
   line-height: 130%;
 }
@@ -315,19 +332,18 @@ ul li {
 }
 
 @media (max-width: 1199px) {
-
   h1,
-  h1>a {
+  h1 > a {
     font-size: 40px;
   }
 
   h2,
-  h2>a {
+  h2 > a {
     font-size: 34px;
   }
 
   h3,
-  h3>a {
+  h3 > a {
     font-size: 30px;
   }
 }
@@ -381,37 +397,37 @@ ul li {
 
   .fs-one,
   h1,
-  h1>a {
+  h1 > a {
     font-size: 36px;
   }
 
   .fs-two,
   h2,
-  h2>a {
+  h2 > a {
     font-size: 30px;
   }
 
   .fs-three,
   h3,
-  h3>a {
+  h3 > a {
     font-size: 24px;
   }
 
   .fs-four,
   h4,
-  h4>a {
+  h4 > a {
     font-size: 20px;
   }
 
   .fs-five,
   h5,
-  h5>a {
+  h5 > a {
     font-size: 18px;
   }
 
   .fs-six,
   h6,
-  h6>a {
+  h6 > a {
     font-size: 15px;
   }
 
@@ -524,7 +540,12 @@ ul li {
   width: 100%;
   top: 0%;
   left: 0;
-  background: linear-gradient(to bottom, rgba(255, 217, 0, 0) 0%, #ffd900 75%, #ffd900 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 217, 0, 0) 0%,
+    #ffd900 75%,
+    #ffd900 100%
+  );
   animation: run 4s 0s infinite alternate-reverse;
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
@@ -623,7 +644,12 @@ ul li {
   width: 30px;
   top: 0;
   left: 0%;
-  background: linear-gradient(to bottom, rgba(255, 217, 0, 0) 0%, #ffd900 75%, #ffd900 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 217, 0, 0) 0%,
+    #ffd900 75%,
+    #ffd900 100%
+  );
   animation: run2 6s 0s infinite alternate-reverse;
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(0.34, 0.4, 0, 0.27);
@@ -1081,7 +1107,6 @@ ul li {
 }
 
 @media (max-width: 575px) {
-
   .header-section .navbar-toggle-btn,
   .header-section .sidebar-toggle-btn {
     width: 28px;
@@ -1503,15 +1528,15 @@ ul li {
   transform: rotate(45deg);
 }
 
-.custom-checkbox:hover input~.checkmark {
+.custom-checkbox:hover input ~ .checkmark {
   background-color: rgb(var(--p1), 0.8);
 }
 
-.custom-checkbox input:checked~.checkmark {
+.custom-checkbox input:checked ~ .checkmark {
   background-color: rgb(var(--p1));
 }
 
-.custom-checkbox input:checked~.checkmark:after {
+.custom-checkbox input:checked ~ .checkmark:after {
   display: block;
 }
 
@@ -1598,17 +1623,21 @@ ul li {
   max-width: 300px;
   width: 100%;
   max-height: 400px;
-  height: 100%;
+  height: max-content;
   border: 1px solid rgb(var(--n3));
   border-radius: 12px;
   transition: all 0.5s ease;
-  transform: translateX(100%);
+  transform: translateX(120%);
   overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .notification-area.open,
 .user-account-popup.open {
   transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
 }
 
 .notification-area::-webkit-scrollbar,
@@ -1889,7 +1918,6 @@ ul li {
 }
 
 @media (max-width: 1750px) {
-
   .hero-section .star-area,
   .hero-section .rotate-award {
     display: none;
@@ -2060,20 +2088,33 @@ ul li {
   transition: all 0.7s ease-in-out;
 }
 
-.tournament-section .tournament-wrapper .tournament-card .tournament-img .img-area {
+.tournament-section
+  .tournament-wrapper
+  .tournament-card
+  .tournament-img
+  .img-area {
   border-radius: 12px;
   max-height: 400px;
   width: 100%;
   height: 100%;
 }
 
-.tournament-section .tournament-wrapper .tournament-card .tournament-img .img-area img {
+.tournament-section
+  .tournament-wrapper
+  .tournament-card
+  .tournament-img
+  .img-area
+  img {
   transition: all 0.5s ease;
   border-radius: inherit;
   height: 100%;
 }
 
-.tournament-section .tournament-wrapper .tournament-card .tournament-img .card-status {
+.tournament-section
+  .tournament-wrapper
+  .tournament-card
+  .tournament-img
+  .card-status {
   border-radius: 46px;
   border: 1px solid rgb(var(--s1));
   background: rgb(var(--n4));
@@ -2081,7 +2122,11 @@ ul li {
   transition: all 0.5s ease;
 }
 
-.tournament-section .tournament-wrapper .tournament-card .card-info .price-money,
+.tournament-section
+  .tournament-wrapper
+  .tournament-card
+  .card-info
+  .price-money,
 .tournament-section .tournament-wrapper .tournament-card .card-info .ticket-fee,
 .tournament-section .tournament-wrapper .tournament-card .card-info .date-time {
   border-radius: 12px;
@@ -2097,7 +2142,10 @@ ul li {
   border: 1px solid rgb(var(--p1));
 }
 
-.tournament-section .tournament-wrapper .tournament-card:hover .tournament-title,
+.tournament-section
+  .tournament-wrapper
+  .tournament-card:hover
+  .tournament-title,
 .tournament-section .tournament-wrapper .tournament-card:hover .teams,
 .tournament-section .tournament-wrapper .tournament-card:hover .player {
   color: rgb(var(--p1));
@@ -2108,7 +2156,11 @@ ul li {
   border: 1px solid rgb(var(--p1));
 }
 
-.tournament-section .tournament-wrapper .tournament-card:hover .tournament-img img {
+.tournament-section
+  .tournament-wrapper
+  .tournament-card:hover
+  .tournament-img
+  img {
   transform: none;
 }
 
@@ -2178,8 +2230,26 @@ ul li {
 .game-section .game-card-wrapper .game-card .game-card-border-overlay,
 .game-section .game-card-wrapper .game-card .game-img,
 .game-section .game-card-wrapper .game-card .game-link {
-  -webkit-clip-path: polygon(84% 100%, 100% 88%, 100% 5%, 92% 0%, 14% 0%, 0% 11%, 0% 94%, 6% 100%);
-  clip-path: polygon(84% 100%, 100% 88%, 100% 5%, 92% 0%, 14% 0%, 0% 11%, 0% 94%, 6% 100%);
+  -webkit-clip-path: polygon(
+    84% 100%,
+    100% 88%,
+    100% 5%,
+    92% 0%,
+    14% 0%,
+    0% 11%,
+    0% 94%,
+    6% 100%
+  );
+  clip-path: polygon(
+    84% 100%,
+    100% 88%,
+    100% 5%,
+    92% 0%,
+    14% 0%,
+    0% 11%,
+    0% 94%,
+    6% 100%
+  );
 }
 
 .game-section .game-card-wrapper .game-card .game-title {
@@ -2237,9 +2307,15 @@ ul li {
 }
 
 .game-section .game-swiper .game-swiper-pagination .swiper-pagination-bullet,
-.game-section .game-swiper .game-swiper-pagination .swiper-pagination-bullets-dynamic,
+.game-section
+  .game-swiper
+  .game-swiper-pagination
+  .swiper-pagination-bullets-dynamic,
 .game-section .game-swiper2 .game-swiper-pagination .swiper-pagination-bullet,
-.game-section .game-swiper2 .game-swiper-pagination .swiper-pagination-bullets-dynamic {
+.game-section
+  .game-swiper2
+  .game-swiper-pagination
+  .swiper-pagination-bullets-dynamic {
   width: 15px;
   height: 8px;
   border-radius: 8px;
@@ -2247,8 +2323,14 @@ ul li {
   opacity: 0.7;
 }
 
-.game-section .game-swiper .game-swiper-pagination .swiper-pagination-bullet-active,
-.game-section .game-swiper2 .game-swiper-pagination .swiper-pagination-bullet-active {
+.game-section
+  .game-swiper
+  .game-swiper-pagination
+  .swiper-pagination-bullet-active,
+.game-section
+  .game-swiper2
+  .game-swiper-pagination
+  .swiper-pagination-bullet-active {
   width: 30px;
   opacity: 1;
 }
@@ -2426,19 +2508,19 @@ ul li {
   background: rgb(var(--p1));
 }
 
-.main-container .sidebar {
+/* .main-container .sidebar {
   width: 100%;
   max-width: 160px;
   height: 100%;
   position: relative;
   z-index: 99;
-}
+} */
 
-.main-container .sidebar .sidebar-wrapper {
+/* .main-container .sidebar .sidebar-wrapper {
   position: fixed;
   top: 100px;
   z-index: 99;
-}
+} */
 
 .main-container .sidebar .sidebar-wrapper .sidebar-game-list-wrapper {
   max-height: 90vh;
@@ -2455,7 +2537,10 @@ ul li {
   }
 }
 
-.main-container .sidebar .sidebar-wrapper .sidebar-game-list::-webkit-scrollbar {
+.main-container
+  .sidebar
+  .sidebar-wrapper
+  .sidebar-game-list::-webkit-scrollbar {
   display: none;
 }
 
@@ -2470,7 +2555,14 @@ ul li {
   justify-content: center;
   min-height: 82px;
   background: rgb(var(--n1));
-  -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  -webkit-clip-path: polygon(
+    50% 0%,
+    100% 25%,
+    100% 75%,
+    50% 100%,
+    0% 75%,
+    0% 25%
+  );
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
@@ -2622,7 +2714,6 @@ ul li {
 }
 
 @media (max-width: 991px) {
-
   .banner-section .banner-bg-img,
   .banner-section .banner-swiper {
     max-height: 700px;
@@ -2892,7 +2983,6 @@ ul li {
 }
 
 @media (max-width: 991px) {
-
   .team-profile-banner,
   .profile-banner-section {
     padding-bottom: 80px;
@@ -2977,7 +3067,6 @@ ul li {
 }
 
 @media (max-width: 1199px) {
-
   .team-profile-banner .team-banner .team-profile .team-thumb,
   .team-profile-banner .team-banner .team-profile .profile-thumb,
   .team-profile-banner .team-banner .user-profile .team-thumb,
@@ -3006,7 +3095,6 @@ ul li {
 }
 
 @media (max-width: 991px) {
-
   .team-profile-banner .team-banner .team-profile .team-thumb,
   .team-profile-banner .team-banner .team-profile .profile-thumb,
   .team-profile-banner .team-banner .user-profile .team-thumb,
@@ -3035,7 +3123,6 @@ ul li {
 }
 
 @media (max-width: 767px) {
-
   .team-profile-banner .team-banner .team-profile .team-thumb,
   .team-profile-banner .team-banner .team-profile .profile-thumb,
   .team-profile-banner .team-banner .user-profile .team-thumb,
@@ -3064,7 +3151,6 @@ ul li {
 }
 
 @media (max-width: 575px) {
-
   .team-profile-banner .team-banner .team-profile .team-thumb,
   .team-profile-banner .team-banner .team-profile .profile-thumb,
   .team-profile-banner .team-banner .user-profile .team-thumb,
@@ -3093,7 +3179,6 @@ ul li {
 }
 
 @media (max-width: 480px) {
-
   .team-profile-banner .team-banner .team-profile .team-thumb,
   .team-profile-banner .team-banner .team-profile .profile-thumb,
   .team-profile-banner .team-banner .user-profile .team-thumb,
@@ -3244,7 +3329,14 @@ ul li {
   align-items: center;
   justify-content: center;
   border-radius: 20%;
-  -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  -webkit-clip-path: polygon(
+    50% 0%,
+    100% 25%,
+    100% 75%,
+    50% 100%,
+    0% 75%,
+    0% 25%
+  );
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   background: rgb(var(--p1));
 }
@@ -3318,7 +3410,10 @@ ul li {
   background: rgb(var(--s1));
 }
 
-.tour-reg-process-section .tour-reg-process-area.complete .step-area .step-number {
+.tour-reg-process-section
+  .tour-reg-process-area.complete
+  .step-area
+  .step-number {
   display: none;
 }
 
@@ -3330,11 +3425,19 @@ ul li {
   border: 1px solid rgb(var(--s1));
 }
 
-.tour-reg-process-section .tour-reg-process-area.pending .step-area .step .step-number {
+.tour-reg-process-section
+  .tour-reg-process-area.pending
+  .step-area
+  .step
+  .step-number {
   display: none;
 }
 
-.tour-reg-process-section .tour-reg-process-area.pending .step-area .step .check {
+.tour-reg-process-section
+  .tour-reg-process-area.pending
+  .step-area
+  .step
+  .check {
   display: block;
 }
 
@@ -3359,11 +3462,18 @@ ul li {
   position: relative;
 }
 
-.tournament-more-details .team-tree-view-area .team-tree-view-list .team-tree-view-item {
+.tournament-more-details
+  .team-tree-view-area
+  .team-tree-view-list
+  .team-tree-view-item {
   border-right: 5px solid rgb(var(--n3));
 }
 
-.tournament-more-details .team-tree-view-area .team-tree-view-list .team-tree-view-item .team-tree-view-thumb {
+.tournament-more-details
+  .team-tree-view-area
+  .team-tree-view-list
+  .team-tree-view-item
+  .team-tree-view-thumb {
   width: 48px;
   min-width: 48px;
   max-width: 48px;
@@ -3397,27 +3507,40 @@ ul li {
   background: rgb(var(--n3));
 }
 
-.tournament-more-details .team-tree-view-area .team-tree-view-list.grand-grand-child::before {
+.tournament-more-details
+  .team-tree-view-area
+  .team-tree-view-list.grand-grand-child::before {
   display: none;
 }
 
-.tournament-more-details .team-tree-view-area .team-tree-view-list.grand-grand-child::after {
+.tournament-more-details
+  .team-tree-view-area
+  .team-tree-view-list.grand-grand-child::after {
   display: none;
 }
 
-.tournament-more-details .team-tree-view-area .team-tree-view-list.grand-child::before {
+.tournament-more-details
+  .team-tree-view-area
+  .team-tree-view-list.grand-child::before {
   height: 130%;
 }
 
-.tournament-more-details .team-tree-view-area .team-tree-view-list.child::before {
+.tournament-more-details
+  .team-tree-view-area
+  .team-tree-view-list.child::before {
   height: 280%;
 }
 
-.tournament-more-details .team-tree-view-area .team-tree-view-list.parent::before {
+.tournament-more-details
+  .team-tree-view-area
+  .team-tree-view-list.parent::before {
   height: 560%;
 }
 
-.tournament-more-details .team-branch-list .team-branch-item .team-branch-thumb {
+.tournament-more-details
+  .team-branch-list
+  .team-branch-item
+  .team-branch-thumb {
   width: 48px;
   min-width: 48px;
   max-width: 48px;
@@ -3428,7 +3551,10 @@ ul li {
   justify-content: center;
 }
 
-.tournament-more-details .rule-accordion .accordion-single .rule-acc-btn::after {
+.tournament-more-details
+  .rule-accordion
+  .accordion-single
+  .rule-acc-btn::after {
   content: "\f60d";
   right: unset;
   left: 0;
@@ -3457,7 +3583,14 @@ ul li {
   display: flex;
   align-items: center;
   justify-content: center;
-  -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  -webkit-clip-path: polygon(
+    50% 0%,
+    100% 25%,
+    100% 75%,
+    50% 100%,
+    0% 75%,
+    0% 25%
+  );
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
@@ -3699,7 +3832,6 @@ ul li {
 }
 
 @media (max-width: 767px) {
-
   .chat-section .chat-body .chat-msg .msg-sender-thumb,
   .chat-section .chat-body .chat-msg .msg-receiver-thumb {
     width: 36px;
@@ -3789,7 +3921,9 @@ ul li {
   background: transparent;
   border: 1px dashed #444;
   border-radius: 50%;
-  box-shadow: inset -5px -5px 25px rgba(0, 0, 0, 0.25), inset 5px 5px 35px rgba(0, 0, 0, 0.25);
+  box-shadow:
+    inset -5px -5px 25px rgba(0, 0, 0, 0.25),
+    inset 5px 5px 35px rgba(0, 0, 0, 0.25);
 }
 
 .loader::after {
@@ -3799,7 +3933,9 @@ ul li {
   height: 50px;
   border-radius: 50%;
   border: 1px dashed #444;
-  box-shadow: inset -5px -5px 25px rgba(0, 0, 0, 0.25), inset 5px 5px 35px rgba(0, 0, 0, 0.25);
+  box-shadow:
+    inset -5px -5px 25px rgba(0, 0, 0, 0.25),
+    inset 5px 5px 35px rgba(0, 0, 0, 0.25);
 }
 
 .loader span {
@@ -3836,7 +3972,6 @@ ul li {
     transform: rotate(360deg);
   }
 }
-
 
 /* Mascot Animations */
 @keyframes floatMascot {

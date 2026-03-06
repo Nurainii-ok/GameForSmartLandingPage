@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import ContactView from '@/components/ContactView';
+import ContactView from "@/components/features/contact/ContactView";
 
 export const metadata: Metadata = {
     title: 'Contact Us | GameForSmart 2026',

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import GamesView from "@/components/GamesView";
+import GamesView from "@/components/features/games/GamesView";
 
 export const metadata: Metadata = {
     title: 'Games | GameForSmart 2026',

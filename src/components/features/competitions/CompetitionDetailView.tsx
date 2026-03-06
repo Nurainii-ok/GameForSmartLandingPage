@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Header from '@/components/Header';
-import Sidebar from '@/components/Sidebar';
-import Breadcrumbs from '@/components/Breadcrumbs';
+import Header from "@/components/shared/Header";
+import Sidebar from "@/components/shared/Sidebar";
+import Breadcrumbs from "@/components/shared/Breadcrumbs";
 import Link from 'next/link';
 import { TournamentInfo } from '@/data/allItemsData';
 

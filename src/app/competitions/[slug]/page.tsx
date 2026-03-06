@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { allItemsData } from '@/data/allItemsData';
-import CompetitionDetailView from '@/components/CompetitionDetailView';
+import CompetitionDetailView from "@/components/features/competitions/CompetitionDetailView";
 import { notFound } from 'next/navigation';
 
 interface Props {

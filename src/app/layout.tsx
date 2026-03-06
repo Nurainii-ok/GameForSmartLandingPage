@@ -7,10 +7,10 @@ import "./globals.css";
 import "../assets/css/bootstrap.css";
 import "../assets/css/style.css";
 
-import Preloader from "@/components/Preloader";
-import NotificationArea from "@/components/NotificationArea";
-import ConnectWalletModal from "@/components/ConnectWalletModal";
-import UserAccountPopup from "@/components/UserAccountPopup";
+import Preloader from "@/components/shared/Preloader";
+import NotificationArea from "@/components/shared/NotificationArea";
+import ConnectWalletModal from "@/components/shared/ConnectWalletModal";
+import UserAccountPopup from "@/components/features/auth/UserAccountPopup";
 
 const inter = Inter({ subsets: ["latin"] });
 

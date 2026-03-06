@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 import { allItemsData } from '@/data/allItemsData';
 import { notFound } from 'next/navigation';
-import RegistrationView from '@/components/RegistrationView';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import RegistrationView from "@/components/features/auth/RegistrationView";
+import Header from "@/components/shared/Header";
+import Footer from "@/components/shared/Footer";
 
 export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const params = await props.params;
