@@ -38,25 +38,25 @@ export default function GameDetailView({ game }: GameDetailViewProps) {
     return (
         <>
             <Header />
-            <main className="main-container container-fluid d-flex pt-sm-20 pt-15 px-0 position-relative">
+            <GameHero image={game.image} title={game.title} videoUrl={game.videoUrl}>
+                <GameMeta
+                    image={game.image}
+                    title={game.title}
+                    slug={game.slug}
+                    rating={game.rating}
+                    players={game.players}
+                    videoUrl={game.videoUrl}
+                    onOpenTrailer={() => setIsVideoModalOpen(true)}
+                />
+            </GameHero>
+            <main className="main-container container-fluid d-flex px-0 position-relative">
                 <Sidebar />
-                <article className="main-content mt-lg-20 mt-10 w-100">
+                <article className="main-content w-100">
                     <div className="gps-wrapper">
-
-                        <GameHero image={game.image} title={game.title} />
 
                         <div className="gps-body">
                             {/* ── Kolom Kiri (konten utama) ── */}
                             <div className="gps-main-col">
-                                <GameMeta
-                                    image={game.image}
-                                    title={game.title}
-                                    slug={game.slug}
-                                    rating={game.rating}
-                                    players={game.players}
-                                    videoUrl={game.videoUrl}
-                                    onOpenTrailer={() => setIsVideoModalOpen(true)}
-                                />
 
                                 <GameGallery
                                     media={allMedia}

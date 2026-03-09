@@ -2,6 +2,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { tournamentsData } from "@/data/tournamentsData";
 import { motion } from "framer-motion";
 
@@ -143,10 +145,9 @@ export default function TournamentSection() {
                   key={tournament.id}
                   className="swiper-slide !w-[90%] lg:!w-[900px]"
                 >
-                  <div className="relative h-auto lg:h-[480px] rounded-2xl overflow-hidden border border-orange-500/30 bg-[#0f1118] transition-all duration-500 tournament-card">
+                  <Card className="relative h-auto lg:h-[480px] overflow-hidden border-orange-500/30 bg-card transition-all duration-500 tournament-card">
                     {/* TOP GRADIENT */}
                     <div className="h-[3px] w-full bg-gradient-to-r from-orange-500 via-amber-500 to-orange-500" />
-
                     <div className="flex flex-col lg:flex-row-reverse h-full">
                       {/* IMAGE (Top on Mobile, Right on Desktop) */}
                       <div className="relative h-[240px] lg:h-full lg:w-1/2 overflow-hidden">
@@ -155,68 +156,53 @@ export default function TournamentSection() {
                           alt={tournament.title}
                           className="w-full h-full object-cover"
                         />
-
                         {/* OVERLAY */}
                         <div className="absolute inset-0 bg-gradient-to-r lg:bg-gradient-to-l from-black/50 via-black/10 to-transparent" />
-
                         {/* CATEGORY */}
-                        <div className="absolute bottom-5 right-5 bg-orange-600/20 border border-orange-500/40 text-orange-300 text-xs px-3 py-1 rounded-lg">
-                          {tournament.slug.toUpperCase()}
+                        <div className="absolute bottom-5 right-5">
+                          <Badge variant="secondary" className="border-orange-500/40 text-orange-400 bg-orange-600/20">
+                            {tournament.slug.toUpperCase()}
+                          </Badge>
                         </div>
                       </div>
-
                       {/* CONTENT (Bottom on Mobile, Left on Desktop) */}
-                      <div className="p-8 lg:p-12 flex flex-col justify-center lg:w-1/2">
+                      <CardContent className="p-8 lg:p-12 flex flex-col justify-center lg:w-1/2">
                         {/* STATUS */}
-                        <span className="mb-5 bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs px-3 py-1 rounded-md w-fit">
-                          ● Upcoming
-                        </span>
-
+                        <Badge variant="outline" className="mb-5 text-orange-400 border-orange-500/20 bg-orange-500/10">
+                          ● {tournament.status}
+                        </Badge>
                         {/* TITLE */}
-                        <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4 leading-snug">
+                        <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 leading-snug">
                           {tournament.title}
                         </h3>
-
                         {/* DESCRIPTION */}
-                        <p className="text-gray-400 mb-6 leading-relaxed line-clamp-2">
+                        <p className="text-muted-foreground mb-6 leading-relaxed line-clamp-2">
                           {tournament.description.split("\n")[0]}
                         </p>
-
                         {/* STATS */}
                         <div className="flex flex-wrap gap-2 mb-8">
-                          <div className="bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-sm text-gray-300">
+                          <Badge variant="secondary" className="bg-white/5 border-white/10 text-gray-300">
                             {tournament.date}
-                          </div>
-
-                          <div className="bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-sm text-gray-300">
+                          </Badge>
+                          <Badge variant="secondary" className="bg-white/5 border-white/10 text-gray-300">
                             {tournament.prizeMoney}
-                          </div>
-
-                          <div className="bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-sm text-gray-300">
+                          </Badge>
+                          <Badge variant="secondary" className="bg-white/5 border-white/10 text-gray-300">
                             {tournament.type}
-                          </div>
+                          </Badge>
                         </div>
-
                         {/* BUTTONS */}
                         <div className="flex gap-4">
-                          <Button
-                            asChild
-                            className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-6 py-3 rounded-xl hover:opacity-90 transition-opacity whitespace-nowrap"
-                          >
-                            <Link href={tournament.href}>Daftar Sekarang</Link>
+                          <Button asChild size="lg" className="px-6 py-3 rounded-xl">
+                            <Link href={`/competitions/${tournament.slug}/register`}>Daftar Sekarang</Link>
                           </Button>
-
-                          <Button
-                            asChild
-                            variant="outline"
-                            className="border-white/20 text-gray-300 px-6 py-3 rounded-xl hover:bg-white/5 transition-colors whitespace-nowrap"
-                          >
+                          <Button asChild variant="outline" size="lg" className="px-6 py-3 rounded-xl">
                             <Link href={tournament.href}>Detail →</Link>
                           </Button>
                         </div>
-                      </div>
+                      </CardContent>
                     </div>
-                  </div>
+                  </Card>
                 </div>
               ))}
             </div>

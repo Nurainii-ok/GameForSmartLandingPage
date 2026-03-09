@@ -1,5 +1,5 @@
 // components/GameMeta.tsx
-// Menampilkan icon game, judul, developer, statistik, dan tombol aksi
+// Menampilkan info meta game yang dioverlay di atas hero banner
 
 import Link from "next/link";
 
@@ -44,262 +44,301 @@ export default function GameMeta({
   return (
     <>
       <div className="gps-meta">
-        {/* Icon */}
-        <div className="gps-meta-icon">
-          <img src={image} alt={title} />
+        {/* Title & Subtitle */}
+        <h1 className="gps-title">{title}</h1>
+        <div className="gps-subtitle">
+            <span className="gps-developer">Gameforsmart.com</span>
+            <p className="gps-ad-info">Gratis dimainkan · Langsung di browser</p>
         </div>
 
-        <div className="gps-meta-info">
-          <h1 className="gps-title">{title}</h1>
-          <a href="#" className="gps-developer">
-            Gameforsmart.com
-          </a>
-          <p className="gps-tag-line">Gratis dimainkan · Langsung di browser</p>
-
-          {/* Stats */}
-          <div className="gps-stats">
-            <div className="gps-stat-item">
-              <span className="gps-stat-val">{rating}★</span>
-              <span className="gps-stat-label">{players} ulasan</span>
+        {/* Stats Row containing Icon */}
+        <div className="gps-stats-row">
+            <div className="gps-meta-icon">
+                <img src={image} alt={title} />
             </div>
-            <div className="gps-stat-divider" />
-            <div className="gps-stat-item">
-              <span className="gps-stat-val">{players}</span>
-              <span className="gps-stat-label">Pemain aktif</span>
-            </div>
-            <div className="gps-stat-divider" />
-            <div className="gps-stat-item">
-              <span className="gps-stat-val">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="2" y1="12" x2="22" y2="12" />
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                </svg>
-              </span>
-              <span className="gps-stat-label">Gratis</span>
-            </div>
-          </div>
 
-          {/* Action Buttons */}
-          <div className="gps-actions">
-            <Link href={`/play/${slug}`} className="gps-btn-install">
-              <svg
-                width="16"
-                height="16"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              Main Sekarang
-            </Link>
+            <div className="gps-stats-blocks">
+                <div className="gps-stat-item">
+                    <span className="gps-stat-val">{rating}★</span>
+                    <span className="gps-stat-label">{players} ulasan</span>
+                </div>
+                <div className="gps-stat-divider" />
+                <div className="gps-stat-item">
+                    <span className="gps-stat-val">{players}</span>
+                    <span className="gps-stat-label">Pemain aktif</span>
+                </div>
+                <div className="gps-stat-divider" />
+                <div className="gps-stat-item">
+                    <span className="gps-stat-val" style={{ display: 'flex', justifyContent: 'center' }}>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                    </span>
+                    <span className="gps-stat-label">Gratis</span>
+                </div>
+            </div>
+        </div>
 
-            <button
-              className="gps-btn-secondary d-flex align-items-center gap-2"
-              title="Bagikan"
-              onClick={handleShare}
-            >
-              <svg
-                width="16"
-                height="16"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z" />
-              </svg>
-              Bagikan
-            </button>
+        {/* Buttons Row */}
+        <div className="gps-actions-row">
+            <div className="gps-actions-start">
+                <Link href={`/play/${slug}`} className="gps-btn-primary">
+                    Main Sekarang
+                </Link>
+                
+                <button className="gps-btn-text" onClick={handleShare}>
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z" /></svg>
+                    Bagikan
+                </button>
+            </div>
 
             {videoUrl && (
-              <button className="gps-btn-trailer" onClick={onOpenTrailer}>
-                ▶ Cuplikan
-              </button>
+                <div className="gps-actions-end">
+                    <button className="gps-btn-trailer" onClick={onOpenTrailer}>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                           <path d="M8 5v14l11-7z" />
+                        </svg>
+                        Cuplikan
+                    </button>
+                </div>
             )}
-          </div>
         </div>
+        
+        {/* <p className="gps-footer-note">
+            Google Play Games di PC diperlukan untuk menginstal game ini di Windows. Dengan
+            mendownload aplikasi dan game, kamu menyetujui <a href="#">Persyaratan Layanan Google</a> dan <a href="#">Persyaratan Layanan Google Play</a>. <a href="#">Pelajari lebih lanjut</a>.
+        </p> */}
+
       </div>
 
       <style jsx>{`
         .gps-meta {
           display: flex;
-          gap: 20px;
-          padding: 24px 0;
-          border-bottom: 1px solid var(--border);
+          flex-direction: column;
+          gap: 16px;
+          padding: 24px 0 0;
+          max-width: 900px;
         }
+
+        .gps-title {
+          font-size: 3rem;
+          font-weight: 500;
+          color: #fff;
+          margin: 0;
+          line-height: 1.1;
+        }
+
+        .gps-subtitle {
+          margin-bottom: 4px;
+        }
+
+        .gps-developer {
+          color: var(--accent-green, #00e676);
+          font-size: 1rem;
+          font-weight: 500;
+          text-decoration: none;
+          display: block;
+          margin-bottom: 4px;
+        }
+
+        .gps-developer:hover {
+          text-decoration: underline;
+        }
+
+        .gps-ad-info {
+          font-size: 0.85rem;
+          color: var(--text-secondary, #9aa0a6);
+          margin: 0;
+        }
+
+        /* Stats Row */
+        .gps-stats-row {
+          display: flex;
+          align-items: center;
+          gap: 24px;
+          margin: 8px 0 12px;
+        }
+
         .gps-meta-icon {
-          width: 80px;
-          height: 80px;
+          width: 72px;
+          height: 72px;
           border-radius: 16px;
           overflow: hidden;
           flex-shrink: 0;
-          border: 1px solid var(--border);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
+
         .gps-meta-icon img {
           width: 100%;
           height: 100%;
           object-fit: cover;
         }
-        .gps-meta-info {
-          flex: 1;
-        }
-        .gps-title {
-          font-size: 1.75rem;
-          font-weight: 600;
-          color: var(--text-primary);
-          margin: 0 0 2px;
-          line-height: 1.2;
-        }
-        .gps-developer {
-          color: var(--accent-blue);
-          font-size: 0.875rem;
-          text-decoration: none;
-          display: block;
-          margin-bottom: 2px;
-        }
-        .gps-developer:hover {
-          text-decoration: underline;
-          color: var(--accent-blue);
-        }
-        .gps-tag-line {
-          font-size: 0.8rem;
-          color: var(--text-muted);
-          margin: 0 0 12px;
-        }
 
-        /* Stats */
-        .gps-stats {
+        .gps-stats-blocks {
           display: flex;
           align-items: center;
-          gap: 16px;
-          margin-bottom: 16px;
-          flex-wrap: wrap;
+          gap: 20px;
         }
+
         .gps-stat-item {
           display: flex;
           flex-direction: column;
-          align-items: center;
-          gap: 2px;
+          gap: 4px;
         }
+
         .gps-stat-val {
-          font-size: 0.9rem;
+          font-size: 0.95rem;
           font-weight: 600;
-          color: var(--text-primary);
+          color: #fff;
           display: flex;
           align-items: center;
-          gap: 3px;
+          gap: 4px;
         }
+
         .gps-stat-label {
-          font-size: 0.72rem;
-          color: var(--text-muted);
+          font-size: 0.75rem;
+          color: var(--text-secondary, #9aa0a6);
         }
+
         .gps-stat-divider {
           width: 1px;
-          height: 28px;
-          background: var(--border);
+          height: 24px;
+          background: rgba(255,255,255,0.2);
         }
 
-        /* Buttons */
-        .gps-actions {
+        /* Actions */
+        .gps-actions-row {
           display: flex;
-          align-items: center;
-          gap: 10px;
           flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+          margin-top: 8px;
         }
 
-        .gps-btn-install {
+        .gps-actions-start {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .gps-btn-primary {
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          background: var(--accent);
+          background: #00a870;
           color: #fff;
           border: none;
-          border-radius: 24px;
+          border-radius: 4px;
           padding: 10px 24px;
-          font-size: 0.875rem;
+          font-size: 0.95rem;
           font-weight: 600;
           cursor: pointer;
           text-decoration: none;
-          transition:
-            background 0.2s,
-            transform 0.15s;
+          transition: background 0.2s;
         }
-        .gps-btn-install:hover {
-          background: var(--accent-hover);
+        .gps-btn-primary:hover {
+          background: #008f5d;
           color: #fff;
-          transform: translateY(-1px);
         }
 
-        .gps-btn-secondary {
+        .gps-btn-default {
+          display: inline-flex;
+          align-items: center;
+          background: transparent;
+          color: #00a870;
+          border: 1px solid rgba(255,255,255,0.2);
+          border-radius: 4px;
+          padding: 9px 24px;
+          font-size: 0.95rem;
+          font-weight: 600;
+          cursor: pointer;
+          text-decoration: none;
+          transition: background 0.2s, border-color 0.2s;
+        }
+        .gps-btn-default:hover {
+          background: rgba(255,255,255,0.05);
+          border-color: rgba(255,255,255,0.4);
+        }
+
+        .gps-btn-text {
           display: inline-flex;
           align-items: center;
           gap: 8px;
           background: transparent;
-          color: var(--accent-blue);
-          border: 1px solid var(--border);
-          border-radius: 24px;
-          padding: 9px 20px;
-          font-size: 0.875rem;
-          font-weight: 600;
+          color: #00a870;
+          border: none;
+          padding: 8px 12px;
+          font-size: 0.9rem;
+          font-weight: 500;
           cursor: pointer;
           transition: background 0.2s;
+          border-radius: 4px;
         }
-        .gps-btn-secondary:hover {
-          background: var(--bg-elevated);
-        }
-
-        .gps-btn-icon {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          background: transparent;
-          color: var(--text-secondary);
-          border: 1px solid var(--border);
-          border-radius: 50%;
-          width: 40px;
-          height: 40px;
-          cursor: pointer;
-          transition: background 0.2s;
-        }
-        .gps-btn-icon:hover {
-          background: var(--bg-elevated);
-          color: var(--text-primary);
+        .gps-btn-text:hover {
+          background: rgba(0, 168, 112, 0.1);
         }
 
         .gps-btn-trailer {
           display: inline-flex;
           align-items: center;
-          gap: 6px;
-          background: var(--bg-elevated);
-          color: var(--text-primary);
-          border: 1px solid var(--border);
+          gap: 8px;
+          background: rgba(0, 0, 0, 0.6);
+          color: #fff;
+          border: 1px solid rgba(255,255,255,0.2);
           border-radius: 24px;
-          padding: 10px 20px;
-          font-size: 0.875rem;
-          font-weight: 600;
+          padding: 10px 24px;
+          font-size: 0.95rem;
+          font-weight: 500;
           cursor: pointer;
           transition: background 0.2s;
         }
         .gps-btn-trailer:hover {
-          background: rgba(255, 255, 255, 0.1);
+          background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Footer Note */
+        .gps-footer-note {
+          font-size: 0.75rem;
+          color: var(--text-secondary, #9aa0a6);
+          line-height: 1.5;
+          max-width: 600px;
+          margin-top: 12px;
+        }
+
+        .gps-footer-note a {
+          color: var(--text-secondary, #9aa0a6);
+          text-decoration: underline;
+        }
+        .gps-footer-note a:hover {
+          color: #fff;
         }
 
         @media (max-width: 768px) {
           .gps-meta {
-            flex-direction: column;
-          }
-          .gps-meta-icon {
-            width: 64px;
-            height: 64px;
+            padding: 16px 0 0;
           }
           .gps-title {
-            font-size: 1.4rem;
+            font-size: 2rem;
+          }
+          .gps-stats-row {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          .gps-actions-start {
+             flex-direction: column;
+             align-items: stretch;
+             width: 100%;
+          }
+          .gps-btn-primary, .gps-btn-default, .gps-btn-text {
+             justify-content: center;
+             width: 100%;
+          }
+          .gps-actions-row {
+             flex-direction: column;
+             align-items: stretch;
           }
         }
       `}</style>
