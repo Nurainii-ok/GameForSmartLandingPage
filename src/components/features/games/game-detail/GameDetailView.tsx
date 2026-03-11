@@ -135,6 +135,15 @@ export default function GameDetailView({ game }: GameDetailViewProps) {
 
                     /* Page horizontal padding — satu sumber kebenaran */
                     --page-px: clamp(20px, 4vw, 72px);
+
+                    /* Sidebar width for alignment */
+                    --sidebar-w: 105px;
+                }
+
+                @media (max-width: 991px) {
+                    :root {
+                        --sidebar-w: 0px;
+                    }
                 }
             `}</style>
 

@@ -100,6 +100,22 @@ export default function CompetitionDetailView({ tournament }: CompetitionDetailV
         />
       )}
 
+      <style jsx global>{`
+        :root {
+            /* Page horizontal padding — satu sumber kebenaran */
+            --page-px: clamp(20px, 4vw, 72px);
+
+            /* Sidebar width for alignment */
+            --sidebar-w: 105px;
+        }
+
+        @media (max-width: 991px) {
+            :root {
+                --sidebar-w: 0px;
+            }
+        }
+      `}</style>
+
       <style jsx>{`
         .animate-fade-in-up {
           animation: fadeInUp 0.6s ease-out forwards;
