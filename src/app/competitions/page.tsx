@@ -103,7 +103,8 @@ export default function TournamentsPage() {
                             {["All", "Active", "Upcoming", "Finished"].map((tab) => (
                               <li key={tab}>
                                 <button
-                                  className={`dropdown-item w-100 text-start py-2 px-4 rounded-2 border-0 bg-transparent tcn-1 ${activeTab === tab ? 'bg-primary-dark text-orange-500' : 'hover-bg-n4'}`}
+                                  className={`dropdown-item w-100 text-start py-3 px-4 rounded-2 border-0 bg-transparent tcn-1 ${activeTab === tab ? 'bg-primary-dark fw-bold' : 'hover-bg-n4'}`}
+                                  style={{ color: activeTab === tab ? '#ff8c00' : 'inherit' }}
                                   onClick={() => {
                                     setActiveTab(tab);
                                     setIsDropdownOpen(false);
@@ -150,28 +151,36 @@ export default function TournamentsPage() {
 
       <style jsx>{`
         .dropdown-toggle-btn {
-          background: rgba(var(--n3), 0.4);
+          background: #1c1f2a;
           color: rgb(var(--n1));
           font-weight: 500;
+          border: 1px solid rgba(255, 255, 255, 0.1) !important;
           transition: all 0.3s ease;
+        }
+        .dropdown-toggle-btn:hover {
+          border-color: rgba(var(--p1), 0.5) !important;
         }
         .dropdown-menu-list {
           background: #1c1f2a;
-          border: 1px solid rgba(var(--p1), 0.2);
+          border: 1px solid rgba(var(--p1), 0.3);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+          overflow: hidden;
         }
         .dropdown-item {
           transition: all 0.2s ease;
           color: rgb(var(--n1));
+          font-size: 14px;
         }
         .dropdown-item:hover {
-          background: rgba(var(--n4), 0.6);
-          color: orange;
+          background: rgba(var(--p1), 0.1);
+          color: #ff8c00;
+          padding-left: 20px;
         }
         .bg-primary-dark {
-          background: rgba(var(--p1), 0.1);
+          background: rgba(var(--p1), 0.15);
         }
         .hover-bg-n4:hover {
-          background: rgba(var(--n4), 0.4);
+          background: rgba(255, 255, 255, 0.05);
         }
       `}</style>
     </>

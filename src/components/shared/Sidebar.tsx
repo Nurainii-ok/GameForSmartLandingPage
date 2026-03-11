@@ -16,28 +16,36 @@ export default function Sidebar() {
     return () => window.removeEventListener("sidebar-toggle", handler);
   }, []);
 
-  // Dynamically track actual header height and set as CSS variable.
-  // This is the key fix: padding-top of the overlay always equals the
-  // real rendered header height, so it stays correct at any zoom level.
+  // Dynamically track dimensions
   useEffect(() => {
-    const updateHeaderHeight = () => {
-      // Adjust this selector to match your actual header element.
+    const updateDimensions = () => {
+      // 1. Header height for overlay padding-top
       const header =
         document.querySelector("header") ||
         document.querySelector(".header") ||
         document.querySelector("[data-header]") ||
         document.querySelector("nav");
+      const headerH = header ? header.getBoundingClientRect().height : 60;
 
-      const height = header ? header.getBoundingClientRect().height : 100;
-
-      // Add a 16px comfortable gap below the header
       document.documentElement.style.setProperty(
         "--sidebar-overlay-top",
-        `${height + 16}px`
+        `${headerH + 16}px`
+      );
+
+      // 2. Capsule max-height: fill available space below header
+      // If content overflows → capsule scrolls. Icons NEVER shrink.
+      const vh = window.innerHeight;
+      const topOffset = headerH + 24;
+      const bottomPadding = 32;
+      const maxCapsuleH = vh - topOffset - bottomPadding;
+
+      document.documentElement.style.setProperty(
+        "--capsule-max-h",
+        `${Math.max(maxCapsuleH, 200)}px`
       );
     };
 
-    updateHeaderHeight();
+    updateDimensions();
 
     // ResizeObserver re-measures whenever header size changes (including zoom)
     const header =
@@ -46,15 +54,15 @@ export default function Sidebar() {
       document.querySelector("[data-header]") ||
       document.querySelector("nav");
 
-    const ro = new ResizeObserver(updateHeaderHeight);
+    const ro = new ResizeObserver(updateDimensions);
     if (header) ro.observe(header);
 
     // Also listen to window resize as a fallback
-    window.addEventListener("resize", updateHeaderHeight);
+    window.addEventListener("resize", updateDimensions);
 
     return () => {
       ro.disconnect();
-      window.removeEventListener("resize", updateHeaderHeight);
+      window.removeEventListener("resize", updateDimensions);
     };
   }, []);
 
@@ -123,7 +131,7 @@ export default function Sidebar() {
           margin-left: 15px;
           margin-top: 0;
           margin-bottom: 0;
-          max-height: inherit;
+          max-height: var(--capsule-max-h, 480px);
           overflow-y: auto;
           overflow-x: hidden;
           scrollbar-width: none;
@@ -141,11 +149,12 @@ export default function Sidebar() {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 70px;
-          height: 70px;
+          width: 60px;
+          height: 60px;
           border-radius: 50%;
           background: transparent;
           margin: 0 auto;
+          flex-shrink: 0;
         }
 
         .menu-link:hover {
@@ -157,9 +166,10 @@ export default function Sidebar() {
         }
 
         .sidebar-icon {
-          font-size: 32px;
+          font-size: 28px;
           color: rgba(255, 255, 255, 0.4);
           transition: all 0.3s ease;
+          flex-shrink: 0;
         }
 
         .sidebar-icon.active {
@@ -171,41 +181,7 @@ export default function Sidebar() {
           transition: all 0.3s ease;
         }
 
-        @media (max-height: 800px) {
-          .menu-link {
-            width: 56px;
-            height: 56px;
-          }
-          .sidebar-icon {
-            font-size: 26px;
-          }
-          .sidebar-menu-capsule {
-            border-radius: 60px;
-          }
-        }
 
-        @media (max-height: 600px) {
-          .menu-link {
-            width: 46px;
-            height: 46px;
-          }
-          .sidebar-icon {
-            font-size: 22px;
-          }
-          .sidebar-menu-capsule {
-            border-radius: 40px;
-          }
-        }
-
-        @media (max-width: 1199px) {
-          .menu-link {
-            width: 55px;
-            height: 55px;
-          }
-          .sidebar-icon {
-            font-size: 26px;
-          }
-        }
 
         /* ============================= */
         /* MOBILE OVERLAY */
@@ -264,6 +240,16 @@ export default function Sidebar() {
             /* Tidak ada max-height — capsule penuh, wrapper yang scroll */
             max-height: none;
             overflow-y: visible;
+          }
+
+          /* Slightly smaller but still comfortable and FIXED */
+          .menu-link {
+            width: 56px;
+            height: 56px;
+          }
+
+          .sidebar-icon {
+            font-size: 26px;
           }
         }
 
