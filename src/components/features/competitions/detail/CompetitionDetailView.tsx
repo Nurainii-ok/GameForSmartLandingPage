@@ -48,7 +48,7 @@ export default function CompetitionDetailView({ tournament }: CompetitionDetailV
         />
       </GameHero>
 
-      <main className="main-container container-fluid d-flex pt-0 px-0 position-relative overflow-x-hidden">
+      <main className="main-container container-fluid d-flex pt-0 px-0 position-relative" style={{ overflow: "visible" }}>
         <Sidebar />
 
         <article className="main-content w-100">

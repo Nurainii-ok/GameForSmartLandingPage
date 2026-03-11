@@ -146,7 +146,7 @@ export default function GameDetailView({ game }: GameDetailViewProps) {
                     min-height: 100vh;
                     color: var(--text-primary);
                     font-family: 'Outfit', 'DM Sans', system-ui, sans-serif;
-                    overflow-x: hidden;
+                    overflow: visible;
                 }
 
                 .page-article {

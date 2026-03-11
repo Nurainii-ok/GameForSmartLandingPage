@@ -65,11 +65,11 @@ export default function Sidebar() {
 
         .sidebar {
           position: sticky;
-          top: 100px; /* adjusted for better fit */
+          top: 130px; /* adjusted to appear below header */
           align-self: flex-start;
           height: fit-content;
-          max-height: calc(100vh - 100px);
-          z-index: 1000;
+          max-height: calc(100vh - 150px);
+          z-index: 10000; /* Just below header (10001) */
         }
 
         .sidebar-menu-capsule {
@@ -158,7 +158,7 @@ export default function Sidebar() {
         /* MOBILE OVERLAY (Also triggers on short screens) */
         /* ============================= */
 
-        @media (max-width: 991px), (max-height: 650px) {
+        @media (max-width: 991px) {
           .sidebar {
             position: fixed;
             top: 0;
@@ -198,7 +198,7 @@ export default function Sidebar() {
         /* DESKTOP */
         /* ============================= */
 
-        @media (min-width: 992px) and (min-height: 651px) {
+        @media (min-width: 992px) {
           .sidebar-wrapper {
             display: flex !important;
             position: static !important;
@@ -214,7 +214,7 @@ export default function Sidebar() {
             height: fit-content !important;
             align-self: flex-start !important;
             width: fit-content !important;
-            z-index: 1000;
+            z-index: 10000 !important;
           }
         }
       `}</style>
