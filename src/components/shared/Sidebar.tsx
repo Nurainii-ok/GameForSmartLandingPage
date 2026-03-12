@@ -29,7 +29,7 @@ export default function Sidebar() {
 
       document.documentElement.style.setProperty(
         "--sidebar-overlay-top",
-        `${headerH + 16}px`
+        `${headerH + 16}px`,
       );
 
       // 2. Capsule max-height: fill available space below header
@@ -41,7 +41,7 @@ export default function Sidebar() {
 
       document.documentElement.style.setProperty(
         "--capsule-max-h",
-        `${Math.max(maxCapsuleH, 200)}px`
+        `${Math.max(maxCapsuleH, 200)}px`,
       );
     };
 
@@ -82,7 +82,10 @@ export default function Sidebar() {
 
   return (
     <aside className="sidebar">
-      <div ref={wrapperRef} className={`sidebar-wrapper ${open ? "show-menu" : ""}`}>
+      <div
+        ref={wrapperRef}
+        className={`sidebar-wrapper ${open ? "show-menu" : ""}`}
+      >
         <div className="sidebar-menu-capsule py-xxl-20 py-sm-15 py-10 px-6">
           <div className="d-grid gap-sm-12 gap-8 sidebar-menu-items text-center">
             {menuItems.map((item) => (
@@ -118,7 +121,9 @@ export default function Sidebar() {
           top: var(--top-offset);
           align-self: flex-start;
           height: fit-content;
-          max-height: calc(100svh - (2 * var(--top-offset)) + var(--header-height));
+          max-height: calc(
+            100svh - (2 * var(--top-offset)) + var(--header-height)
+          );
           z-index: 10000;
         }
 
@@ -174,14 +179,14 @@ export default function Sidebar() {
 
         .sidebar-icon.active {
           color: #ff8c00;
-          text-shadow: 0 0 10px #ff8c00, 0 0 20px #ff4500;
+          text-shadow:
+            0 0 10px #ff8c00,
+            0 0 20px #ff4500;
         }
 
         .transition-all {
           transition: all 0.3s ease;
         }
-
-
 
         /* ============================= */
         /* MOBILE OVERLAY */
