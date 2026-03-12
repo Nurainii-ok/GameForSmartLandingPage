@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import GameCard from "@/components/features/games/GameCard";
 import { useSearch } from "@/context/SearchContext";
@@ -21,9 +22,14 @@ export default function GamesSection() {
           <div className="row justify-content-between align-items-end mb-lg-8 mb-sm-6 mb-4 g-3">
             <div className="col">
               <Link href="/games">
-                <h2 className="display-four tcn-1 cursor-scale growUp title-anim font-heading text-[calc(1.1rem+1vw)]">
+                <motion.h2 
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="display-four tcn-1 cursor-scale growUp font-heading text-[calc(1.1rem+1vw)]"
+                >
                   Permainan
-                </h2>
+                </motion.h2>
               </Link>
             </div>
             <div className="col-auto">

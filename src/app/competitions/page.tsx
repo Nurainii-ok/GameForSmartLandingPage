@@ -54,9 +54,14 @@ export default function TournamentsPage() {
                 <Breadcrumbs />
                 <div className="row justify-content-between align-items-end mb-8">
                   <div className="col">
-                    <h1 className="display-four tcn-1 cursor-scale growUp title-anim text-uppercase">
+                    <motion.h1 
+                      initial={{ opacity: 0, x: -50 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, ease: "easeOut" }}
+                      className="display-four tcn-1 cursor-scale growUp text-uppercase"
+                    >
                       Competition
-                    </h1>
+                    </motion.h1>
                   </div>
                 </div>
                 <div className="singletab tournaments-tab">

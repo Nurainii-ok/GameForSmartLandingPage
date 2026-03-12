@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import Header from "@/components/shared/Header";
 import Sidebar from "@/components/shared/Sidebar";
 import GameCard from "@/components/features/games/GameCard";
@@ -30,9 +31,14 @@ export default function GamesView() {
               <div className="container-fluid py-lg-15 py-sm-10 py-8 px-lg-15 px-md-10 px-6">
                 <div className="row align-items-center justify-content-between mb-lg-15 mb-md-8 mb-sm-6 mb-4">
                   <div className="col-12 text-center">
-                    <h2 className="display-four tcn-1 cursor-scale growUp title-anim">
+                    <motion.h2 
+                      initial={{ opacity: 0, x: -50 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, ease: "easeOut" }}
+                      className="display-four tcn-1 cursor-scale growUp"
+                    >
                       Games
-                    </h2>
+                    </motion.h2>
                   </div>
                 </div>
                 <div className="singletab tournaments-tab mb-10">
