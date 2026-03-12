@@ -36,14 +36,14 @@ export default function CompetitionInfoCard({
       >
         {/* Badge */}
         <div className="d-flex justify-content-between align-items-center mb-6">
-          <span className="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 px-3 py-2 rounded-pill fw-bold">
+          <span className="badge text-[#ff8c00] bg-[#ff8c00]/10 border border-[#ff8c00]/25 px-3 py-2 rounded-pill fw-bold">
             Pendaftaran Dibuka
           </span>
         </div>
 
         {/* Prize */}
         <h4 className="tcn-6 fs-sm text-uppercase mb-2">Total Hadiah</h4>
-        <h2 className="text-warning fw-bold display-six mb-6">{prizeMoney}</h2>
+        <h2 className="text-[#ff8c00] fw-bold display-six mb-6">{prizeMoney}</h2>
 
         <div className="mb-6" style={{ height: 1, background: "rgba(255,255,255,0.1)" }} />
 
@@ -69,7 +69,7 @@ export default function CompetitionInfoCard({
             <span className="tcn-1 fw-bold fs-xs">{progressPercent.toFixed(0)}%</span>
           </div>
           <div className="progress rounded-pill bg-secondary bg-opacity-25" style={{ height: 8 }}>
-            <div className="progress-bar bg-warning rounded-pill" style={{ width: `${progressPercent}%` }} />
+            <div className="progress-bar bg-[#ff8c00] rounded-pill" style={{ width: `${progressPercent}%` }} />
           </div>
         </div>
 

@@ -13,7 +13,7 @@ export default function CompetitionRules({ rules }: CompetitionRulesProps) {
       style={{ background: "rgba(20,20,20,0.6)", border: "1px solid rgba(255,255,255,0.05)" }}
     >
       <h3 className="section-title mb-6 d-flex align-items-center gap-3">
-        <i className="ti ti-file-text text-warning fs-two" />
+        <i className="ti ti-file-text text-[#ff8c00] fs-two" />
         Syarat &amp; Ketentuan
       </h3>
 
@@ -24,7 +24,7 @@ export default function CompetitionRules({ rules }: CompetitionRulesProps) {
             className="d-flex align-items-start gap-3 p-4 rounded-3"
             style={{ background: "rgba(255,140,0,0.05)", border: "1px solid rgba(255,140,0,0.1)" }}
           >
-            <i className="ti ti-check text-warning fs-xl mt-1" />
+            <i className="ti ti-check text-[#ff8c00] fs-xl mt-1" />
             <span className="tcn-1 fs-md">{rule}</span>
           </div>
         ))}

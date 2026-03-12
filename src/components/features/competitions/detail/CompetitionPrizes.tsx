@@ -45,7 +45,7 @@ export default function CompetitionPrizes({ prizes = [] }: CompetitionPrizesProp
     <>
       <div className="col-12 text-center mb-6">
         <h3 className="section-title d-flex align-items-center justify-content-center gap-3">
-          <i className="ti ti-gift text-warning fs-two" />
+          <i className="ti ti-gift text-[#ff8c00] fs-two" />
           Hadiah &amp; Penghargaan
         </h3>
       </div>

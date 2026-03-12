@@ -27,7 +27,7 @@ export default function CompetitionAbout({ description }: CompetitionAboutProps)
       style={{ background: "rgba(20,20,20,0.6)", border: "1px solid rgba(255,255,255,0.05)" }}
     >
       <h3 className="section-title mb-6 d-flex align-items-center gap-3">
-        <i className="ti ti-target text-warning fs-two" />
+        <i className="ti ti-target text-[#ff8c00] fs-two" />
         Tentang Kompetisi
       </h3>
 
@@ -42,7 +42,7 @@ export default function CompetitionAbout({ description }: CompetitionAboutProps)
               style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.05)" }}
             >
               <div
-                className="bg-warning text-white mt-1 d-flex align-items-center justify-content-center"
+                className="bg-[#ff8c00] text-white mt-1 d-flex align-items-center justify-content-center"
                 style={{ width: 40, height: 40, borderRadius: "50%", flexShrink: 0 }}
               >
                 <i className={`ti ${icon} fs-xl`} />
@@ -61,7 +61,7 @@ export default function CompetitionAbout({ description }: CompetitionAboutProps)
         {isLong && (
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="btn btn-link pe-0 ps-0 mt-2 text-warning text-decoration-none fw-bold"
+            className="btn btn-link pe-0 ps-0 mt-2 text-[#ff8c00] text-decoration-none fw-bold"
           >
             {isExpanded ? "Sembunyikan" : "Baca Selengkapnya"}
           </button>

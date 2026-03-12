@@ -14,7 +14,8 @@ export const gamesData = [
         teams: "12/12", 
         href: "/games/1", 
         playUrl: "https://crazy-race-next.vercel.app",
-        description: "Rasakan adrenalin balap mobil dengan kecepatan tinggi dan lintasan menantang." 
+        description: "Rasakan adrenalin balap mobil dengan kecepatan tinggi dan lintasan menantang.",
+        screenshots: ["/images/crazyrace.webp", "/images/spacequiz.webp", "/assets/img/game-1.png"]
     },
     { 
         id: 2, 
@@ -31,7 +32,8 @@ export const gamesData = [
         teams: "12/12", 
         href: "/games/2", 
         playUrl: "https://quizrun.vercel.app",
-        description: "Uji kecepatan respon dan tangkasnya tanganmu dalam tantangan aksi yang seru." 
+        description: "Uji kecepatan respon dan tangkasnya tanganmu dalam tantangan aksi yang seru.",
+        screenshots: ["/images/quizrush.webp", "/images/memoryquiz.webp", "/assets/img/game-2.png"]
     },
     { 
         id: 3, 
@@ -48,7 +50,8 @@ export const gamesData = [
         teams: "12/12", 
         href: "/games/3", 
         playUrl: "https://spacequizv1.vercel.app",
-        description: "Eksplorasi wawasan luar angkasamu dan jawab pertanyaan-pertanyaan mematikan." 
+        description: "Eksplorasi wawasan luar angkasamu dan jawab pertanyaan-pertanyaan mematikan.",
+        screenshots: ["/images/spacequiz.webp", "/images/crazyrace.webp", "/assets/img/game-3.png"]
     },
     { 
         id: 4, 
@@ -65,6 +68,7 @@ export const gamesData = [
         teams: "12/12", 
         href: "/games/4", 
         playUrl: "https://memorygame-quiz.vercel.app",
-        description: "Latih daya ingatmu dengan memecahkan teka-teki memori tingkat tinggi." 
+        description: "Latih daya ingatmu dengan memecahkan teka-teki memori tingkat tinggi.",
+        screenshots: ["/images/memoryquiz.webp", "/images/quizrush.webp", "/assets/img/game-4.png"]
     },
 ];

@@ -50,6 +50,7 @@ export const allItemsData: TournamentInfo[] = [
         ],
         videoUrl: "https://www.youtube.com/embed/AJm-cwt0Ba8?si=jj2jNgwrt3vnggRo",
         playUrl: "https://crazy-race-next.vercel.app",
+        screenshots: ["/images/crazyrace.webp", "/images/spacequiz.webp", "/assets/img/game-1.png"]
     },
     {
         id: 2,
@@ -106,6 +107,7 @@ export const allItemsData: TournamentInfo[] = [
         ],
         videoUrl: "https://www.youtube.com/embed/MmB9b5njVbA",
         playUrl: "https://spacequizv1.vercel.app",
+        screenshots: ["/images/spacequiz.webp", "/images/crazyrace.webp", "/assets/img/game-3.png"]
     },
     {
         id: 4,
@@ -128,6 +130,7 @@ export const allItemsData: TournamentInfo[] = [
         ],
         videoUrl: "https://www.youtube.com/embed/TAlKhARUcoY",
         playUrl: "https://memorygame-quiz.vercel.app",
+        screenshots: ["/images/memoryquiz.webp", "/images/quizrush.webp", "/assets/img/game-4.png"]
     },
     // Tournaments
     {
