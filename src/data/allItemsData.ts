@@ -48,7 +48,7 @@ export const allItemsData: TournamentInfo[] = [
             "Each match consists of 3 rounds; the winner proceeds to the next bracket.",
             "Internet stability is the responsibility of the player."
         ],
-        videoUrl: "https://www.youtube.com/embed/R9K1sN-y-pI",
+        videoUrl: "https://www.youtube.com/embed/AJm-cwt0Ba8?si=jj2jNgwrt3vnggRo",
         playUrl: "https://crazy-race-next.vercel.app",
     },
     {
@@ -71,7 +71,7 @@ export const allItemsData: TournamentInfo[] = [
             "Dapatkan skor tertinggi untuk menjadi top survivor.",
             "Admin berhak atas keputusan akhir setiap duel."
         ],
-        videoUrl: "https://www.youtube.com/embed/rq581R1A4_c", // Good Pizza Great Pizza 2014
+        videoUrl: "https://www.youtube.com/embed/AJm-cwt0Ba8?si=jj2jNgwrt3vnggRo",
         screenshots: [
             "/images/quizrush.webp",
             "/images/spacequiz.webp",

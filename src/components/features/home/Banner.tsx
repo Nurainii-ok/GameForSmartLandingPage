@@ -460,7 +460,7 @@ export default function Banner() {
                       }}
                     ></span>
                   </span>
-                  Pemenang Terakhir
+                  Last Winner
                 </h3>
               </div>
               <div className="card-items d-flex flex-column flex-grow-1 overflow-auto custom-scrollbar">
