@@ -2730,11 +2730,11 @@ ul li {
 .banner-section .banner-swiper-pagination {
   position: absolute;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  top: 50%;
-  left: 20px;
-  transform: translateY(-50%);
+  flex-direction: row;
+  gap: 10px;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
   width: auto;
 }
@@ -2754,15 +2754,16 @@ ul li {
   background: rgb(var(--p1));
   box-shadow: 0 0 15px rgb(var(--p1));
   transform: scale(1.2);
-  height: 30px;
-  width: 10px;
+  width: 30px;
+  height: 10px;
   border-radius: 8px;
   opacity: 1;
 }
 
 @media (max-width: 991px) {
   .banner-section .banner-swiper-pagination {
-    display: none;
+    display: flex;
+    bottom: 14px;
   }
 }
 

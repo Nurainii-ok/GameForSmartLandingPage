@@ -47,16 +47,12 @@ export default function Banner() {
         }
 
         swiperInstance = new Swiper(".banner-swiper", {
-          direction: "vertical",
+          direction: "horizontal",
           slidesPerView: 1,
           spaceBetween: 0,
           loop: true,
           speed: 1200,
           parallax: true,
-          mousewheel: {
-            invert: false,
-            releaseOnEdges: true,
-          },
           autoplay: {
             delay: 5000,
             disableOnInteraction: false,
