@@ -43,6 +43,9 @@ export default function Sidebar() {
         "--capsule-max-h",
         `${Math.max(maxCapsuleH, 200)}px`,
       );
+
+      // visualViewport hooks removed so sidebar doesn't arbitrarily resize on zoom
+      // and retains the same size as unzoomed screen.
     };
 
     updateDimensions();
@@ -59,10 +62,12 @@ export default function Sidebar() {
 
     // Also listen to window resize as a fallback
     window.addEventListener("resize", updateDimensions);
+    // No visualViewport listeners
 
     return () => {
       ro.disconnect();
       window.removeEventListener("resize", updateDimensions);
+      // No visualViewport cleanup
     };
   }, []);
 
@@ -205,46 +210,60 @@ export default function Sidebar() {
           .sidebar-wrapper {
             position: fixed;
             top: 0;
-            left: -120px;
-            /*
-              Pakai min-height bukan height agar wrapper tidak memotong
-              konten. Saat zoom tinggi, wrapper bisa "lebih panjang"
-              dari layar dan di-scroll, sehingga item Kontak tetap dapat
-              dijangkau.
-            */
-            min-height: 100dvh;
-            height: auto;
+            left: 0;
+            height: 100dvh;
             background: rgba(0, 0, 0, 0.85);
             width: 100vw;
-            display: none !important;
+            display: flex !important;
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
             padding-top: var(--sidebar-overlay-top, 116px);
             padding-bottom: 32px;
             backdrop-filter: blur(8px);
+            
+            /* Tetap beri overflow, cuma kalau benar2 dVh kurang dr isi */
             overflow-y: auto;
             overflow-x: hidden;
-            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
             box-sizing: border-box;
+
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
           }
 
+          /* Hilangkan custom scrollbar pada wrapper */
           .sidebar-wrapper::-webkit-scrollbar {
             display: none;
           }
 
           .sidebar-wrapper.show-menu {
-            display: flex !important;
-            left: 0;
+            opacity: 1;
+            pointer-events: auto;
           }
 
           .sidebar-menu-capsule {
             margin-left: 20px;
             margin-top: 0;
             border-radius: 40px;
-            /* Tidak ada max-height — capsule penuh, wrapper yang scroll */
-            max-height: none;
-            overflow-y: visible;
+            
+            /* Sesuai instruksi: ukurannya sama dgn tidak di-zoom */
+            height: auto;
+            max-height: none !important;
+            
+            /* Setup animasi slide in/out */
+            transform: translateX(-150px);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: auto; 
+          }
+
+          .sidebar-menu-capsule::-webkit-scrollbar {
+            display: none;
+          }
+
+          .sidebar-wrapper.show-menu .sidebar-menu-capsule {
+            transform: translateX(0);
           }
 
           /* Slightly smaller but still comfortable and FIXED */
