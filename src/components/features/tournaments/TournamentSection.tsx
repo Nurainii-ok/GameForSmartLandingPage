@@ -153,20 +153,21 @@ export default function TournamentSection() {
                       {/* TOP BAR */}
                       <div className="h-[3px] w-full bg-gradient-to-r from-orange-500 via-amber-500 to-orange-500" />
 
+                      {/* FIX: use items-stretch so image column fills card height */}
                       <div className="flex flex-col lg:flex-row-reverse h-full">
-                        {/* IMAGE */}
-                        <div className="relative h-[240px] lg:h-full lg:w-1/2 overflow-hidden">
+                        {/* IMAGE — removed fixed h-[240px], use self-stretch + min-h for mobile */}
+                        <div className="relative self-stretch lg:w-1/2 overflow-hidden bg-black/20 min-h-[240px]">
                           <img
                             src={tournament.image}
                             alt={tournament.title}
-                            className="w-full h-full object-cover"
+                            className="absolute inset-0 w-full h-full object-cover object-top"
                           />
                           <div className="absolute inset-0 bg-gradient-to-r lg:bg-gradient-to-l from-black/60 via-black/20 to-transparent" />
-                          <div className="absolute bottom-5 right-5">
+                          {/* <div className="absolute bottom-5 right-5">
                             <span className="text-[11px] font-semibold tracking-widest text-orange-400 bg-orange-600/20 border border-orange-500/40 px-3 py-1 rounded-full uppercase">
-                              {tournament.slug}
+                               {tournament.slug} 
                             </span>
-                          </div>
+                          </div> */}
                         </div>
 
                         {/* CONTENT — mirroring the HTML design */}

@@ -59,16 +59,17 @@ export default function TournamentCard({
         style={{ flexShrink: 0 }}
       >
         <Link href={detailHref} className="d-block card-img-link">
-          <div className="img-area overflow-hidden position-relative w-100 rounded d-flex align-items-center justify-content-center">
+          <div className="img-area overflow-hidden position-relative w-100 rounded d-flex align-items-center justify-content-center" style={{ aspectRatio: '16/10' }}>
             <img
-              className="w-100 h-auto object-fit-contain"
+              className="w-100 h-100 object-fit-cover"
               src={image}
               alt="tournament"
-              style={
-                status === "Coming Soon"
+              style={{
+                objectPosition: 'top',
+                ...(status === "Coming Soon"
                   ? { filter: "blur(4px) brightness(0.4)" }
-                  : {}
-              }
+                  : {})
+              }}
             />
             {status === "Coming Soon" && (
               <div className="position-absolute top-50 start-50 translate-middle text-center w-100">

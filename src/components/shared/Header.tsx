@@ -14,8 +14,12 @@ export default function Header() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isNtfOpen, setIsNtfOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isSearchActive, setIsSearchActive] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
   const headerRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -25,6 +29,12 @@ export default function Header() {
       ) {
         setIsNtfOpen(false);
         setIsProfileOpen(false);
+      }
+      if (
+        searchRef.current &&
+        !searchRef.current.contains(event.target as Node)
+      ) {
+        setIsSearchActive(false);
       }
     };
     
@@ -43,19 +53,57 @@ export default function Header() {
     setSidebarOpen((prev) => !prev);
   };
 
+  const visibleGames = searchQuery 
+    ? gamesData.filter(g => g.title.toLowerCase().includes(searchQuery.toLowerCase())) 
+    : gamesData;
+  const visibleTournaments = searchQuery 
+    ? tournamentsData.filter(t => t.title.toLowerCase().includes(searchQuery.toLowerCase())) 
+    : tournamentsData;
+  const allVisibleItems = [...visibleGames, ...visibleTournaments];
+
+  useEffect(() => {
+    setSelectedIndex(-1);
+  }, [searchQuery, isSearchActive]);
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!isSearchActive && e.key !== 'Enter') return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      const nextIndex = Math.min(selectedIndex + 1, allVisibleItems.length - 1);
+      setSelectedIndex(nextIndex);
+      requestAnimationFrame(() => {
+        itemRefs.current[nextIndex]?.scrollIntoView({ block: 'nearest' });
+      });
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      const prevIndex = Math.max(selectedIndex - 1, 0);
+      setSelectedIndex(prevIndex);
+      requestAnimationFrame(() => {
+        itemRefs.current[prevIndex]?.scrollIntoView({ block: 'nearest' });
+      });
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (isSearchActive && selectedIndex >= 0 && selectedIndex < allVisibleItems.length) {
+        router.push(allVisibleItems[selectedIndex].href);
+        setIsSearchActive(false);
+        setSearchQuery("");
+      } else if (allVisibleItems.length > 0) {
+        router.push(allVisibleItems[0].href);
+        setIsSearchActive(false);
+        setSearchQuery("");
+      }
+    } else if (e.key === 'Escape') {
+      setIsSearchActive(false);
+    }
+  };
+
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!searchQuery.trim()) return;
-
-    const allData = [...gamesData, ...tournamentsData];
-    const firstMatch = allData.find(
-      (item) =>
-        item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.type.toLowerCase().includes(searchQuery.toLowerCase()),
-    );
-
-    if (firstMatch) {
-      router.push(firstMatch.href);
+    if (allVisibleItems.length > 0) {
+      router.push(allVisibleItems[0].href);
+      setIsSearchActive(false);
+      setSearchQuery("");
     }
   };
 
@@ -92,20 +140,118 @@ export default function Header() {
             ref={headerRef}
           >
             <div
-              className="search-bar header-search-bar"
+              className="search-bar header-search-bar position-relative"
+              ref={searchRef}
             >
               <form action="#" onSubmit={handleSearchSubmit}>
                 <div className="input-area d-flex align-items-center gap-2">
                   <i className="ti ti-search"></i>
                   <input
                     type="text"
-                    placeholder="Cari Kompetisi, Permainan..."
+                    placeholder="Type a command or search..."
                     className="header-search-input"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
+                    onFocus={() => setIsSearchActive(true)}
+                    onKeyDown={handleKeyDown}
+                    suppressHydrationWarning
                   />
                 </div>
               </form>
+
+              {/* CMD PALETTE DROPDOWN */}
+              {isSearchActive && (
+                <div 
+                  className="search-dropdown-menu position-absolute w-100"
+                  style={{
+                    top: "calc(100% + 8px)",
+                    left: 0,
+                    backgroundColor: "var(--color-bg-surface, #161920)",
+                    border: "1px solid var(--color-border, #2a2d38)",
+                    borderRadius: "8px",
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.5)",
+                    zIndex: 9999,
+                    maxHeight: "350px",
+                    overflowY: "auto",
+                    padding: "8px",
+                  }}
+                >
+                  {/* Games Category */}
+                  {visibleGames.length > 0 && (
+                    <div className="mb-2">
+                      <div className="px-3 py-2 text-xs text-muted fw-bold text-uppercase" style={{ color: "#8b8fa8", fontSize: "11px" }}>
+                        Permainan
+                      </div>
+                      <div className="d-flex flex-column gap-1">
+                        {visibleGames.map((game, idx) => {
+                          const globalIdx = idx;
+                          const isSelected = selectedIndex === globalIdx;
+                          return (
+                            <Link
+                              key={game.id}
+                              href={game.href}
+                              ref={(el) => { itemRefs.current[globalIdx] = el; }}
+                              className="search-item d-flex align-items-center gap-3 px-3 py-2 rounded"
+                              onClick={() => { setIsSearchActive(false); setSearchQuery(""); }}
+                              style={{ 
+                                transition: "background 0.2s", 
+                                color: "#e8eaf0", 
+                                textDecoration: "none",
+                                backgroundColor: isSelected ? "var(--color-bg-elevated, #1e2130)" : "transparent"
+                              }}
+                              onMouseOver={() => setSelectedIndex(globalIdx)}
+                            >
+                              <i className="ti ti-device-gamepad-2" style={{ fontSize: "18px", color: "#8b8fa8" }}></i>
+                              <span style={{ fontSize: "14px" }}>{game.title}</span>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Tournaments Category */}
+                  {visibleTournaments.length > 0 && (
+                    <div>
+                      <div className="px-3 py-2 text-xs text-muted fw-bold text-uppercase" style={{ color: "#8b8fa8", fontSize: "11px" }}>
+                        Kompetisi
+                      </div>
+                      <div className="d-flex flex-column gap-1">
+                        {visibleTournaments.map((tour, idx) => {
+                          const globalIdx = visibleGames.length + idx;
+                          const isSelected = selectedIndex === globalIdx;
+                          return (
+                            <Link
+                              key={tour.id}
+                              href={tour.href}
+                              ref={(el) => { itemRefs.current[globalIdx] = el; }}
+                              className="search-item d-flex align-items-center gap-3 px-3 py-2 rounded"
+                              onClick={() => { setIsSearchActive(false); setSearchQuery(""); }}
+                              style={{ 
+                                transition: "background 0.2s", 
+                                color: "#e8eaf0", 
+                                textDecoration: "none",
+                                backgroundColor: isSelected ? "var(--color-bg-elevated, #1e2130)" : "transparent"
+                              }}
+                              onMouseOver={() => setSelectedIndex(globalIdx)}
+                            >
+                              <i className="ti ti-trophy" style={{ fontSize: "18px", color: "#8b8fa8" }}></i>
+                              <span style={{ fontSize: "14px" }}>{tour.title}</span>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* No Results */}
+                  {allVisibleItems.length === 0 && (
+                    <div className="text-center py-4" style={{ color: "#8b8fa8", fontSize: "14px" }}>
+                      Tidak ada hasil yang ditemukan untuk "{searchQuery}"
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
 
             <div className="header-btns d-flex align-items-center justify-content-end gap-lg-6 gap-sm-4 gap-2 w-100">
@@ -118,6 +264,7 @@ export default function Header() {
                 onClick={() => {
                   setIsNtfOpen(!isNtfOpen);
                   setIsProfileOpen(false);
+                  setIsSearchActive(false);
                 }}
               >
                 <i className="ti ti-bell-filled"></i>
@@ -127,6 +274,7 @@ export default function Header() {
                 onClick={() => {
                   setIsProfileOpen(!isProfileOpen);
                   setIsNtfOpen(false);
+                  setIsSearchActive(false);
                 }}
               >
                 <div className="profile-wrapper d-flex align-items-center gap-3">
