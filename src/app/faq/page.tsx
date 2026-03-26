@@ -1,6 +1,5 @@
 import Header from "@/components/shared/Header";
 import Sidebar from "@/components/shared/Sidebar";
-import CTA from "@/components/features/home/CTA";
 import Footer from "@/components/shared/Footer";
 
 export const metadata = {
@@ -121,7 +120,6 @@ export default function FAQPage() {
               </div>
             </div>
           </section>
-          <CTA />
         </article>
       </main>
       <Footer />

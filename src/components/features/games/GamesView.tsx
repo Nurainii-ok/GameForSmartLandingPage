@@ -6,7 +6,6 @@ import { ChevronDown } from "lucide-react";
 import Header from "@/components/shared/Header";
 import Sidebar from "@/components/shared/Sidebar";
 import GameCard from "@/components/features/games/GameCard";
-import CTA from "@/components/features/home/CTA";
 import Footer from "@/components/shared/Footer";
 import { Button } from "@/components/ui/button";
 import { allItemsData } from "@/data/allItemsData";
@@ -159,7 +158,6 @@ export default function GamesView() {
               </div>
             </div>
           </section>
-          <CTA />
         </article>
       </main>
       <Footer />

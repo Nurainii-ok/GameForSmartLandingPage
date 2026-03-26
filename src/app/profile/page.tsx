@@ -1,7 +1,6 @@
 import Header from "@/components/shared/Header";
 import Sidebar from "@/components/shared/Sidebar";
 import Footer from "@/components/shared/Footer";
-import CTA from "@/components/features/home/CTA";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -263,7 +262,6 @@ export default function ProfilePage() {
             </div>
           </section>
 
-          <CTA />
         </article>
       </main>
       <Footer />

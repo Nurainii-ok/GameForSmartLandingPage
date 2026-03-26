@@ -1,7 +1,6 @@
 import Header from "@/components/shared/Header";
 import Sidebar from "@/components/shared/Sidebar";
 import TeamCard from "@/components/features/teams/TeamCard";
-import CTA from "@/components/features/home/CTA";
 import Footer from "@/components/shared/Footer";
 
 const teams = [
@@ -196,7 +195,6 @@ export default function TeamsPage() {
               </div>
             </div>
           </section>
-          <CTA />
         </article>
       </main>
       <Footer />
