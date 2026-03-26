@@ -2,6 +2,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from "@/components/ui/tooltip";
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -23,7 +29,7 @@ export default function Sidebar() {
     } else {
       document.body.style.overflow = "";
     }
-    
+
     return () => {
       // Ensure we restore scrolling when unmounted
       document.body.style.overflow = "";
@@ -107,23 +113,30 @@ export default function Sidebar() {
       >
         <div className="sidebar-menu-capsule py-xxl-20 py-sm-15 py-10 px-6">
           <div className="d-grid gap-sm-12 gap-8 sidebar-menu-items text-center">
-            {menuItems.map((item) => (
-              <div key={item.href} className="p-1">
-                <Link
-                  href={item.href}
-                  className={`menu-link transition-all ${
-                    isActive(item.href) ? "active-menu" : ""
-                  }`}
-                  onClick={() => setOpen(false)}
-                >
-                  <i
-                    className={`ti ${item.icon} sidebar-icon ${
-                      isActive(item.href) ? "active" : ""
-                    }`}
-                  ></i>
-                </Link>
-              </div>
-            ))}
+            <TooltipProvider delayDuration={100}>
+              {menuItems.map((item) => (
+                <div key={item.href} className="p-1">
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Link
+                        href={item.href}
+                        className={`menu-link transition-all ${
+                          isActive(item.href) ? "active-menu" : ""
+                        }`}
+                        onClick={() => setOpen(false)}
+                      >
+                        <i
+                          className={`ti ${item.icon} sidebar-icon ${
+                            isActive(item.href) ? "active" : ""
+                          }`}
+                        ></i>
+                      </Link>
+                    </TooltipTrigger>
+                    <TooltipContent side="right">{item.label}</TooltipContent>
+                  </Tooltip>
+                </div>
+              ))}
+            </TooltipProvider>
           </div>
         </div>
       </div>
@@ -158,7 +171,7 @@ export default function Sidebar() {
           max-height: var(--capsule-max-h, 480px);
           overflow-y: auto;
           overflow-x: hidden;
-          
+
           scrollbar-width: none;
         }
 
@@ -236,7 +249,7 @@ export default function Sidebar() {
             padding-top: var(--sidebar-overlay-top, 116px);
             padding-bottom: 32px;
             backdrop-filter: blur(8px);
-            
+
             /* Tetap beri overflow, cuma kalau benar2 dVh kurang dr isi */
             overflow-y: auto;
             overflow-x: hidden;
@@ -262,35 +275,37 @@ export default function Sidebar() {
             margin-left: 20px;
             margin-top: 0;
             border-radius: 40px;
-            
+
             height: auto;
-            max-height: calc(100vh - var(--sidebar-overlay-top, 116px) - 32px) !important;
+            max-height: calc(
+              100vh - var(--sidebar-overlay-top, 116px) - 32px
+            ) !important;
             overflow-y: auto;
-            
+
             scrollbar-width: thin;
             scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
-            
+
             /* Setup animasi slide in/out */
             transform: translateX(-150px);
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            pointer-events: auto; 
+            pointer-events: auto;
           }
 
           .sidebar-menu-capsule::-webkit-scrollbar {
             display: block;
             width: 5px;
           }
-          
+
           .sidebar-menu-capsule::-webkit-scrollbar-track {
             background: transparent;
             margin-block: 50px;
           }
-          
+
           .sidebar-menu-capsule::-webkit-scrollbar-thumb {
             background: rgba(255, 255, 255, 0.2);
             border-radius: 10px;
           }
-          
+
           .sidebar-menu-capsule::-webkit-scrollbar-thumb:hover {
             background: rgba(255, 255, 255, 0.3);
           }
