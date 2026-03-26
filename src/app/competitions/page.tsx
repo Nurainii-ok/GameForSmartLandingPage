@@ -5,9 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/shared/Header";
 import Sidebar from "@/components/shared/Sidebar";
 import TournamentCard from "@/components/features/tournaments/TournamentCard";
-import Breadcrumbs from "@/components/shared/Breadcrumbs";
 import Footer from "@/components/shared/Footer";
+import { Button } from "@/components/ui/button";
 import { tournamentsData } from "@/data/tournamentsData";
+
+const FILTER_TABS = ["All", "Active", "Upcoming", "Finished"];
 
 export default function TournamentsPage() {
   const [activeTab, setActiveTab] = useState("All");
@@ -27,34 +29,21 @@ export default function TournamentsPage() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
   return (
     <>
       <Header />
-      <main
-        className="main-container container-fluid d-flex align-items-start pt-sm-20 pt-15 pb-20 px-0 position-relative"
-        style={{ overflow: "visible" }}
-      >
+      <main className="main-container container-fluid d-flex pt-20 pb-20 px-0 position-relative">
         <Sidebar />
-        <article className="main-content mt-lg-10">
-          <section className="tournament-banner mb-lg-15 mb-sm-10 mb-4 pb-lg-10 pb-sm-6">
-            <div className="container-fluid">
-              <div className="parallax-banner-area parallax-container">
-                <img
-                  className="w-100 h-100 rounded-5 parallax-img"
-                  src="/assets/img/tournament-banner.png"
-                  alt="tournament banner"
-                />
-              </div>
-            </div>
-          </section>
-
+        <article className="main-content mt-10">
           <section className="tournament-section pb-120">
             <div className="tournament-wrapper alt">
-              <div className="container-fluid px-lg-15 px-md-10 px-6">
-                <Breadcrumbs />
-                <div className="row justify-content-between align-items-end mb-8">
-                  <div className="col">
-                    <motion.h1 
+              <div className="container-fluid py-lg-15 py-sm-10 py-8 px-lg-15 px-md-10 px-6">
+
+                {/* Title */}
+                <div className="row align-items-center justify-content-between mb-lg-15 mb-md-8 mb-sm-6 mb-4">
+                  <div className="col-12 text-center">
+                    <motion.h1
                       initial={{ opacity: 0, x: -50 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -64,21 +53,29 @@ export default function TournamentsPage() {
                     </motion.h1>
                   </div>
                 </div>
-                <div className="singletab tournaments-tab">
-                  <div className="d-flex justify-content-between align-items-center flex-wrap mb-lg-15 mb-sm-10 mb-6">
+
+                {/* Filter */}
+                <div className="singletab tournaments-tab mb-10">
+                  <div className="d-center gap-6 mb-lg-15 mb-sm-10 mb-6 w-100 overflow-visible">
+
                     {/* Desktop Tabs */}
-                    <ul className="tablinks d-none d-md-flex flex-wrap align-items-center gap-3 list-unstyled mb-0">
-                      {["All", "Active", "Upcoming", "Finished"].map((tab) => (
-                        <li
-                          key={tab}
-                          className={`nav-links ${activeTab === tab ? "active" : ""}`}
-                        >
-                          <button
-                            className="tablink py-sm-3 py-2 px-sm-8 px-6 rounded-pill tcn-1"
+                    <ul
+                      className="tablinks d-none d-md-flex flex-nowrap align-items-center justify-content-lg-center gap-3 list-unstyled m-0 p-2 overflow-x-auto w-100"
+                      style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+                    >
+                      {FILTER_TABS.map((tab) => (
+                        <li key={tab} className="flex-shrink-0">
+                          <Button
+                            variant={activeTab === tab ? "default" : "outline"}
+                            className={`rounded-pill py-3 py-sm-6 px-5 px-sm-8 text-sm text-sm-base transition-all ${
+                              activeTab === tab
+                                ? "bg-orange-gradient text-white border-none shadow-[0_0_15px_rgba(255,140,0,0.5)]"
+                                : "bg-transparent text-[#e6e6e6] border-[#262626] hover:bg-[#1a1a1a] hover:text-white"
+                            }`}
                             onClick={() => setActiveTab(tab)}
                           >
                             {tab}
-                          </button>
+                          </Button>
                         </li>
                       ))}
                     </ul>
@@ -90,12 +87,12 @@ export default function TournamentsPage() {
                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                       >
                         <span>{activeTab}</span>
-                        <ChevronDown 
-                          size={20} 
-                          className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}
+                        <ChevronDown
+                          size={20}
+                          className={`transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""}`}
                         />
                       </button>
-                      
+
                       <AnimatePresence>
                         {isDropdownOpen && (
                           <motion.ul
@@ -105,15 +102,14 @@ export default function TournamentsPage() {
                             className="dropdown-menu-list position-absolute start-0 w-100 mt-2 p-2 rounded-3 bgn-3 list-unstyled shadow-lg"
                             style={{ zIndex: 100 }}
                           >
-                            {["All", "Active", "Upcoming", "Finished"].map((tab) => (
+                            {FILTER_TABS.map((tab) => (
                               <li key={tab}>
                                 <button
-                                  className={`dropdown-item w-100 text-start py-3 px-4 rounded-2 border-0 bg-transparent tcn-1 ${activeTab === tab ? 'bg-primary-dark fw-bold' : 'hover-bg-n4'}`}
-                                  style={{ color: activeTab === tab ? '#ff8c00' : 'inherit' }}
-                                  onClick={() => {
-                                    setActiveTab(tab);
-                                    setIsDropdownOpen(false);
-                                  }}
+                                  className={`dropdown-item w-100 text-start py-3 px-4 rounded-2 border-0 bg-transparent tcn-1 ${
+                                    activeTab === tab ? "bg-primary-dark fw-bold" : "hover-bg-n4"
+                                  }`}
+                                  style={{ color: activeTab === tab ? "#ff8c00" : "inherit" }}
+                                  onClick={() => { setActiveTab(tab); setIsDropdownOpen(false); }}
                                 >
                                   {tab}
                                 </button>
@@ -124,29 +120,23 @@ export default function TournamentsPage() {
                       </AnimatePresence>
                     </div>
                   </div>
-                  <div className="tabcontents">
-                    <div className="tabitem active">
-                      <div className="row justify-content-md-start justify-content-center g-6">
-                        {filteredTournaments.length > 0 ? (
-                          filteredTournaments.map((tournament) => (
-                            <div
-                              key={tournament.id}
-                              className="col-xxl-3 col-lg-4 col-md-6 col-sm-8"
-                            >
-                              <TournamentCard {...tournament} />
-                            </div>
-                          ))
-                        ) : (
-                          <div className="col-12 text-center py-20">
-                            <h3 className="tcn-1">
-                              No competitions found for "{activeTab}"
-                            </h3>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
                 </div>
+
+                {/* Cards */}
+                <div className="row gy-lg-10 gy-6 justify-content-center">
+                  {filteredTournaments.length > 0 ? (
+                    filteredTournaments.map((tournament) => (
+                      <div key={tournament.id} className="col-xxl-3 col-lg-4 col-md-6 col-sm-8 col-12">
+                        <TournamentCard {...tournament} />
+                      </div>
+                    ))
+                  ) : (
+                    <div className="col-12 text-center py-20">
+                      <h3 className="tcn-1">No competitions found for &quot;{activeTab}&quot;</h3>
+                    </div>
+                  )}
+                </div>
+
               </div>
             </div>
           </section>
