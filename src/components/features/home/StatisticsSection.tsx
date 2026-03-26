@@ -240,7 +240,7 @@ export default function StatisticsSection() {
               <TiltCard
                 className={`stat-card p-6 rounded-4 d-flex align-items-center gap-4`}
                 style={{
-                  background: "#080808", // Uniform background for all cards
+                  background: "#161920", // Standardized blackish-blue background
                   border: stat.isHighlighted
                     ? "1px solid rgba(255, 215, 0, 0.2)"
                     : `1px solid ${stat.borderColor}10`,

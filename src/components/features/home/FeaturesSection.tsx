@@ -46,7 +46,7 @@ export default function FeaturesSection() {
           {features.map((feature) => (
             <div key={feature.id} className="col-xl-3 col-md-6">
               <Card
-                className="feature-card p-xxl-10 p-6 bgn-3 rounded-5 text-center border-none bg-transparent"
+                className="feature-card p-xxl-10 p-6 bgn-4 rounded-5 text-center border-none bg-transparent"
                 data-tilt
               >
                 <CardHeader className="p-0 mb-4">

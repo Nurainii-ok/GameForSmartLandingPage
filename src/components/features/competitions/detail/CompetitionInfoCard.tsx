@@ -38,7 +38,7 @@ export default function CompetitionInfoCard({
       {/* ── Card Wrapper ── */}
       <div
         style={{
-          background: "linear-gradient(160deg, #1c1c1c 0%, #141414 100%)",
+          background: "linear-gradient(160deg, #161920 0%, #0d0f14 100%)",
           borderRadius: 20,
           border: "1px solid rgba(255,140,0,0.18)",
           boxShadow:

@@ -34,7 +34,7 @@ export default function ConnectWalletModal({
                     </h3>
                     <div className="wallet-option pb-20">
                         <ul className="d-grid gap-sm-8 gap-4">
-                            <li className="wallet-item p-sm-6 p-2 bgn-3 rounded-4">
+                            <li className="wallet-item p-sm-6 p-2 bgn-4 rounded-4">
                                 <a href="#" className="d-between">
                                     <span>Connect with Metamask</span>
                                     <div className="wallet-item-thumb">
@@ -42,7 +42,7 @@ export default function ConnectWalletModal({
                                     </div>
                                 </a>
                             </li>
-                            <li className="wallet-item p-sm-6 p-2 bgn-3 rounded-4">
+                            <li className="wallet-item p-sm-6 p-2 bgn-4 rounded-4">
                                 <a href="#" className="d-between">
                                     <span>Connect with Wallet Connect </span>
                                     <div className="wallet-item-thumb">

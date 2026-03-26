@@ -126,7 +126,7 @@ export default function TournamentSection() {
           <button
             suppressHydrationWarning
             onClick={prev}
-            className="absolute -left-4 lg:-left-16 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border-2 border-white/20 bg-[#1c1f2a] flex items-center justify-center hover:bg-orange-500 hover:border-orange-500 z-20 transition-all shadow-lg"
+            className="absolute -left-4 lg:-left-16 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border-2 border-white/20 bg-[#161920] flex items-center justify-center hover:bg-orange-500 hover:border-orange-500 z-20 transition-all shadow-lg"
           >
             <ChevronLeft size={28} className="text-white" />
           </button>
@@ -134,7 +134,7 @@ export default function TournamentSection() {
           <button
             suppressHydrationWarning
             onClick={next}
-            className="absolute -right-4 lg:-right-16 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border-2 border-white/20 bg-[#1c1f2a] flex items-center justify-center hover:bg-orange-500 hover:border-orange-500 z-20 transition-all shadow-lg"
+            className="absolute -right-4 lg:-right-16 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border-2 border-white/20 bg-[#161920] flex items-center justify-center hover:bg-orange-500 hover:border-orange-500 z-20 transition-all shadow-lg"
           >
             <ChevronRight size={28} className="text-white" />
           </button>
@@ -149,7 +149,7 @@ export default function TournamentSection() {
                     key={tournament.id}
                     className="swiper-slide !w-[90%] lg:!w-[900px]"
                   >
-                    <Card className="relative h-auto lg:h-[500px] overflow-hidden border border-orange-500/30 bg-[#0f1118] backdrop-blur-xl transition-all duration-500 tournament-card">
+                    <Card className="relative h-auto lg:h-[500px] overflow-hidden border border-orange-500/30 bg-[#161920] backdrop-blur-xl transition-all duration-500 tournament-card">
                       {/* TOP BAR */}
                       <div className="h-[3px] w-full bg-gradient-to-r from-orange-500 via-amber-500 to-orange-500" />
 

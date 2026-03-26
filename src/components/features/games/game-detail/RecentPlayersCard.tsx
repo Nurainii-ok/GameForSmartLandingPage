@@ -37,7 +37,7 @@ export default function RecentPlayersCard({ gameTitle }: RecentPlayersCardProps)
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
         .pt-card {
-          background: #161922; /* Matches GameSidebar surface */
+          background: #161920; /* Matches GameCard / bgn-4 */
           border-radius: 12px;
           border: 1px solid rgba(255,255,255,0.07);
           display: flex;
