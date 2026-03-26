@@ -10,17 +10,17 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-orange-gradient text-white hover-lift shadow-btn neon-orange-glow",
+          "bg-orange-600 text-white hover:bg-orange-700 active:scale-[0.98] shadow-btn neon-orange-glow",
         destructive:
-          "bg-red-600 text-white hover:bg-red-700 shadow-sm",
+          "bg-red-600 text-white hover:bg-red-700 active:scale-[0.98] shadow-sm",
         outline:
-          "border border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white",
+          "border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white active:scale-[0.98]",
         secondary:
-          "bg-orange-100 text-orange-600 hover:bg-orange-200",
+          "bg-orange-100 text-orange-700 hover:bg-orange-200 active:scale-[0.98]",
         ghost:
-          "text-orange-500 hover:bg-orange-500/10",
+          "text-orange-600 hover:bg-orange-600/10 active:scale-[0.98]",
         link:
-          "text-orange-500 underline-offset-4 hover:underline",
+          "text-orange-600 underline-offset-4 hover:underline",
       },
 
       size: {

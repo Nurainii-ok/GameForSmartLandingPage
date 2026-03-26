@@ -40,7 +40,7 @@ export default function GameCard({
       {/* IMAGE AREA */}
       <Link 
         href={link || `/games/${slug || id}`} 
-        className="tournament-img position-relative h-[360px] sm:h-[400px] shrink-0 d-block overflow-hidden"
+        className="tournament-img position-relative h-[220px] sm:h-[300px] lg:h-[400px] shrink-0 d-block overflow-hidden"
       >
         <img
           className="w-100 h-100 object-fit-cover transition-transform duration-300 hover:scale-105"

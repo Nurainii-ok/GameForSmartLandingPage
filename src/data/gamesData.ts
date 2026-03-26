@@ -75,7 +75,7 @@ export const gamesData = [
         id: 5, 
         title: "NitroQuiz", 
         type: "Trivia Game", 
-        image: "/images/quizrush.webp", 
+        image: "/assets/Poster/NitroQuiz.png", 
         status: "Trivia", 
         platform: "Web", 
         rating: "4.8", 
@@ -87,13 +87,13 @@ export const gamesData = [
         href: "/games/5", 
         playUrl: "#",
         description: "Tantang pengetahuanmu dengan cepat di NitroQuiz.",
-        screenshots: ["/images/quizrush.webp", "/assets/img/game-2.png"]
+        screenshots: ["/assets/Poster/NitroQuiz.png", "/assets/Poster/NitroQuiz.png"]
     },
     { 
         id: 6, 
         title: "Axiom", 
         type: "Strategy Game", 
-        image: "/assets/img/game3.png", 
+        image: "/assets/Poster/Axiom.png", 
         status: "Strategy", 
         platform: "Web", 
         rating: "4.9", 
@@ -105,13 +105,13 @@ export const gamesData = [
         href: "/games/6", 
         playUrl: "#",
         description: "Susun strategimu dan taklukkan lawan di Axiom.",
-        screenshots: ["/assets/img/game3.png", "/assets/img/game-3.png"]
+        screenshots: ["/assets/Poster/Axiom.png", "/assets/Poster/Axiom.png"]
     },
     { 
         id: 7, 
         title: "Zigma", 
         type: "Action Game", 
-        image: "/assets/img/game4.png", 
+        image: "/assets/Poster/Zigma.png", 
         status: "Action", 
         platform: "Web", 
         rating: "4.7", 
@@ -123,6 +123,6 @@ export const gamesData = [
         href: "/games/7", 
         playUrl: "#",
         description: "Bertahan hidup dan kalahkan musuh di dunia Zigma.",
-        screenshots: ["/assets/img/game4.png", "/assets/img/game-4.png"]
+        screenshots: ["/assets/Poster/Zigma.png", "/assets/Poster/Zigma.png"]
     }
 ];

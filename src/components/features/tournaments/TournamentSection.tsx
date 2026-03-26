@@ -173,7 +173,7 @@ export default function TournamentSection() {
                         {/* CONTENT — mirroring the HTML design */}
                         <CardContent className="p-8 lg:p-10 flex flex-col justify-between lg:w-1/2 relative overflow-hidden">
                           {/* Subtle glow */}
-                          <div className="absolute -top-16 -left-12 w-56 h-56 rounded-full bg-orange-500/10 blur-3xl pointer-events-none" />
+                          <div className="absolute top-16 left-12 w-56 h-56 rounded-full bg-orange-500/10 blur-3xl pointer-events-none" />
 
                           {/* STATUS BADGE */}
                           <div>

@@ -42,8 +42,8 @@ export default function GamesView() {
                   </div>
                 </div>
                 <div className="singletab tournaments-tab mb-10">
-                  <div className="d-center flex-wrap gap-6 mb-lg-15 mb-sm-10 mb-6">
-                    <ul className="tablinks d-flex flex-wrap align-items-center justify-content-center gap-3 list-unstyled m-0 p-0">
+                  <div className="d-center gap-6 mb-lg-15 mb-sm-10 mb-6 w-100 overflow-visible">
+                    <ul className="tablinks d-flex flex-nowrap align-items-center justify-content-lg-center gap-3 list-unstyled m-0 p-2 overflow-x-auto scrollbar-hide w-100" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                       {[
                         "All",
                         "Action",
@@ -52,10 +52,10 @@ export default function GamesView() {
                         "Trivia",
                         "Coming Soon",
                       ].map((tab) => (
-                        <li key={tab}>
+                        <li key={tab} className="flex-shrink-0">
                           <Button
                             variant={activeTab === tab ? "default" : "outline"}
-                            className={`rounded-pill py-6 px-8 text-base transition-all ${activeTab === tab ? "bg-orange-gradient text-white border-none shadow-[0_0_15px_rgba(255,140,0,0.5)]" : "bg-transparent text-[#e6e6e6] border-[#262626] hover:bg-[#1a1a1a] hover:text-white"}`}
+                            className={`rounded-pill py-3 py-sm-6 px-5 px-sm-8 text-sm text-sm-base transition-all ${activeTab === tab ? "bg-orange-gradient text-white border-none shadow-[0_0_15px_rgba(255,140,0,0.5)]" : "bg-transparent text-[#e6e6e6] border-[#262626] hover:bg-[#1a1a1a] hover:text-white"}`}
                             onClick={() => setActiveTab(tab)}
                           >
                             {tab}
@@ -69,7 +69,7 @@ export default function GamesView() {
                   {filteredGames.map((game) => (
                     <div
                       key={game.id}
-                      className="col-xxl-3 col-lg-4 col-md-6 col-sm-10"
+                      className="col-xl-3 col-lg-4 col-sm-6 col-12"
                     >
                       <GameCard
                         id={game.id}

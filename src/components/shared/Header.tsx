@@ -15,6 +15,7 @@ export default function Header() {
   const [isNtfOpen, setIsNtfOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   const headerRef = useRef<HTMLDivElement>(null);
@@ -35,6 +36,7 @@ export default function Header() {
         !searchRef.current.contains(event.target as Node)
       ) {
         setIsSearchActive(false);
+        setIsMobileSearchOpen(false);
       }
     };
     
@@ -140,7 +142,7 @@ export default function Header() {
             ref={headerRef}
           >
             <div
-              className="search-bar header-search-bar position-relative"
+              className={`search-bar header-search-bar ${isMobileSearchOpen ? "mobile-open" : ""}`}
               ref={searchRef}
             >
               <form action="#" onSubmit={handleSearchSubmit}>
@@ -255,8 +257,12 @@ export default function Header() {
             </div>
 
             <div className="header-btns d-flex align-items-center justify-content-end gap-lg-6 gap-sm-4 gap-2 w-100">
-              <button className="search-toggle-btn toggle-btn box-style fs-2xl d-block d-lg-none">
-                <i className="ti ti-search"></i>
+              <button 
+                className={`search-toggle-btn toggle-btn box-style fs-2xl d-block d-lg-none ${isMobileSearchOpen ? "active" : ""}`} 
+                onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
+                suppressHydrationWarning
+              >
+                <i className={`ti ${isMobileSearchOpen ? "ti-x" : "ti-search"}`}></i>
               </button>
 
               <button
@@ -266,6 +272,7 @@ export default function Header() {
                   setIsProfileOpen(false);
                   setIsSearchActive(false);
                 }}
+                suppressHydrationWarning
               >
                 <i className="ti ti-bell-filled"></i>
               </button>
@@ -323,6 +330,28 @@ export default function Header() {
         }
         .header-search-input {
           padding: 0 4px;
+        }
+        
+        @media (max-width: 991px) {
+          .header-search-bar {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100% !important;
+            max-width: 100% !important;
+            padding: 15px 25px;
+            background: #161920;
+            border-bottom: 1px solid #2a2d38;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            z-index: 1000;
+          }
+          .header-search-bar.mobile-open {
+            display: block;
+          }
+          .header-search-input {
+            width: 100%;
+          }
         }
 
         .sidebar-toggle-btn {

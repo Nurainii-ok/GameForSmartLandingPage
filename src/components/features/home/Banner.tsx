@@ -282,7 +282,14 @@ export default function Banner() {
         }
 
         /* ── Swiper pagination override ── */
-        .banner-swiper-pagination { bottom: 16px !important; }
+        .banner-swiper-pagination { 
+          bottom: 16px !important; 
+        }
+        @media (max-width: 575px) {
+          .banner-swiper-pagination {
+            bottom: 5px !important;
+          }
+        }
         .banner-swiper-pagination .swiper-pagination-bullet {
           background: rgba(255,255,255,0.3) !important;
           opacity: 1 !important;
@@ -292,6 +299,12 @@ export default function Banner() {
           background: #ff8c00 !important;
           width: 20px;
           border-radius: 3px;
+        }
+
+        @media (max-width: 991px) {
+           .hero-content {
+             padding-bottom: 20px;
+           }
         }
       `}</style>
 
@@ -319,13 +332,13 @@ export default function Banner() {
                       <div className="col-lg-6 col-md-8 col-11">
                         <div className="hero-content ps-lg-12 ps-6">
                           <p data-swiper-parallax="-200" className="tcn-1 mb-lg-4 mb-3 opacity-75 fw-medium fs-six text-uppercase tracking-wider">SIAP • BERSIAP • MAIN</p>
-                          <h2 data-swiper-parallax="-300" className="hero-title tcn-1 mb-lg-5 mb-4" style={{ lineHeight: "100%", fontWeight: 900, letterSpacing: "-1.5px" }}>
+                          <h2 data-swiper-parallax="-300" className="hero-title tcn-1 mb-lg-5 mb-4" style={{ lineHeight: "100%", fontWeight: 900, letterSpacing: "-1.5px", fontSize: "clamp(2rem, 8vw, 4rem)" }}>
                             ARENA GAMING <span className="tcp-1">TERBAIK</span>
                           </h2>
                           <p data-swiper-parallax="-350" className="tcn-1 mb-lg-6 mb-5 opacity-75 fs-six" style={{ maxWidth: 600 }}>
                             Gabung di arena cerdas cermat dengan sensasi gaming yang seru. Tantang pengetahuanmu dan kuasai panggung turnamen!
                           </p>
-                          <div data-swiper-parallax="-400" className="d-flex align-items-center flex-wrap gap-xl-4 gap-3 mb-1">
+                          <div data-swiper-parallax="-400" className="d-flex align-items-center flex-wrap gap-xl-4 gap-3 mb-lg-1 mb-8 mb-sm-6">
                             <Link href="/competitions" className="gps-btn-primary">Masuk Arena</Link>
                           </div>
                         </div>
@@ -346,13 +359,13 @@ export default function Banner() {
                       <div className="col-lg-6 col-md-8 col-11">
                         <div className="hero-content ps-lg-12 ps-6">
                           <p data-swiper-parallax="-200" className="tcn-1 mb-lg-4 mb-3 opacity-75 fw-medium fs-six text-uppercase tracking-wider">NAIK LEVEL • HANYA SKILL</p>
-                          <h2 data-swiper-parallax="-300" className="hero-title tcn-1 mb-lg-5 mb-4" style={{ lineHeight: "100%", fontWeight: 900, letterSpacing: "-1.5px" }}>
+                          <h2 data-swiper-parallax="-300" className="hero-title tcn-1 mb-lg-5 mb-4" style={{ lineHeight: "100%", fontWeight: 900, letterSpacing: "-1.5px", fontSize: "clamp(2rem, 8vw, 4rem)" }}>
                             RAIH KEMENANGAN <span className="tcp-1">BERUNTUN</span>
                           </h2>
                           <p data-swiper-parallax="-350" className="tcn-1 mb-lg-6 mb-5 opacity-75 fs-six" style={{ maxWidth: 600 }}>
                             Mainkan quiz layaknya pro gamer. Jawab cepat, kumpulkan combo poin, dan rebut posisi pertama di leaderboard.
                           </p>
-                          <div data-swiper-parallax="-400" className="d-flex align-items-center flex-wrap gap-xl-4 gap-3 mb-1">
+                          <div data-swiper-parallax="-400" className="d-flex align-items-center flex-wrap gap-xl-4 gap-3 mb-lg-1 mb-8 mb-sm-6">
                             <Link href="/leaderboard" className="gps-btn-primary">Cek Leaderboard</Link>
                           </div>
                         </div>
@@ -373,13 +386,13 @@ export default function Banner() {
                       <div className="col-lg-6 col-md-8 col-11">
                         <div className="hero-content ps-lg-12 ps-6">
                           <p data-swiper-parallax="-200" className="tcn-1 mb-lg-4 mb-3 opacity-75 fw-medium fs-six text-uppercase tracking-wider">ADU CEPAT • TANPA LAG</p>
-                          <h2 data-swiper-parallax="-300" className="hero-title tcn-1 mb-lg-5 mb-4" style={{ lineHeight: "100%", fontWeight: 900, letterSpacing: "-1.5px" }}>
+                          <h2 data-swiper-parallax="-300" className="hero-title tcn-1 mb-lg-5 mb-4" style={{ lineHeight: "100%", fontWeight: 900, letterSpacing: "-1.5px", fontSize: "clamp(2rem, 8vw, 4rem)" }}>
                             REFLEKS <span className="tcp-1">TERCEPAT MENANG</span>
                           </h2>
                           <p data-swiper-parallax="-350" className="tcn-1 mb-lg-6 mb-5 opacity-75 fs-six" style={{ maxWidth: 600 }}>
                             Buktikan kecepatan jarimu dan ketajaman otakmu. Di mode ini, setiap detik adalah penentu kemenanganmu!
                           </p>
-                          <div data-swiper-parallax="-400" className="d-flex align-items-center flex-wrap gap-xl-4 gap-3 mb-1">
+                          <div data-swiper-parallax="-400" className="d-flex align-items-center flex-wrap gap-xl-4 gap-3 mb-lg-1 mb-8 mb-sm-6">
                             <Link href="/games" className="gps-btn-primary">Main Sekarang</Link>
                           </div>
                         </div>
@@ -400,13 +413,13 @@ export default function Banner() {
                       <div className="col-lg-6 col-md-8 col-11">
                         <div className="hero-content ps-lg-12 ps-6">
                           <p data-swiper-parallax="-200" className="tcn-1 mb-lg-4 mb-3 opacity-75 fw-medium fs-six text-uppercase tracking-wider">HADIAH EPIK • STATUS MVP</p>
-                          <h2 data-swiper-parallax="-300" className="hero-title tcn-1 mb-lg-5 mb-4" style={{ lineHeight: "100%", fontWeight: 900, letterSpacing: "-1.5px" }}>
+                          <h2 data-swiper-parallax="-300" className="hero-title tcn-1 mb-lg-5 mb-4" style={{ lineHeight: "100%", fontWeight: 900, letterSpacing: "-1.5px", fontSize: "clamp(2rem, 8vw, 4rem)" }}>
                             JADI JUARA <span className="tcp-1">LEGENDA</span>
                           </h2>
                           <p data-swiper-parallax="-350" className="tcn-1 mb-lg-6 mb-5 opacity-75 fs-six" style={{ maxWidth: 600 }}>
                             Raih trophy eksklusif, sertifikat nasional, dan total hadiah jutaan Rupiah. Inilah saatnya jadi MVP di GameForSmart!
                           </p>
-                          <div data-swiper-parallax="-400" className="d-flex align-items-center flex-wrap gap-xl-4 gap-3 mb-1">
+                          <div data-swiper-parallax="-400" className="d-flex align-items-center flex-wrap gap-xl-4 gap-3 mb-lg-1 mb-8 mb-sm-6">
                             <Link href="/register" className="gps-btn-primary">Klaim Slotmu</Link>
                           </div>
                         </div>
