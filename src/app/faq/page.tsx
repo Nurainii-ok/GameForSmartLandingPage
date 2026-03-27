@@ -3,9 +3,8 @@ import Sidebar from "@/components/shared/Sidebar";
 import Footer from "@/components/shared/Footer";
 
 export const metadata = {
-  title: "FAQ | GameForSmart 2026",
-  description:
-    "Temukan jawaban atas pertanyaan umum seputar GameForSmart dan platform kami.",
+  title: "FAQ",
+  description: "Temukan jawaban atas pertanyaan umum seputar GameForSmart.",
 };
 
 const faqs = [

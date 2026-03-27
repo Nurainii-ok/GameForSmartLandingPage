@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "@/components/shared/Header";
 import Sidebar from "@/components/shared/Sidebar";
 import Footer from "@/components/shared/Footer";
@@ -34,6 +34,8 @@ export default function ProfilePage() {
   const [activeTab, setActiveTab] = useState<TabId>("info");
   const [connectedGames, setConnectedGames] = useState<Set<string>>(new Set());
   const [toast, setToast] = useState<string | null>(null);
+
+  useEffect(() => { document.title = "Profil | GameForSmart"; }, []);
 
   const showToast = (msg: string) => {
     setToast(msg);

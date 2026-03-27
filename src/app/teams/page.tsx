@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
 import Header from "@/components/shared/Header";
 import Sidebar from "@/components/shared/Sidebar";
 import TeamCard from "@/components/features/teams/TeamCard";
 import Footer from "@/components/shared/Footer";
+
+export const metadata: Metadata = {
+  title: "Tim",
+  description: "Temukan dan bergabunglah dengan tim terbaik di GameForSmart.",
+};
 
 const teams = [
   {

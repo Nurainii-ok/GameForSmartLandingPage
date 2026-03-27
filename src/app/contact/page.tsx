@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ContactView from "@/components/features/contact/ContactView";
 
 export const metadata: Metadata = {
-    title: 'Contact Us | GameForSmart 2026',
+    title: 'Kontak',
     description: 'Hubungi tim GameForSmart untuk pertanyaan, kerjasama, atau bantuan teknis.',
 };
 

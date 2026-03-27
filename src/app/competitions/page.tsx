@@ -16,6 +16,8 @@ export default function TournamentsPage() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => { document.title = "Kompetisi | GameForSmart"; }, []);
+
   const filteredTournaments = tournamentsData.filter((t) => {
     return activeTab === "All" || t.status === activeTab;
   });

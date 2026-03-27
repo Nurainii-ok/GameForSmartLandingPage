@@ -7,9 +7,8 @@ import CTA from "@/components/features/home/CTA";
 import Footer from "@/components/shared/Footer";
 
 export const metadata = {
-  title: "GameForSmart",
-  description:
-    "Mainkan berbagai game seru dan ikuti turnamen berhadiah di GameForSmart 2026.",
+  title: "Home",
+  description: "Mainkan berbagai game seru dan ikuti turnamen berhadiah di GameForSmart.",
 };
 
 export default function Home() {

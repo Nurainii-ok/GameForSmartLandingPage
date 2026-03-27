@@ -15,8 +15,11 @@ import UserAccountPopup from "@/components/features/auth/UserAccountPopup";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "GameForSmart - Belajar Coding Interaktif",
-    description: "Kuasai teknologi masa depan dengan platform belajar coding terbaik untuk anak muda.",
+    title: {
+        default: "GameForSmart",
+        template: "%s | GameForSmart",
+    },
+    description: "Platform kompetisi dan game edukatif terbaik di Indonesia.",
 };
 
 import { SearchProvider } from "@/context/SearchContext";
