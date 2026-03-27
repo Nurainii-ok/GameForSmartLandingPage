@@ -212,37 +212,30 @@ export default function ContactView() {
         .cv-input-wrap input,
         .cv-input-wrap textarea {
           width: 100%;
-          background: transparent;
-          border: none;
-          border-bottom: 1px solid rgba(255,255,255,0.1);
-          border-radius: 0;
-          padding: 10px 0;
-          color: #fff;
+          background: rgba(255,255,255,0.02) !important;
+          border: 1px solid rgba(255,255,255,0.1) !important;
+          border-radius: 12px !important;
+          padding: 14px 16px !important;
+          color: #fff !important;
           font-family: 'Poppins', sans-serif;
           font-size: 14px;
           font-weight: 400;
           outline: none;
-          transition: border-color 0.2s;
+          transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
           resize: none;
+        }
+
+        .cv-input-wrap input:focus,
+        .cv-input-wrap textarea:focus {
+          border-color: #ff8c00 !important;
+          background: rgba(255,140,0,0.02) !important;
+          box-shadow: 0 0 0 3px rgba(255,140,0,0.1) !important;
         }
 
         .cv-input-wrap input::placeholder,
         .cv-input-wrap textarea::placeholder {
-          color: rgba(255,255,255,0.18);
+          color: rgba(255,255,255,0.2) !important;
           font-weight: 300;
-        }
-
-        .cv-input-line {
-          position: absolute;
-          bottom: 0; left: 0;
-          height: 1px;
-          width: 0;
-          background: #ff8c00;
-          transition: width 0.3s cubic-bezier(0.16,1,0.3,1);
-        }
-
-        .cv-field.active .cv-input-line {
-          width: 100%;
         }
 
         /* ── Submit ── */
@@ -459,18 +452,8 @@ export default function ContactView() {
                                   onBlur={() => setFocused(null)}
                                   placeholder={f.placeholder}
                                   required
-                                  className="border-0 shadow-none ring-0 focus-visible:ring-0 p-0 h-auto"
-                                  style={{
-                                    background: "transparent",
-                                    borderBottom: "1px solid rgba(255,255,255,0.1)",
-                                    borderRadius: 0,
-                                    padding: "10px 0",
-                                    color: "#fff",
-                                    fontFamily: "'Poppins', sans-serif",
-                                    fontSize: "14px",
-                                  }}
+                                  className="cv-input"
                                 />
-                                <div className="cv-input-line" />
                               </div>
                             </div>
                           </div>
@@ -489,20 +472,9 @@ export default function ContactView() {
                                 placeholder="Tuliskan pesanmu di sini..."
                                 required
                                 rows={4}
-                                className="border-0 shadow-none ring-0 focus-visible:ring-0"
-                                style={{
-                                  background: "transparent",
-                                  borderBottom: "1px solid rgba(255,255,255,0.1)",
-                                  borderRadius: 0,
-                                  padding: "10px 0",
-                                  color: "#fff",
-                                  fontFamily: "'Poppins', sans-serif",
-                                  fontSize: "14px",
-                                  resize: "none",
-                                  minHeight: "100px",
-                                }}
+                                className="cv-textarea"
+                                style={{ minHeight: "120px" }}
                               />
-                              <div className="cv-input-line" />
                             </div>
                           </div>
                         </div>
