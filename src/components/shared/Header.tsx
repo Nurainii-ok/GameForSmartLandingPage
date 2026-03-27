@@ -178,8 +178,10 @@ export default function Header() {
                     zIndex: 9999,
                     maxHeight: "350px",
                     overflowY: "auto",
+                    overscrollBehavior: "contain",
                     padding: "8px",
                   }}
+                  data-lenis-prevent="true"
                 >
                   {/* Games Category */}
                   {visibleGames.length > 0 && (

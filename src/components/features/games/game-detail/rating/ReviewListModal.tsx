@@ -92,7 +92,7 @@ export default function ReviewListModal({ title, image, reviews, onClose }: Revi
                     </div>
 
                     {/* Body */}
-                    <div className="rlm-body">
+                    <div className="rlm-body" data-lenis-prevent="true">
                         {filteredReviews.length > 0 ? (
                             filteredReviews.map(review => (
                             <div key={review.id} className="rlm-item">
@@ -298,6 +298,7 @@ export default function ReviewListModal({ title, image, reviews, onClose }: Revi
                 .rlm-body {
                     flex: 1;
                     overflow-y: auto;
+                    overscroll-behavior: contain;
                     scrollbar-width: thin;
                     scrollbar-color: #3c4043 transparent;
                 }
