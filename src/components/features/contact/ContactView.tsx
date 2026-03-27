@@ -38,7 +38,6 @@ export default function ContactView() {
       id: "phone",
       label: "WhatsApp",
       value: "+62 812-3456-7890",
-      hint: "Resp. dalam 1 jam",
       accent: "#ff8c00",
       accentBg: "rgba(255,140,0,0.08)",
       accentBorder: "rgba(255,140,0,0.2)",
@@ -52,7 +51,6 @@ export default function ContactView() {
       id: "email",
       label: "Email",
       value: "info@gameforsmart.com",
-      hint: "Resp. dalam 24 jam",
       accent: "#38bdf8",
       accentBg: "rgba(56,189,248,0.08)",
       accentBorder: "rgba(56,189,248,0.2)",
@@ -66,7 +64,6 @@ export default function ContactView() {
       id: "instagram",
       label: "Instagram",
       value: "@gameforsmart",
-      hint: "DM always open",
       accent: "#e879a0",
       accentBg: "rgba(232,121,160,0.08)",
       accentBorder: "rgba(232,121,160,0.2)",
@@ -524,7 +521,6 @@ export default function ContactView() {
                         <div className="cv-channel-body">
                           <span className="cv-channel-label">{ch.label}</span>
                           <span className="cv-channel-value">{ch.value}</span>
-                          <span className="cv-channel-hint">{ch.hint}</span>
                         </div>
                         <span className="cv-channel-chevron">
                           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -534,10 +530,10 @@ export default function ContactView() {
                       </a>
                     ))}
 
-                    <div className="cv-avail">
+                    {/* <div className="cv-avail">
                       <span className="cv-avail-dot" />
                       Tim kami aktif · Senin–Sabtu, 09.00–18.00 WIB
-                    </div>
+                    </div> */}
                   </div>
                 </div>
 
