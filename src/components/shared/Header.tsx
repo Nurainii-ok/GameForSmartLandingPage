@@ -206,8 +206,13 @@ export default function Header() {
                               }}
                               onMouseOver={() => setSelectedIndex(globalIdx)}
                             >
-                              <i className="ti ti-device-gamepad-2" style={{ fontSize: "18px", color: "#8b8fa8" }}></i>
-                              <span style={{ fontSize: "14px" }}>{game.title}</span>
+                              <div style={{ width: "52px", height: "52px", borderRadius: "8px", overflow: "hidden", flexShrink: 0, border: "1px solid rgba(255,255,255,0.1)", backgroundColor: "rgba(0,0,0,0.5)" }}>
+                                <img src={game.image} alt={game.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                              </div>
+                              <div className="d-flex flex-column">
+                                <span style={{ fontSize: "14px", fontWeight: 500, color: "#e8eaf0" }}>{game.title}</span>
+                                <span style={{ fontSize: "11px", color: "#8b8fa8", marginTop: "-2px" }}><i className="ti ti-device-gamepad-2 me-1"></i>{(game as any).genre || "Web Game"}</span>
+                              </div>
                             </Link>
                           );
                         })}
@@ -240,8 +245,13 @@ export default function Header() {
                               }}
                               onMouseOver={() => setSelectedIndex(globalIdx)}
                             >
-                              <i className="ti ti-trophy" style={{ fontSize: "18px", color: "#8b8fa8" }}></i>
-                              <span style={{ fontSize: "14px" }}>{tour.title}</span>
+                              <div style={{ width: "42px", height: "54px", borderRadius: "8px", overflow: "hidden", flexShrink: 0, border: "1px solid rgba(255,255,255,0.1)", backgroundColor: "rgba(0,0,0,0.5)" }}>
+                                <img src={tour.image} alt={tour.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                              </div>
+                              <div className="d-flex flex-column">
+                                <span style={{ fontSize: "14px", fontWeight: 500, color: "#e8eaf0" }}>{tour.title}</span>
+                                <span style={{ fontSize: "11px", color: "#8b8fa8", marginTop: "-2px" }}><i className="ti ti-trophy me-1"></i>{tour.date || "Turnamen"}</span>
+                              </div>
                             </Link>
                           );
                         })}
