@@ -182,7 +182,7 @@ export default function Header() {
                   {visibleGames.length > 0 && (
                     <div className="mb-2">
                       <div className="px-3 py-2 text-xs text-muted fw-bold text-uppercase" style={{ color: "#8b8fa8", fontSize: "11px" }}>
-                        Permainan
+                        Game
                       </div>
                       <div className="d-flex flex-column gap-1">
                         {visibleGames.map((game, idx) => {

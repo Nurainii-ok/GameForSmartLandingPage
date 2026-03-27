@@ -43,7 +43,7 @@ export const allItemsData: TournamentInfo[] = [
 
 Dalam setiap balapan, kamu akan menghadapi trek dengan belokan tajam, rintangan acak, dan lawan-lawan tangguh dari seluruh dunia. Gunakan item boost, blokir lawan, dan pilih jalur tercepat untuk merebut posisi pertama di setiap race.
 
-Tersedia berbagai mode permainan mulai dari Time Trial untuk melatih kecepatan, hingga mode Grand Prix penuh dengan lapisan strategi dan penghitungan poin kumulatif. Unggah rekormu ke Global Leaderboard dan tunjukkan siapa pembalap terhebat!
+Tersedia berbagai mode game mulai dari Time Trial untuk melatih kecepatan, hingga mode Grand Prix penuh dengan lapisan strategi dan penghitungan poin kumulatif. Unggah rekormu ke Global Leaderboard dan tunjukkan siapa pembalap terhebat!
 
 • Mode: Single Race · Grand Prix · Time Trial
 • Jumlah Lintasan: 12 Trek Unik
@@ -112,7 +112,7 @@ Tersedia berbagai mode permainan mulai dari Time Trial untuk melatih kecepatan, 
         genre: "Educational",
         description: `Conquer the cosmos in this high-stakes trivia battle! Space Quiz mengajakmu menjelajahi misteri alam semesta sambil menguji seberapa dalam pengetahuanmu tentang luar angkasa.
 
-Dengan lebih dari 500 pertanyaan yang mencakup astronomi, fisika kosmik, sejarah penjelajahan luar angkasa, dan teknologi antariksa terkini, setiap sesi permainan akan terasa seperti petualangan baru di galaksi yang tak terbatas.
+Dengan lebih dari 500 pertanyaan yang mencakup astronomi, fisika kosmik, sejarah penjelajahan luar angkasa, dan teknologi antariksa terkini, setiap sesi game akan terasa seperti petualangan baru di galaksi yang tak terbatas.
 
 Jawab pertanyaan dengan cepat sebelum waktu habis! Mode Kecepatan Kilat memberikan bonus poin ekstra bagi pemain yang bisa menjawab dalam 5 detik pertama. Naiki tangga dari Cadet hingga Galaxy Master dan buktikan kamu adalah penjelajah terpintar di semesta ini.
 
@@ -149,7 +149,7 @@ Jawab pertanyaan dengan cepat sebelum waktu habis! Mode Kecepatan Kilat memberik
         genre: "Puzzle",
         description: `Latih kekuatan otak dan daya ingatmu bersama Memory Quiz — game puzzle yang menantang konsentrasi dan kecepatan recall dalam suasana yang misterius dan mendebarkan!
 
-Setiap sesi permainan menghadirkan susunan kartu acak yang berbeda, sehingga tidak ada dua permainan yang sama. Temukan pasangan kartu yang cocok secepat mungkin sebelum waktu habis untuk mendapatkan skor sempurna.
+Setiap sesi game menghadirkan susunan kartu acak yang berbeda, sehingga tidak ada dua game yang sama. Temukan pasangan kartu yang cocok secepat mungkin sebelum waktu habis untuk mendapatkan skor sempurna.
 
 Semakin tinggi level, semakin banyak kartu yang perlu diingat, semakin singkat waktu yang tersedia. Sistem tingkat kesulitan adaptif memastikan game selalu terasa menantang tanpa terasa terlalu mudah atau terlalu susah.
 
@@ -169,7 +169,7 @@ Semakin tinggi level, semakin banyak kartu yang perlu diingat, semakin singkat w
         screenshots: ["/images/memoryquiz.webp", "/images/quizrush.webp", "/assets/img/game-4.png"],
         features: [
             { icon: "ti ti-brain", title: "Latihan Memori Adaptif", description: "Tingkat kesulitan menyesuaikan kemampuanmu secara otomatis untuk melatih daya ingat secara optimal." },
-            { icon: "ti ti-cards", title: "Ratusan Pola Kartu Unik", description: "Ratusan kombinasi pola kartu yang berbeda memastikan setiap sesi permainan selalu terasa segar." },
+            { icon: "ti ti-cards", title: "Ratusan Pola Kartu Unik", description: "Ratusan kombinasi pola kartu yang berbeda memastikan setiap sesi game selalu terasa segar." },
             { icon: "ti ti-medal", title: "Pencapaian & Lencana", description: "Kumpulkan lencana eksklusif atas pencapaian luar biasa dan pamerkan ke seluruh komunitas." },
             { icon: "ti ti-clock", title: "Mode Tantangan Waktu", description: "Selesaikan semua pasangan kartu dalam batas waktu ketat untuk mendapatkan skor sempurna." }
         ]

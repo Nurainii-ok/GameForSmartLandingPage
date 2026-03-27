@@ -15,7 +15,7 @@ const PRIVACY_ITEMS = [
     {
         icon: '👤',
         text: 'Akun dapat dihapus kapan saja',
-        sub: 'Termasuk semua data dan riwayat permainan',
+        sub: 'Termasuk semua data dan riwayat game',
     },
     {
         icon: '🍪',

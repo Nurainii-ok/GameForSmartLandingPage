@@ -54,7 +54,7 @@ export default function Footer() {
                     className="footer-link d-flex align-items-center tcn-6"
                   >
                     {" "}
-                    Permainan
+                    Game
                   </Link>
                 </li>
                 <li>

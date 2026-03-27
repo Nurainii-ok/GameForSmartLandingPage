@@ -98,7 +98,7 @@ export default function Sidebar() {
   const menuItems = [
     { href: "/", icon: "ti-home", label: "Beranda" },
     { href: "/competitions", icon: "ti-trophy", label: "Kompetisi" },
-    { href: "/games", icon: "ti-device-gamepad-2", label: "Permainan" },
+    { href: "/games", icon: "ti-device-gamepad-2", label: "Game" },
     // { href: "/community", icon: "ti-users", label: "Komunitas" },
     { href: "/about", icon: "ti-info-circle", label: "Tentang" },
     { href: "/contact", icon: "ti-mail", label: "Kontak" },

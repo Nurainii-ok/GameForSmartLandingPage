@@ -31,7 +31,7 @@ export default function GamesSection() {
                   transition={{ duration: 0.6, ease: "easeOut" }}
                   className="display-four tcn-1 cursor-scale growUp font-heading text-[calc(1.1rem+1vw)]"
                 >
-                  Permainan
+                  Game
                 </motion.h2>
               </Link>
             </div>
@@ -56,7 +56,7 @@ export default function GamesSection() {
                 ) : (
                   <div className="col-12 text-center py-20">
                     <h3 className="tcn-1">
-                      Tidak ada permainan ditemukan untuk "{searchQuery}"
+                      Tidak ada game ditemukan untuk "{searchQuery}"
                     </h3>
                   </div>
                 )}
