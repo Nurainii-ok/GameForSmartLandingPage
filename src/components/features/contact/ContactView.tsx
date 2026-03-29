@@ -15,6 +15,7 @@ export default function ContactView() {
     subject: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [focused, setFocused] = useState<string | null>(null);
 
@@ -26,11 +27,15 @@ export default function ContactView() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
     setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 3000);
+      setIsSubmitting(false);
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      }, 3000);
+    }, 1500);
   };
 
   const channels = [
@@ -449,6 +454,7 @@ export default function ContactView() {
                                   onBlur={() => setFocused(null)}
                                   placeholder={f.placeholder}
                                   required
+                                  disabled={isSubmitting || submitted}
                                   className="cv-input"
                                 />
                               </div>
@@ -468,6 +474,7 @@ export default function ContactView() {
                                 onBlur={() => setFocused(null)}
                                 placeholder="Tuliskan pesanmu di sini..."
                                 required
+                                disabled={isSubmitting || submitted}
                                 rows={4}
                                 className="cv-textarea"
                                 style={{ minHeight: "120px" }}
@@ -479,9 +486,24 @@ export default function ContactView() {
 
                       <button
                         type="submit"
+                        disabled={isSubmitting || submitted}
                         className={`cv-submit ${submitted ? "sent" : ""}`}
                       >
-                        {submitted ? (
+                        {isSubmitting ? (
+                          <>
+                            <svg className="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                              <line x1="12" y1="2" x2="12" y2="6"></line>
+                              <line x1="12" y1="18" x2="12" y2="22"></line>
+                              <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+                              <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+                              <line x1="2" y1="12" x2="6" y2="12"></line>
+                              <line x1="18" y1="12" x2="22" y2="12"></line>
+                              <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
+                              <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
+                            </svg>
+                            Mengirim...
+                          </>
+                        ) : submitted ? (
                           <>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                               <polyline points="20 6 9 17 4 12"/>
