@@ -156,19 +156,17 @@ export default function TournamentSection() {
                       {/* FIX: use items-stretch so image column fills card height */}
                       <div className="flex flex-col lg:flex-row-reverse h-full">
                         {/* IMAGE — removed fixed h-[240px], use self-stretch + min-h for mobile */}
-                        <div className="relative self-stretch lg:w-1/2 overflow-hidden bg-black/20 min-h-[240px]">
+                        <Link 
+                          href={tournament.href} 
+                          className="relative self-stretch lg:w-1/2 overflow-hidden bg-black/20 min-h-[240px] block cursor-pointer group/img"
+                        >
                           <img
                             src={tournament.image}
                             alt={tournament.title}
-                            className="absolute inset-0 w-full h-full object-cover object-top"
+                            className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover/img:scale-110"
                           />
                           <div className="absolute inset-0 bg-gradient-to-r lg:bg-gradient-to-l from-black/60 via-black/20 to-transparent" />
-                          {/* <div className="absolute bottom-5 right-5">
-                            <span className="text-[11px] font-semibold tracking-widest text-orange-400 bg-orange-600/20 border border-orange-500/40 px-3 py-1 rounded-full uppercase">
-                               {tournament.slug} 
-                            </span>
-                          </div> */}
-                        </div>
+                        </Link>
 
                         {/* CONTENT — mirroring the HTML design */}
                         <CardContent className="p-8 lg:p-10 flex flex-col justify-between lg:w-1/2 relative overflow-hidden">
@@ -187,9 +185,11 @@ export default function TournamentSection() {
                             </span>
 
                             {/* TITLE */}
-                            <h3 className="text-2xl lg:text-[1.75rem] font-extrabold text-white mb-3 leading-snug">
-                              {tournament.title}
-                            </h3>
+                            <Link href={tournament.href} className="block group/title">
+                              <h3 className="text-2xl lg:text-[1.75rem] font-extrabold text-white mb-3 leading-snug group-hover/title:text-orange-500 transition-colors">
+                                {tournament.title}
+                              </h3>
+                            </Link>
 
                             {/* DIVIDER */}
                             <div className="w-10 h-[3px] rounded-full bg-gradient-to-r from-orange-500 to-transparent mb-4" />

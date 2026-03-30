@@ -153,8 +153,22 @@ export default function Footer() {
       </div>
 
       <style jsx>{`
-        .footer-inner-container {
-          z-index: 2;
+        .site-logo {
+          width: 250px;
+          min-width: 250px;
+          height: auto;
+          display: block;
+        }
+
+        /* Override legacy transform and padding that caused misalignment */
+        :global(.footer .footer-list li .footer-link) {
+          transform: none !important;
+          padding-left: 0 !important;
+          margin-left: 0 !important;
+        }
+        
+        :global(.footer .footer-list li .footer-link:hover) {
+          transform: translateX(5px) !important;
         }
 
         .footer-mascot {
