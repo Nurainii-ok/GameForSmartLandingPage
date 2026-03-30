@@ -41,16 +41,28 @@ export default function GameGallery({ media, activeIndex, onSelect, onOpenVideo 
         };
     }, [media, checkScroll]);
 
-    // close lightbox on Escape, navigate with arrow keys
+    // close lightbox on Escape, navigate with arrow keys, and lock body scroll
     useEffect(() => {
-        if (lightbox === null) return;
+        if (lightbox === null) {
+            document.body.classList.remove('lightbox-active');
+            document.body.style.overflow = '';
+            return;
+        }
+        
+        document.body.classList.add('lightbox-active');
+        document.body.style.overflow = 'hidden';
+
         const onKey = (e: KeyboardEvent) => {
             if (e.key === "Escape") setLightbox(null);
             if (e.key === "ArrowRight") setLightbox(i => i !== null ? Math.min(i + 1, media.length - 1) : null);
             if (e.key === "ArrowLeft")  setLightbox(i => i !== null ? Math.max(i - 1, 0) : null);
         };
         window.addEventListener("keydown", onKey);
-        return () => window.removeEventListener("keydown", onKey);
+        return () => {
+            window.removeEventListener("keydown", onKey);
+            document.body.classList.remove('lightbox-active');
+            document.body.style.overflow = '';
+        };
     }, [lightbox, media.length]);
 
     const scrollGallery = (dir: "left" | "right") => {
@@ -318,12 +330,19 @@ export default function GameGallery({ media, activeIndex, onSelect, onOpenVideo 
                 .gps-lightbox {
                     position: fixed; inset: 0;
                     background: rgba(0,0,0,0.92);
-                    z-index: 9999;
+                    z-index: 99999;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     backdrop-filter: blur(12px);
                     animation: lbFadeIn 0.18s ease;
+                }
+                
+                :global(body.lightbox-active) .sidebar,
+                :global(body.lightbox-active) .header-section {
+                    opacity: 0 !important;
+                    pointer-events: none !important;
+                    visibility: hidden !important;
                 }
                 @keyframes lbFadeIn { from { opacity: 0; } to { opacity: 1; } }
 
