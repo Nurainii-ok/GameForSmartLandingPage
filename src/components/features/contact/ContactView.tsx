@@ -4,6 +4,7 @@ import Header from "@/components/shared/Header";
 import Sidebar from "@/components/shared/Sidebar";
 import Breadcrumbs from "@/components/shared/Breadcrumbs";
 import Footer from "@/components/shared/Footer";
+import MathCaptcha from "@/components/shared/MathCaptcha";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -18,6 +19,7 @@ export default function ContactView() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [focused, setFocused] = useState<string | null>(null);
+  const [captchaOk, setCaptchaOk] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -27,6 +29,7 @@ export default function ContactView() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!captchaOk) return;
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
@@ -275,6 +278,15 @@ export default function ContactView() {
           pointer-events: none;
         }
 
+        .cv-submit.captcha-locked {
+          opacity: 0.45;
+          cursor: not-allowed;
+        }
+        .cv-submit.captcha-locked:hover {
+          transform: none;
+          box-shadow: none;
+        }
+
         .cv-submit-arrow {
           display: flex;
           align-items: center;
@@ -484,10 +496,15 @@ export default function ContactView() {
                         </div>
                       </div>
 
+                      {/* CAPTCHA */}
+                      <div className="col-12 mt-2">
+                        <MathCaptcha onVerify={setCaptchaOk} />
+                      </div>
+
                       <button
                         type="submit"
-                        disabled={isSubmitting || submitted}
-                        className={`cv-submit ${submitted ? "sent" : ""}`}
+                        disabled={isSubmitting || submitted || !captchaOk}
+                        className={`cv-submit ${submitted ? "sent" : ""} ${!captchaOk ? 'captcha-locked' : ''}`}
                       >
                         {isSubmitting ? (
                           <>

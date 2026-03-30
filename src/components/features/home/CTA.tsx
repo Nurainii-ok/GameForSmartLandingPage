@@ -4,15 +4,17 @@ import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import MathCaptcha from "@/components/shared/MathCaptcha";
 
 export default function CTA() {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [captchaOk, setCaptchaOk] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
+    if (!email || !captchaOk) return;
     
     setIsSubmitting(true);
     // Simulasi API call
@@ -66,10 +68,14 @@ export default function CTA() {
                   className="h-14 w-100 rounded-2xl border-white/10 bg-white/5 px-6 text-base text-white placeholder:text-white/40 focus:border-orange-500/50 focus:bg-white/10 focus:ring-0"
                 />
               </div>
+              
+              {/* CAPTCHA */}
+              <MathCaptcha onVerify={setCaptchaOk} className="mb-2" />
+              
               <Button
                 type="submit"
-                disabled={isSubmitting || isSuccess}
-                className={`gps-btn-primary h-14 w-100 rounded-2xl text-lg font-bold transition-all duration-300 ${isSuccess ? 'bg-green-500 hover:bg-green-600 text-white' : ''}`}
+                disabled={isSubmitting || isSuccess || !captchaOk}
+                className={`gps-btn-primary h-14 w-100 rounded-2xl text-lg font-bold transition-all duration-300 ${isSuccess ? 'bg-green-500 hover:bg-green-600 text-white' : ''} ${!captchaOk ? 'opacity-50 cursor-not-allowed' : ''}`}
                 style={{ backgroundColor: isSuccess ? '#22c55e' : undefined, color: isSuccess ? 'white' : undefined }}
               >
                 {isSubmitting ? (

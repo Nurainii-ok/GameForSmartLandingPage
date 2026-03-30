@@ -333,7 +333,7 @@ export default function Banner() {
                         <div className="hero-content ps-lg-12 ps-6">
                           <p data-swiper-parallax="-200" className="tcn-1 mb-lg-4 mb-3 opacity-75 fw-medium fs-six text-uppercase tracking-wider">SIAP • BERSIAP • MAIN</p>
                           <h2 data-swiper-parallax="-300" className="hero-title tcn-1 mb-lg-5 mb-4" style={{ lineHeight: "100%", fontWeight: 900, letterSpacing: "-1.5px", fontSize: "clamp(2rem, 8vw, 4rem)" }}>
-                            ARENA GAMING <span className="tcp-1">TERBAIK</span>
+                            TAMBAH NGEGAME <span className="tcp-1">TAMBAH CERDAS</span>
                           </h2>
                           <p data-swiper-parallax="-350" className="tcn-1 mb-lg-6 mb-5 opacity-75 fs-six" style={{ maxWidth: 600 }}>
                             Gabung di arena cerdas cermat dengan sensasi gaming yang seru. Tantang pengetahuanmu dan kuasai panggung turnamen!

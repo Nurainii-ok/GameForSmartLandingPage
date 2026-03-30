@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import MathCaptcha from "@/components/shared/MathCaptcha";
 
 interface RegistrationViewProps {
   competitionTitle: string;
@@ -17,9 +18,11 @@ export default function RegistrationView({
 }: RegistrationViewProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [captchaOk, setCaptchaOk] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!captchaOk) return;
     setIsSubmitting(true);
     // Simulate API call
     setTimeout(() => {
@@ -168,6 +171,11 @@ export default function RegistrationView({
               </div>
             </div>
 
+            {/* CAPTCHA */}
+            <div className="mt-2">
+              <MathCaptcha onVerify={setCaptchaOk} />
+            </div>
+
             {/* Summary & Submit */}
             <div className="mt-4 p-4 bgn-3 rounded-3 border border-secondary border-opacity-10 d-flex flex-wrap align-items-center justify-content-between gap-4">
               <div>
@@ -181,7 +189,8 @@ export default function RegistrationView({
               <Button
                 type="submit"
                 className="btn-half-border position-relative d-inline-flex py-5 bgp-1 px-8 rounded-pill text-nowrap fw-bold transition-all hover-scale border-none hover:bg-transparent text-white"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !captchaOk}
+                style={!captchaOk ? { opacity: 0.45, cursor: 'not-allowed' } : {}}
               >
                 {isSubmitting ? (
                   <span className="d-flex align-items-center gap-2">
