@@ -117,7 +117,7 @@ export default function Header() {
       <header className="header-section bgn-4 w-100 header-fixed">
       <div className="py-sm-6 py-3 mx-xxl-10 mx-md-8 mx-2">
         <div className="d-between gap-lg-4 gap-2">
-          <div className="top-bar alt d-flex align-items-center gap-4">
+          <div className={`top-bar alt d-flex align-items-center gap-4 ${isMobileSearchOpen ? "d-none d-lg-flex" : ""}`}>
             <button
               className={`sidebar-toggle-btn responsive-toggle d-lg-none d-block ${sidebarOpen ? "open" : ""}`}
               type="button"
@@ -145,16 +145,27 @@ export default function Header() {
             ref={headerRef}
           >
             <div
-              className={`search-bar header-search-bar position-relative ${isMobileSearchOpen ? "mobile-open" : ""}`}
+              className={`search-bar header-search-bar position-relative ${isMobileSearchOpen ? "mobile-open w-100" : ""}`}
               ref={searchRef}
             >
-              <form action="#" onSubmit={handleSearchSubmit}>
-                <div className="input-area d-flex align-items-center gap-2">
-                  <i className="ti ti-search"></i>
+              <form action="#" onSubmit={handleSearchSubmit} className="w-100">
+                <div className="input-area d-flex align-items-center gap-2 w-100">
+                  {isMobileSearchOpen ? (
+                    <button 
+                      type="button" 
+                      onClick={() => setIsMobileSearchOpen(false)} 
+                      className="bg-transparent border-0 text-white d-lg-none d-flex align-items-center justify-content-center p-0"
+                      style={{ width: '32px', height: '32px' }}
+                    >
+                      <i className="ti ti-arrow-left fs-4"></i>
+                    </button>
+                  ) : (
+                    <i className="ti ti-search d-none d-lg-block"></i>
+                  )}
                   <input
                     type="text"
                     placeholder="Type a command or search..."
-                    className="header-search-input"
+                    className="header-search-input flex-grow-1"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onFocus={() => setIsSearchActive(true)}
@@ -271,10 +282,16 @@ export default function Header() {
               )}
             </div>
 
-            <div className="header-btns d-flex align-items-center justify-content-end gap-lg-6 gap-sm-4 gap-2 w-100">
+            <div className={`header-btns d-flex align-items-center justify-content-end gap-lg-6 gap-sm-4 gap-2 w-100 ${isMobileSearchOpen ? "d-none d-lg-flex" : ""}`}>
               <button 
                 className={`search-toggle-btn toggle-btn box-style fs-2xl d-block d-lg-none ${isMobileSearchOpen ? "active" : ""}`} 
-                onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
+                onClick={() => {
+                  setIsMobileSearchOpen(!isMobileSearchOpen);
+                  if (!isMobileSearchOpen) {
+                    setIsNtfOpen(false);
+                    setIsProfileOpen(false);
+                  }
+                }}
                 suppressHydrationWarning
               >
                 <i className={`ti ${isMobileSearchOpen ? "ti-x" : "ti-search"}`}></i>
@@ -350,16 +367,8 @@ export default function Header() {
         @media (max-width: 991px) {
           .header-search-bar {
             display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
             width: 100% !important;
             max-width: 100% !important;
-            padding: 15px 25px;
-            background: #161920;
-            border-bottom: 1px solid #2a2d38;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-            z-index: 1000;
           }
           .header-search-bar.mobile-open {
             display: block;
