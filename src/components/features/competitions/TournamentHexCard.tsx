@@ -36,14 +36,15 @@ export default function TournamentHexCard({
         href={`/competitions/${slug || id}`}
         className="d-flex align-items-center gap-4 text-decoration-none h-100"
       >
-        <div className="game-card p-1 w-[120px] h-[180px] shrink-0">
-          <div className="game-card-border"></div>
-          <div className="game-card-border-overlay"></div>
-          <div className="game-img h-full">
+        <div className="game-card p-1 w-[120px] shrink-0 h-auto">
+          <div className="game-card-border" style={{ height: '100%', position: 'absolute', inset: 0 }}></div>
+          <div className="game-card-border-overlay" style={{ height: '100%', position: 'absolute', inset: 0 }}></div>
+          <div className="game-img h-auto">
             <img
-              className="w-100 h-100 object-fit-cover"
+              className="w-100 h-auto block object-fit-contain"
               src={image}
               alt={title}
+              style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}
             />
           </div>
         </div>

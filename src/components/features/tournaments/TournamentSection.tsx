@@ -149,7 +149,7 @@ export default function TournamentSection() {
                     key={tournament.id}
                     className="swiper-slide !w-[90%] lg:!w-[900px]"
                   >
-                    <Card className="relative h-auto lg:h-[500px] overflow-hidden border border-orange-500/30 bg-[#161920] backdrop-blur-xl transition-all duration-500 tournament-card">
+                    <Card className="relative h-auto overflow-hidden border border-orange-500/30 bg-[#161920] backdrop-blur-xl transition-all duration-500 tournament-card">
                       {/* TOP BAR */}
                       <div className="h-[3px] w-full bg-gradient-to-r from-orange-500 via-amber-500 to-orange-500" />
 
@@ -158,14 +158,13 @@ export default function TournamentSection() {
                         {/* IMAGE — removed fixed h-[240px], use self-stretch + min-h for mobile */}
                         <Link 
                           href={tournament.href} 
-                          className="relative self-stretch lg:w-1/2 overflow-hidden bg-black/20 min-h-[240px] block cursor-pointer group/img"
+                          className="lg:w-1/2 overflow-hidden bg-black/20 block cursor-pointer group/img"
                         >
                           <img
                             src={tournament.image}
                             alt={tournament.title}
-                            className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover/img:scale-110"
+                            className="w-full h-auto block transition-transform duration-700 group-hover/img:scale-110"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-r lg:bg-gradient-to-l from-black/60 via-black/20 to-transparent" />
                         </Link>
 
                         {/* CONTENT — mirroring the HTML design */}

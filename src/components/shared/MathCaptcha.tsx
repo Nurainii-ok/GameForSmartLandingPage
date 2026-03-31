@@ -190,7 +190,7 @@ export default function MathCaptcha({ onVerify, className = "" }: MathCaptchaPro
           font-family: 'Chakra Petch', monospace;
           font-size: 18px;
           font-weight: 700;
-          color: #ff8c00;
+          color: #ea580c;
           letter-spacing: 1px;
         }
 
@@ -263,9 +263,9 @@ export default function MathCaptcha({ onVerify, className = "" }: MathCaptchaPro
         }
 
         .captcha-refresh:hover {
-          background: rgba(255, 140, 0, 0.15);
-          border-color: rgba(255, 140, 0, 0.3);
-          color: #ff8c00;
+          background: rgba(234, 88, 12, 0.15);
+          border-color: rgba(234, 88, 12, 0.3);
+          color: #ea580c;
           transform: rotate(90deg);
         }
 

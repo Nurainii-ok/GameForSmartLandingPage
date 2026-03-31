@@ -139,7 +139,7 @@ export default function LoginView() {
                 </Button>
 
                 <p className="tcn-6 text-center fs-sm mt-4">
-                  Belum punya akun? <Link href="/register" className="tcp-1 fw-bold hover-underline">Daftar sekarang</Link>
+                  Belum punya akun? <Link href="#" className="tcp-1 fw-bold hover-underline">Daftar sekarang</Link>
                 </p>
               </form>
             </div>

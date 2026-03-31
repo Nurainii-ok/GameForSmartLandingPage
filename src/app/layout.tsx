@@ -33,7 +33,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <head>
-                <link rel="shortcut icon" href="/assets/img/logo-favicon.png" type="image/x-icon" />
+                <link rel="icon" href="/assets/logo/logo-favicon.png" type="image/x-icon" />
             </head>
             <body className={`${inter.className} overflow-x-hidden relative max-w-[1920px] mx-auto`}>
                 <AuthProvider>

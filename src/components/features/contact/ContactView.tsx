@@ -46,9 +46,9 @@ export default function ContactView() {
       id: "phone",
       label: "WhatsApp",
       value: "+62 812-3456-7890",
-      accent: "#ff8c00",
-      accentBg: "rgba(255,140,0,0.08)",
-      accentBorder: "rgba(255,140,0,0.2)",
+      accent: "#ea580c",
+      accentBg: "rgba(234,88,12,0.08)",
+      accentBorder: "rgba(234,88,12,0.2)",
       icon: (
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.36 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.27 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8a16 16 0 0 0 7.91 7.91l.38-.38a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -114,7 +114,7 @@ export default function ContactView() {
           font-weight: 500;
           letter-spacing: 2.5px;
           text-transform: uppercase;
-          color: #ff8c00;
+          color: #ea580c;
           display: flex;
           align-items: center;
           gap: 8px;
@@ -126,7 +126,7 @@ export default function ContactView() {
           display: block;
           width: 24px;
           height: 1px;
-          background: #ff8c00;
+          background: #ea580c;
           opacity: 0.6;
         }
 
@@ -141,7 +141,7 @@ export default function ContactView() {
         }
 
         .cv-title span {
-          color: #ff8c00;
+          color: #ea580c;
         }
 
         .cv-subtitle {
@@ -169,7 +169,7 @@ export default function ContactView() {
           position: absolute;
           top: 0; left: 0; right: 0;
           height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(255,140,0,0.4), transparent);
+          background: linear-gradient(90deg, transparent, rgba(234,88,12,0.4), transparent);
         }
 
         .cv-form-heading {
@@ -207,7 +207,7 @@ export default function ContactView() {
         }
 
         .cv-field.active .cv-label {
-          color: #ff8c00;
+          color: #ea580c;
         }
 
         .cv-input-wrap {
@@ -232,9 +232,9 @@ export default function ContactView() {
 
         .cv-input-wrap input:focus,
         .cv-input-wrap textarea:focus {
-          border-color: #ff8c00 !important;
+          border-color: #ea580c !important;
           background: rgba(255,140,0,0.02) !important;
-          box-shadow: 0 0 0 3px rgba(255,140,0,0.1) !important;
+          box-shadow: 0 0 0 3px rgba(234,88,12,0.1) !important;
         }
 
         .cv-input-wrap input::placeholder,
@@ -248,7 +248,7 @@ export default function ContactView() {
           display: inline-flex;
           align-items: center;
           gap: 10px;
-          background: #ff8c00;
+          background: #ea580c;
           color: #fff;
           font-family: 'Chakra Petch', sans-serif;
           font-size: 14px;
