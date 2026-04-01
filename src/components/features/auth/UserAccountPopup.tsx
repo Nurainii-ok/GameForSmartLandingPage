@@ -11,13 +11,12 @@ export default function UserAccountPopup({
   isOpen?: boolean;
   onClose?: () => void;
 }) {
-  const { logout } = useAuth();
+  const { user, handleLogout } = useAuth();
   const router = useRouter();
 
-  const handleLogout = () => {
-    logout();
+  const onLogout = () => {
+    handleLogout();
     if (onClose) onClose();
-    router.push("/login");
   };
 
   return (
@@ -25,7 +24,12 @@ export default function UserAccountPopup({
       <div className="account-items d-grid gap-1">
         <div className="user-level-area p-3">
           <div className="user-info d-between">
-            <span className="user-name fs-five">David Malan</span>
+            <div className="d-flex flex-column">
+              <span className="user-name fs-five text-white">
+                {user?.user_metadata?.full_name || user?.user_metadata?.name || user?.email?.split('@')[0]}
+              </span>
+              <span className="user-email fs-xs tcn-6">{user?.email}</span>
+            </div>
             <div className="badge d-flex align-items-center">
               <i className="ti ti-medal fs-three fs-normal tcp-2"></i>
               <i className="ti ti-medal fs-three fs-normal tcp-2"></i>
@@ -51,7 +55,7 @@ export default function UserAccountPopup({
         <Button
           variant="ghost"
           className="w-full justify-start account-item text-danger p-2 hover-lift text-base font-normal hover:bg-[#1a1a1a] hover:text-danger"
-          onClick={handleLogout}
+          onClick={onLogout}
         >
           Keluar
         </Button>

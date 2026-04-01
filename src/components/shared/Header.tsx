@@ -11,7 +11,7 @@ import { useAuth } from "@/context/AuthContext";
 
 export default function Header() {
   const { searchQuery, setSearchQuery } = useSearch();
-  const { isLoggedIn, login } = useAuth();
+  const { isLoggedIn, user, loading, handleLogin, handleRegister } = useAuth();
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isNtfOpen, setIsNtfOpen] = useState(false);
@@ -249,7 +249,10 @@ export default function Header() {
                   <i className={`ti ${isMobileSearchOpen ? "ti-x" : "ti-search"}`}></i>
                 </button>
 
-                {isLoggedIn ? (
+                {loading ? (
+                  /* Loading state - Empty space to prevent flicker */
+                  <div style={{ width: "120px" }}></div>
+                ) : isLoggedIn ? (
                   /* ── LOGGED IN: Bell + Profile ── */
                   <>
                     <button
@@ -268,7 +271,9 @@ export default function Header() {
                         <div className="img-area overflow-hidden">
                           <img className="w-100" src="/assets/img/profile.png" alt="profile" />
                         </div>
-                        <span className="user-name d-none d-xxl-block text-nowrap">David Malan</span>
+                        <span className="user-name d-none d-xxl-block text-nowrap">
+                          {user?.user_metadata?.full_name || user?.user_metadata?.name || user?.email?.split('@')[0]}
+                        </span>
                         <i className="ti ti-chevron-down d-none d-xxl-block"></i>
                       </div>
                     </div>
@@ -276,12 +281,12 @@ export default function Header() {
                 ) : (
                   /* ── NOT LOGGED IN: Login + Register ── */
                   <div className="auth-btn-group d-flex align-items-center gap-3">
-                    <Link href="https://app.gameforsmart.com/login" className="btn-login">
+                    <button onClick={handleLogin} className="btn-login border-0 bg-transparent">
                       Masuk
-                    </Link>
-                    <Link href="https://app.gameforsmart.com/register" className="btn-register">
+                    </button>
+                    <button onClick={handleRegister} className="btn-register border-0">
                       Daftar
-                    </Link>
+                    </button>
                   </div>
                 )}
               </div>

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import MathCaptcha from "@/components/shared/MathCaptcha";
 import Breadcrumbs from "@/components/shared/Breadcrumbs";
+import { useAuth } from "@/context/AuthContext";
 import { supabase } from "@/lib/supabase";
 
 interface RegistrationViewProps {
@@ -37,31 +38,32 @@ export default function RegistrationView({
     { href: "#", label: "Register", isLast: true },
   ];
 
+  const { user, isLoggedIn, loading: authLoading, handleLogin } = useAuth();
+
   useEffect(() => {
-    const token = new URLSearchParams(window.location.search).get("token");
-    
-    if (token) {
-      setIsVerifying(true);
-      // Verifikasi token ke Supabase
-      supabase.auth.getUser(token).then(({ data, error }) => {
-        if (data?.user) {
-          console.log("User terverifikasi:", data.user);
-          // Pre-fill form (Mapping asumsikan metadata profil)
-          setFormData(prev => ({
-            ...prev,
-            fullName: data.user.user_metadata?.full_name || data.user.user_metadata?.name || "",
-            email: data.user.email || "",
-          }));
-        } else if (error) {
-          console.error("Gagal verifikasi token:", error.message);
-        }
-        setIsVerifying(false);
-      });
-      
-      // Bersihkan token dari URL
-      window.history.replaceState({}, '', window.location.pathname);
+    if (!authLoading && !isLoggedIn) {
+      handleLogin();
     }
-  }, []);
+  }, [authLoading, isLoggedIn, handleLogin]);
+
+  useEffect(() => {
+    if (user) {
+      setFormData(prev => ({
+        ...prev,
+        fullName: user.user_metadata?.full_name || user.user_metadata?.name || "",
+        email: user.email || "",
+      }));
+    }
+  }, [user]);
+
+  if (authLoading || !isLoggedIn) {
+    return (
+      <div className="min-vh-100 bgn-4 d-center flex-column gap-4">
+        <div className="ti ti-loader animate-spin display-four tcp-1"></div>
+        <p className="tcn-6">Memverifikasi sesi Anda...</p>
+      </div>
+    );
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
