@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
 
 interface TournamentCardProps {
   id: number;
@@ -45,6 +47,9 @@ export default function TournamentCard({
 
   const detailHref = link || `/competitions/${slug || id}`;
   const registerHref = `/competitions/${slug || id}/register`;
+
+  const { isLoggedIn } = useAuth();
+  const router = useRouter();
 
   useEffect(() => {
     if (textRef.current) {
@@ -197,13 +202,25 @@ export default function TournamentCard({
             <i className="ti ti-info-circle"></i>
             <span>Detail</span>
           </Link>
-          <Link
-            href={registerHref}
-            className="gps-btn-primary flex-grow-1 d-flex align-items-center justify-content-center gap-2"
+          <button
+            onClick={() => {
+              if (!isLoggedIn) {
+                const returnUrl = `https://gameforsmart.com/competitions/${slug || id}/register`;
+                window.location.href = `https://app.gameforsmart.com/login?redirect=${encodeURIComponent(returnUrl)}`;
+              } else {
+                router.push(registerHref);
+              }
+            }}
+            className="gps-btn-primary flex-grow-1 d-flex align-items-center justify-content-center gap-2 border-0 bg-transparent"
+            style={{ 
+              background: "linear-gradient(135deg, #ea580c 0%, #f97316 100%)",
+              color: "#fff",
+              cursor: "pointer"
+            }}
           >
             <i className="ti ti-pencil-plus"></i>
             <span className="fs-six">Daftar</span>
-          </Link>
+          </button>
         </div>
       </div>
       <style jsx>{`

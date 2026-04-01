@@ -1,7 +1,10 @@
+"use client";
 // components/features/competitions/competition-detail/CompetitionHeroContent.tsx
 
 import Link from "next/link";
 import Breadcrumbs from "@/components/shared/Breadcrumbs";
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
 
 interface CompetitionHeroContentProps {
   title: string;
@@ -16,6 +19,9 @@ export default function CompetitionHeroContent({
   videoUrl,
   onOpenVideo,
 }: CompetitionHeroContentProps) {
+  const { isLoggedIn } = useAuth();
+  const router = useRouter();
+
   return (
     <>
       <div className="gps-meta">
@@ -30,12 +36,19 @@ export default function CompetitionHeroContent({
         </div>
 
         <div className="gps-actions-row">
-          <Link
-            href={`/competitions/${slug}/register`}
+          <button
+            onClick={() => {
+              if (!isLoggedIn) {
+                const returnUrl = `https://gameforsmart.com/competitions/${slug}/register`;
+                window.location.href = `https://app.gameforsmart.com/login?redirect=${encodeURIComponent(returnUrl)}`;
+              } else {
+                router.push(`/competitions/${slug}/register`);
+              }
+            }}
             className="gps-btn-primary"
           >
             Daftar Sekarang <i className="ti ti-chevron-right" />
-          </Link>
+          </button>
 
           {videoUrl && (
             <button className="gps-btn-trailer" onClick={onOpenVideo}>

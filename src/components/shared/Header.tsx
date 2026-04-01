@@ -274,10 +274,10 @@ export default function Header() {
                 ) : (
                   /* ── NOT LOGGED IN: Login + Register ── */
                   <div className="auth-btn-group d-flex align-items-center gap-3">
-                    <Link href="/login" className="btn-login">
+                    <Link href="https://app.gameforsmart.com/login" className="btn-login">
                       Masuk
                     </Link>
-                    <Link href="/register" className="btn-register">
+                    <Link href="https://app.gameforsmart.com/register" className="btn-register">
                       Daftar
                     </Link>
                   </div>

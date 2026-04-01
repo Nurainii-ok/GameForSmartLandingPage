@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { tournamentsData } from "@/data/tournamentsData";
 import {
@@ -13,6 +15,8 @@ import {
 } from "lucide-react";
 
 export default function TournamentSection() {
+  const { isLoggedIn } = useAuth();
+  const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<any>(null);
 
@@ -224,12 +228,19 @@ export default function TournamentSection() {
                           {/* CTA + SOCIAL PROOF */}
                           <div>
                             <div className="flex flex-wrap gap-3 mb-5">
-                              <Link
-                                href={`/competitions/${tournament.slug}/register`}
+                              <button
+                                onClick={() => {
+                                  if (!isLoggedIn) {
+                                    const returnUrl = `https://gameforsmart.com/competitions/${tournament.slug}/register`;
+                                    window.location.href = `https://app.gameforsmart.com/login?redirect=${encodeURIComponent(returnUrl)}`;
+                                  } else {
+                                    router.push(`/competitions/${tournament.slug}/register`);
+                                  }
+                                }}
                                 className="gps-btn-primary whitespace-nowrap flex-1 text-center"
                               >
                                 Daftar
-                              </Link>
+                              </button>
                               <Link
                                 href={tournament.href}
                                 className="gps-btn-outline whitespace-nowrap inline-flex items-center gap-1 group"

@@ -372,7 +372,7 @@ export default function Banner() {
                       </div>
                       <div className="col-lg-6 position-relative d-none d-lg-block" style={{ zIndex: 10 }}>
                         <div data-swiper-parallax="-500" className="banner-characters position-relative d-flex align-items-center justify-content-center" style={{ minHeight: 340 }}>
-                          <img src="/assets/img/new-boy-mascot.png" alt="Mascot" className="float-mascot" style={{ height: 400, width: "auto", zIndex: 20, filter: "drop-shadow(0 0 30px rgba(255,140,0,0.3))", borderRadius: 30, transform: "scale(1.1) translateY(5px)", objectFit: "contain" }} />
+                          <img src="/assets/img/new-boy-mascot-removebg-preview.png" alt="Mascot" className="float-mascot" style={{ height: 400, width: "auto", zIndex: 20, filter: "drop-shadow(0 0 30px rgba(255,140,0,0.3))", borderRadius: 30, transform: "scale(1.1) translateY(5px)", objectFit: "contain" }} />
                         </div>
                       </div>
                     </div>
@@ -426,7 +426,7 @@ export default function Banner() {
                       </div>
                       <div className="col-lg-6 position-relative d-none d-lg-block" style={{ zIndex: 10 }}>
                         <div data-swiper-parallax="-500" className="banner-characters position-relative d-flex align-items-center justify-content-center" style={{ minHeight: 340 }}>
-                          <img src="/assets/img/new-boy-mascot.png" alt="Mascot" className="float-mascot" style={{ height: 400, width: "auto", zIndex: 20, filter: "drop-shadow(0 0 30px rgba(255,140,0,0.3))", borderRadius: 30, transform: "scale(1.1) translateY(5px)", objectFit: "contain" }} />
+                          <img src="/assets/img/new-boy-mascot-removebg-preview.png" alt="Mascot" className="float-mascot" style={{ height: 400, width: "auto", zIndex: 20, filter: "drop-shadow(0 0 30px rgba(255,140,0,0.3))", borderRadius: 30, transform: "scale(1.1) translateY(5px)", objectFit: "contain" }} />
                         </div>
                       </div>
                     </div>

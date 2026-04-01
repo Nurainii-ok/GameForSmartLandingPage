@@ -1,6 +1,9 @@
+"use client";
 // components/features/competitions/competition-detail/CompetitionInfoCard.tsx
 
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
 
 interface CompetitionInfoCardProps {
   slug: string;
@@ -23,6 +26,9 @@ export default function CompetitionInfoCard({
   currentRegistered,
   maxQuota,
 }: CompetitionInfoCardProps) {
+  const { isLoggedIn } = useAuth();
+  const router = useRouter();
+
   const progressPercent = Math.min((currentRegistered / maxQuota) * 100, 100);
   const isFull = currentRegistered >= maxQuota;
   const slotsLeft = maxQuota - currentRegistered;
@@ -237,9 +243,16 @@ export default function CompetitionInfoCard({
               Kuota Penuh
             </button>
           ) : (
-            <Link
-              href={`/competitions/${slug}/register`}
-              className="d-flex align-items-center justify-content-center gap-2 w-100 fw-bold text-decoration-none text-white rounded-3"
+            <button
+              onClick={() => {
+                if (!isLoggedIn) {
+                  const returnUrl = `https://gameforsmart.com/competitions/${slug}/register`;
+                  window.location.href = `https://app.gameforsmart.com/login?redirect=${encodeURIComponent(returnUrl)}`;
+                } else {
+                  router.push(`/competitions/${slug}/register`);
+                }
+              }}
+              className="d-flex align-items-center justify-content-center gap-2 w-100 fw-bold text-decoration-none text-white rounded-3 border-0"
               style={{
                 background:
                   "linear-gradient(135deg, #ff6a00 0%, #ff8c00 60%, #e07800 100%)",
@@ -248,17 +261,18 @@ export default function CompetitionInfoCard({
                 letterSpacing: "0.02em",
                 boxShadow: "0 4px 20px rgba(255,140,0,0.4)",
                 transition: "all 0.2s ease",
+                cursor: "pointer",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow =
+                (e.currentTarget as HTMLButtonElement).style.boxShadow =
                   "0 6px 28px rgba(255,140,0,0.6)";
-                (e.currentTarget as HTMLAnchorElement).style.transform =
+                (e.currentTarget as HTMLButtonElement).style.transform =
                   "translateY(-1px)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow =
+                (e.currentTarget as HTMLButtonElement).style.boxShadow =
                   "0 4px 20px rgba(255,140,0,0.4)";
-                (e.currentTarget as HTMLAnchorElement).style.transform =
+                (e.currentTarget as HTMLButtonElement).style.transform =
                   "translateY(0)";
               }}
             >
@@ -276,7 +290,7 @@ export default function CompetitionInfoCard({
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
-            </Link>
+            </button>
           )}
 
           {/* ── Sub-text ── */}
