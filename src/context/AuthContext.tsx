@@ -32,7 +32,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const handleLogout = () => {
     clearAuth();
-    window.location.reload();
+    window.location.href = "/login";
   };
 
   const verifyToken = async (token: string) => {

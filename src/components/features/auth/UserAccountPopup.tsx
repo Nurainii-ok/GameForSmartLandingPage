@@ -14,11 +14,10 @@ export default function UserAccountPopup({
   const { user, handleLogout } = useAuth();
   const router = useRouter();
 
-  const onLogout = async () => {
+  const onLogout = () => {
     try {
-      await handleLogout(); // pastikan logout selesai
       if (onClose) onClose(); // tutup popup
-      router.replace("/login"); // redirect ke login
+      handleLogout(); // handleLogout sekarang menangani navigasi ke /login
     } catch (err) {
       console.error("Logout error:", err);
     }
