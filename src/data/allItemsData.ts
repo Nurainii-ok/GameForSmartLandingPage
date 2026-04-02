@@ -138,7 +138,13 @@ Jawab pertanyaan dengan cepat sebelum waktu habis! Mode Kecepatan Kilat memberik
         ],
         videoUrl: "https://www.youtube.com/embed/MmB9b5njVbA",
         playUrl: "https://spacequiz.gameforsmart.com",
-        screenshots: ["/images/spacequiz.webp", "/images/crazyrace.webp", "/assets/img/game-3.png"],
+        screenshots: [
+            "/assets/img/SpaceQuiz/photo_2026-04-01_15-49-22.webp",
+            "/assets/img/SpaceQuiz/photo_2026-04-01_20-15-32.webp",
+            "/assets/img/SpaceQuiz/photo_2026-04-01_20-15-32 (2).webp",
+            "/assets/img/SpaceQuiz/photo_2026-04-01_20-15-33.webp",
+            "/assets/img/SpaceQuiz/photo_2026-04-01_20-15-33 (2).webp"
+        ],
         features: [
             { icon: "ti ti-planet", title: "500+ Soal Luar Angkasa", description: "Bank soal komprehensif mencakup astronomi, fisika kosmik, sejarah penjelajahan antariksa, dan teknologi luar angkasa." },
             { icon: "ti ti-clock-bolt", title: "Mode Kecepatan Kilat", description: "Jawab pertanyaan sebelum waktu habis — semakin cepat jawabanmu, semakin besar bonusnya." },

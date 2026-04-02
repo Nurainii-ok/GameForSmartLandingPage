@@ -62,7 +62,13 @@ export const gamesData = [
         href: "/games/3", 
         playUrl: "https://spacequiz.gameforsmart.com",
         description: "Eksplorasi wawasan luar angkasamu dan jawab pertanyaan-pertanyaan mematikan.",
-        screenshots: ["/images/spacequiz.webp", "/images/crazyrace.webp", "/assets/img/game-3.png"]
+        screenshots: [
+            "/assets/img/SpaceQuiz/photo_2026-04-01_15-49-22.webp",
+            "/assets/img/SpaceQuiz/photo_2026-04-01_20-15-32.webp",
+            "/assets/img/SpaceQuiz/photo_2026-04-01_20-15-32 (2).webp",
+            "/assets/img/SpaceQuiz/photo_2026-04-01_20-15-33.webp",
+            "/assets/img/SpaceQuiz/photo_2026-04-01_20-15-33 (2).webp"
+        ]
     },
     { 
         id: 4, 
