@@ -14,9 +14,14 @@ export default function UserAccountPopup({
   const { user, handleLogout } = useAuth();
   const router = useRouter();
 
-  const onLogout = () => {
-    handleLogout();
-    if (onClose) onClose();
+  const onLogout = async () => {
+    try {
+      await handleLogout(); // pastikan logout selesai
+      if (onClose) onClose(); // tutup popup
+      router.replace("/login"); // redirect ke login
+    } catch (err) {
+      console.error("Logout error:", err);
+    }
   };
 
   return (
@@ -26,9 +31,13 @@ export default function UserAccountPopup({
           <div className="user-info d-between">
             <div className="d-flex flex-column">
               <span className="user-name fs-five text-white">
-                {user?.user_metadata?.full_name || user?.user_metadata?.name || user?.email?.split('@')[0]}
+                {user?.user_metadata?.full_name ||
+                  user?.user_metadata?.name ||
+                  user?.email?.split("@")[0]}
               </span>
-              <span className="user-email fs-xs tcn-6">{user?.email}</span>
+              <span className="user-email fs-xs tcn-6">
+                {user?.email}
+              </span>
             </div>
             <div className="badge d-flex align-items-center">
               <i className="ti ti-medal fs-three fs-normal tcp-2"></i>
@@ -36,13 +45,18 @@ export default function UserAccountPopup({
               <i className="ti ti-medal fs-three fs-normal tcp-2"></i>
             </div>
           </div>
+
           <div className="user-level">
             <span className="level-title tcn-6">Level</span>
             <div className="level-bar my-1">
-              <div className="level-progress" style={{ width: "30%" }}></div>
+              <div
+                className="level-progress"
+                style={{ width: "30%" }}
+              ></div>
             </div>
           </div>
         </div>
+
         <Button
           asChild
           variant="ghost"
@@ -51,7 +65,9 @@ export default function UserAccountPopup({
         >
           <Link href="/profile">Lihat Profil</Link>
         </Button>
+
         <div className="hr-line line3 my-2"></div>
+
         <Button
           variant="ghost"
           className="w-full justify-start account-item text-danger p-2 hover-lift text-base font-normal hover:bg-[#1a1a1a] hover:text-danger"
