@@ -56,14 +56,14 @@ export default function UserAccountPopup({
           </div>
         </div>
 
-        <Button
+       {/*  <Button
           asChild
           variant="ghost"
           className="w-full justify-start account-item p-2 text-white hover-lift text-base font-normal hover:bg-[#1a1a1a] hover:text-white"
           onClick={onClose}
         >
           <Link href="/profile">Lihat Profil</Link>
-        </Button>
+        </Button> */}
 
         <div className="hr-line line3 my-2"></div>
 
