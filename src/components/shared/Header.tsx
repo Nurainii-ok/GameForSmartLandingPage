@@ -30,7 +30,12 @@ export default function Header() {
   };
 
   const displayName = user?.user_metadata?.full_name || user?.user_metadata?.name || user?.email?.split('@')[0] || "User";
-  const avatarUrl = profile?.avatar_url || user?.user_metadata?.avatar_url;
+  
+  let avatarUrl = profile?.avatar_url;
+  // Ignore local default images if they somehow got stored in the database
+  if (!avatarUrl || avatarUrl.includes('/assets/img/')) {
+    avatarUrl = null;
+  }
 
   const headerRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);

@@ -45,7 +45,10 @@ export default function ProfilePage() {
   };
 
   const displayName = user?.user_metadata?.full_name || user?.user_metadata?.name || user?.email?.split('@')[0] || "User";
-  const avatarUrl = profile?.avatar_url || user?.user_metadata?.avatar_url;
+  let avatarUrl = profile?.avatar_url;
+  if (!avatarUrl || avatarUrl.includes('/assets/img/')) {
+    avatarUrl = null;
+  }
 
   useEffect(() => { document.title = "Profil | GameForSmart"; }, []);
 
