@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "next start -p 3007",
     "dev": "next dev",
     "build": "next build",
     "lint": "next lint",
