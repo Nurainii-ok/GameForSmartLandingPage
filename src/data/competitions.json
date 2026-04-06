@@ -2,7 +2,7 @@
   {
     "id": 21,
     "type": "Educational",
-    "title": "Lomba Cerdas Cermat – Malang Raya",
+    "title": "Lomba Cerdas Cermat Online – Malang Raya",
     "subtitle": "Edisi Khusus Jawa Timur",
     "image": "/images/competitions/malangraya.webp",
     "prizeMoney": "Rp 5.000.000",
@@ -32,7 +32,7 @@
   {
     "id": 22,
     "type": "Provincial",
-    "title": "Lomba Cerdas Cermat – Jawa Timur",
+    "title": "Lomba Cerdas Cermat Online – Jawa Timur",
     "subtitle": "Tingkat Provinsi",
     "image": "/images/competitions/jawatimur.webp",
     "prizeMoney": "Rp 10.000.000",
@@ -62,7 +62,7 @@
   {
     "id": 23,
     "type": "National",
-    "title": "Lomba Cerdas Cermat – Nasional",
+    "title": "Lomba Cerdas Cermat Online – Nasional",
     "subtitle": "Kejuaraan Indonesia Bersinar",
     "image": "/images/competitions/nasional.webp",
     "prizeMoney": "Rp 20.000.000",
