@@ -285,7 +285,7 @@ export default function Header() {
                       onClick={() => { setIsProfileOpen(!isProfileOpen); setIsNtfOpen(false); setIsSearchActive(false); }}
                     >
                       <div className="profile-wrapper d-flex align-items-center gap-3">
-                        <div className="img-area overflow-hidden d-flex align-items-center justify-content-center" style={{ width: '44px', height: '44px', borderRadius: '50%', backgroundColor: '#1e2130' }}>
+                        <div className="img-area overflow-hidden d-flex align-items-center justify-content-center flex-shrink-0" style={{ width: '44px', height: '44px', minWidth: '44px', borderRadius: '50%', backgroundColor: '#1e2130' }}>
                           {avatarUrl ? (
                             <img className="w-100 h-100" src={avatarUrl} alt="profile" style={{ objectFit: 'cover' }} />
                           ) : (
