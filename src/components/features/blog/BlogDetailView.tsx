@@ -6,10 +6,10 @@ import Sidebar from "@/components/shared/Sidebar";
 import Footer from "@/components/shared/Footer";
 import blogDataRaw from "@/data/blog.json";
 import { BlogPost } from "@/data/types";
-
-const blogData = blogDataRaw as BlogPost[];
 import BlogCard from "./BlogCard";
 import Breadcrumbs from "@/components/shared/Breadcrumbs";
+
+const blogData = blogDataRaw as BlogPost[];
 
 interface BlogDetailViewProps {
   post: BlogPost;
