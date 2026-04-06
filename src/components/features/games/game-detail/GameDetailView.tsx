@@ -7,6 +7,7 @@ import { useState } from 'react';
 import Header from "@/components/shared/Header";
 import Sidebar from "@/components/shared/Sidebar";
 import { TournamentInfo } from '@/data/types';
+// Hot reload trigger
 import gamesRaw from '@/data/games.json';
 const gamesData = gamesRaw as TournamentInfo[];
 

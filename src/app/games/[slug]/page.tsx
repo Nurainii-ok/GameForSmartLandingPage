@@ -32,6 +32,7 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
 }
 
 export default async function Page(props: { params: Promise<{ slug: string }> }) {
+    console.log("Reloading games data for hot reload...");
     const params = await props.params;
     const item = allItemsData.find(
         (t) => t.slug === params.slug || String(t.id) === String(params.slug)
