@@ -128,7 +128,7 @@ export default function RegistrationView({
           const currentUrl = new URL(window.location.href);
           currentUrl.searchParams.set("from", "login");
           const nextUrl = encodeURIComponent(currentUrl.toString());
-          window.location.href = `${authUrl}?next=${nextUrl}`;
+          window.location.href = `${authUrl}?redirect=${nextUrl}`;
         }
       }
     }
@@ -186,7 +186,7 @@ export default function RegistrationView({
               const cleanUrl = new URL(window.location.href);
               cleanUrl.searchParams.delete("from"); // Hapus agar bisa auto-redirect lagi
               const nextUrl = encodeURIComponent(cleanUrl.toString());
-              window.location.href = `${authUrl}?next=${nextUrl}`;
+              window.location.href = `${authUrl}?redirect=${nextUrl}`;
             }}
             className="btn-half-border position-relative d-inline-flex py-4 bgp-1 px-8 rounded-pill text-nowrap fw-bold transition-all hover-scale border-none text-white fs-five"
           >
