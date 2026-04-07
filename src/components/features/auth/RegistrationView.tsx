@@ -123,12 +123,26 @@ export default function RegistrationView({
         // 1. Ada token di URL (sedang proses verifikasi)
         // 2. Ada param "from=login" (sudah pernah redirect, cegah loop)
         if (!params.has("token") && !params.has("from")) {
-          const authUrl = process.env.NEXT_PUBLIC_AUTH_BASE_URL || 'https://app.gameforsmart.com/login';
-          // Tambahkan "from=login" ke URL kembali agar tidak redirect lagi jika gagal
+          // --- [VERCEL TESTING: DIRECT OAUTH] ---
+          // Gunakan direct Supabase auth untuk menghindari isu cross-domain Vercel <-> gameforsmart.com
           const currentUrl = new URL(window.location.href);
           currentUrl.searchParams.set("from", "login");
+          
+          supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+              redirectTo: currentUrl.toString()
+            }
+          });
+
+          // --- [ROLLBACK PRODUKSI: REDIRECT KE PORTAL] ---
+          // Jika server gameforsmart.com sudah diperbaiki, nyalakan kode di bawah ini
+          // dan matikan blok [VERCEL TESTING] di atas:
+          /*
+          const authUrl = process.env.NEXT_PUBLIC_AUTH_BASE_URL || 'https://app.gameforsmart.com/login';
           const nextUrl = encodeURIComponent(currentUrl.toString());
           window.location.href = `${authUrl}?redirect=${nextUrl}`;
+          */
         }
       }
     }
@@ -181,12 +195,26 @@ export default function RegistrationView({
             Anda perlu masuk ke akun Anda untuk mendaftar kompetisi ini.
           </p>
           <Button
-            onClick={() => {
+            onClick={async () => {
+              // --- [VERCEL TESTING: DIRECT OAUTH] ---
+              const cleanUrl = new URL(window.location.href);
+              cleanUrl.searchParams.delete("from"); // Bersihkan jejak lama
+              
+              await supabase.auth.signInWithOAuth({
+                provider: 'google',
+                options: {
+                  redirectTo: cleanUrl.toString() // Kembali ke titik ini
+                }
+              });
+
+              // --- [ROLLBACK PRODUKSI: REDIRECT KE PORTAL] ---
+              /*
               const authUrl = process.env.NEXT_PUBLIC_AUTH_BASE_URL || 'https://app.gameforsmart.com/login';
               const cleanUrl = new URL(window.location.href);
-              cleanUrl.searchParams.delete("from"); // Hapus agar bisa auto-redirect lagi
+              cleanUrl.searchParams.delete("from");
               const nextUrl = encodeURIComponent(cleanUrl.toString());
               window.location.href = `${authUrl}?redirect=${nextUrl}`;
+              */
             }}
             className="btn-half-border position-relative d-inline-flex py-4 bgp-1 px-8 rounded-pill text-nowrap fw-bold transition-all hover-scale border-none text-white fs-five"
           >
