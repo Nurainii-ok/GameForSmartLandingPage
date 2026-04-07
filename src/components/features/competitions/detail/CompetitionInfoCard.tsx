@@ -255,7 +255,7 @@ export default function CompetitionInfoCard({
                   // Trigger login (atau manual redirect)
                   const authUrl = process.env.NEXT_PUBLIC_AUTH_BASE_URL || 'https://app.gameforsmart.com/login';
                   const nextUrl = encodeURIComponent(`${window.location.origin}/competitions/${slug}/register`);
-                  window.location.href = `${authUrl}?next=${nextUrl}`;
+                  window.location.href = `${authUrl}?redirect=${nextUrl}`;
                 } else {
                   router.push(`/competitions/${slug}/register`);
                 }
