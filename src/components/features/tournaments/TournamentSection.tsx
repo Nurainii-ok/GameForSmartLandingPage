@@ -295,13 +295,7 @@ export default function TournamentSection() {
                               <button
                                 suppressHydrationWarning
                                 onClick={() => {
-                                  if (!isLoggedIn) {
-                                    const authUrl = process.env.NEXT_PUBLIC_AUTH_BASE_URL || 'https://app.gameforsmart.com/login';
-                                    const nextUrl = encodeURIComponent(`${window.location.origin}/competitions/${tournament.slug}/register`);
-                                    window.location.href = `${authUrl}?redirect=${nextUrl}`;
-                                  } else {
-                                    router.push(`/competitions/${tournament.slug}/register`);
-                                  }
+                                  router.push(`/competitions/${tournament.slug}/register`);
                                 }}
                                 className="gps-btn-primary whitespace-nowrap flex-1 text-center"
                               >

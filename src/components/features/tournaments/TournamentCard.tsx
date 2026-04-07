@@ -166,13 +166,7 @@ export default function TournamentCard({
           <button
             suppressHydrationWarning
             onClick={() => {
-              if (!isLoggedIn) {
-                const authUrl = process.env.NEXT_PUBLIC_AUTH_BASE_URL || 'https://app.gameforsmart.com/login';
-                const nextUrl = encodeURIComponent(`${window.location.origin}${registerHref}`);
-                window.location.href = `${authUrl}?redirect=${nextUrl}`;
-              } else {
-                router.push(registerHref);
-              }
+              router.push(registerHref);
             }}
             className="gps-btn-primary py-2.5 flex-1 text-xs font-bold"
           >
