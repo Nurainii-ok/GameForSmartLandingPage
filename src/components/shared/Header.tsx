@@ -356,27 +356,6 @@ export default function Header() {
           padding: 9px 22px;
           border-radius: 999px;
           font-size: 14px;
-          font-weight: 600;
-          color: rgba(255, 255, 255, 0.85);
-          background: transparent;
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          text-decoration: none;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          white-space: nowrap;
-        }
-        .btn-login:hover {
-          color: #fff;
-          border-color: rgba(255, 255, 255, 0.4);
-          background: rgba(255, 255, 255, 0.05);
-          transform: translateY(-1px);
-        }
-
-        .btn-register {
-          display: inline-flex;
-          align-items: center;
-          padding: 9px 24px;
-          border-radius: 999px;
-          font-size: 14px;
           font-weight: 700;
           color: #fff;
           background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
@@ -386,11 +365,32 @@ export default function Header() {
           white-space: nowrap;
           box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35);
         }
-        .btn-register:hover {
+        .btn-login:hover {
           background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
           transform: translateY(-2px) scale(1.02);
           box-shadow: 0 6px 20px rgba(234, 88, 12, 0.5);
           color: #fff;
+        }
+
+        .btn-register {
+          display: inline-flex;
+          align-items: center;
+          padding: 9px 24px;
+          border-radius: 999px;
+          font-size: 14px;
+          font-weight: 600;
+          color: rgba(255, 255, 255, 0.85);
+          background: transparent;
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          text-decoration: none;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          white-space: nowrap;
+        }
+        .btn-register:hover {
+          color: #fff;
+          border-color: rgba(255, 255, 255, 0.4);
+          background: rgba(255, 255, 255, 0.05);
+          transform: translateY(-1px);
         }
 
         @media (max-width: 575px) {
