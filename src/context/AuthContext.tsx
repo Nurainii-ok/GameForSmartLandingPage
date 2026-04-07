@@ -144,9 +144,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     initAuth();
   }, []);
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     const currentUrl = window.location.href;
+    
+    // --- [VERCEL TESTING: DIRECT OAUTH] ---
+    await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: currentUrl
+      }
+    });
+
+    // --- [ROLLBACK PRODUKSI: REDIRECT KE PORTAL] ---
+    // Jika server gameforsmart.com (app.gameforsmart.com) sudah diperbaiki dan
+    // bisa mengirim token di url, nyalakan kode di bawah ini dan matikan yang atas:
+    /*
     window.location.href = `${AUTH_BASE_URL}/login?redirect=${encodeURIComponent(currentUrl)}`;
+    */
   };
 
   const handleRegister = () => {
