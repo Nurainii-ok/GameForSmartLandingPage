@@ -246,19 +246,7 @@ export default function CompetitionInfoCard({
             <button
               suppressHydrationWarning
               onClick={() => {
-                if (!isLoggedIn) {
-                  // Jika belum login, redirect paksa ke halaman login Supabase
-                  const { handleLogin } = (window as any).__GFS_AUTH_CONTEXT__ || {};
-                  
-                  // Kalau context belum mount, cara paling aman redirect manual via localstorage mark
-                  sessionStorage.setItem("gfs_login_redirected", "true");
-                  // Trigger login (atau manual redirect)
-                  const authUrl = process.env.NEXT_PUBLIC_AUTH_BASE_URL || 'https://app.gameforsmart.com/login';
-                  const nextUrl = encodeURIComponent(`${window.location.origin}/competitions/${slug}/register`);
-                  window.location.href = `${authUrl}?redirect=${nextUrl}`;
-                } else {
-                  router.push(`/competitions/${slug}/register`);
-                }
+                router.push(`/competitions/${slug}/register`);
               }}
               className="d-flex align-items-center justify-content-center gap-2 w-100 fw-bold text-decoration-none text-white rounded-3 border-0"
               style={{
