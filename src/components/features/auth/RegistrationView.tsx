@@ -41,7 +41,7 @@ export default function RegistrationView({
     { href: "#", label: "Register", isLast: true },
   ];
 
-  const { user, isLoggedIn, loading: authLoading, handleLogin, profile } = useAuth();
+  const { profile, user, isLoggedIn, loading: authLoading, handleLogin } = useAuth();
 
   useEffect(() => {
     if (user) {
@@ -239,6 +239,7 @@ export default function RegistrationView({
       const isPaid = fee === "Free Entry" || fee === "Gratis";
 
       const { error } = await supabase.from('competition_participants').insert({
+        id: partId,
         competition_id: competitionSlug,
         user_id: profile.id,
         category: formData.category,
@@ -254,6 +255,8 @@ export default function RegistrationView({
       setIsSuccess(true);
     } catch (err) {
       alert("Gagal mendaftar. Silakan coba lagi nanti.");
+      console.error("Registration Error:", err);
+      console.log("Profile:", profile);
     } finally {
       setIsSubmitting(false);
     }
