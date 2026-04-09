@@ -47,81 +47,124 @@ export default function GameMeta({
 
   return (
     <>
-      <div className="gps-meta">
-        {/* Title/Logo & Subtitle */}
-        {logo ? (
-          <div className="gps-logo-wrap">
-            <img src={logo} alt={title} className="gps-logo" />
+      <div className="gps-meta-container">
+        {/* DESKTOP LAYOUT */}
+        <div className="gps-desktop-meta d-none d-md-flex flex-column gps-meta w-100">
+          {/* Title/Logo & Subtitle */}
+          {logo ? (
+            <div className="gps-logo-wrap">
+              <img src={logo} alt={title} className="gps-logo" />
+            </div>
+          ) : (
+            <h1 className="gps-title">{title}</h1>
+          )}
+          <div className="gps-subtitle">
+              <span className="gps-developer">Gameforsmart.com</span>
+              <p className="gps-ad-info">Gratis dimainkan · Langsung di browser</p>
           </div>
-        ) : (
-          <h1 className="gps-title">{title}</h1>
-        )}
-        <div className="gps-subtitle">
-            <span className="gps-developer">Gameforsmart.com</span>
-            <p className="gps-ad-info">Gratis dimainkan · Langsung di browser</p>
+
+          {/* Stats Row containing Icon */}
+          <div className="gps-stats-row">
+              <div className="gps-meta-icon">
+                  <img src={image} alt={title} />
+              </div>
+
+              <div className="gps-stats-blocks">
+                  <div className="gps-stat-item">
+                      <span className="gps-stat-val">
+                          {rating}
+                          <span style={{ color: '#ff8c00', marginLeft: '2px' }}>★</span>
+                      </span>
+                      <span className="gps-stat-label">{players} ulasan</span>
+                  </div>
+                  <div className="gps-stat-divider" />
+                  <div className="gps-stat-item">
+                      <span className="gps-stat-val">{players}</span>
+                      <span className="gps-stat-label">Pemain aktif</span>
+                  </div>
+                  <div className="gps-stat-divider" />
+                  <div className="gps-stat-item">
+                      <span className="gps-stat-val" style={{ display: 'flex', justifyContent: 'center' }}>
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <circle cx="12" cy="12" r="10"></circle>
+                              <line x1="2" y1="12" x2="22" y2="12"></line>
+                              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                          </svg>
+                      </span>
+                      <span className="gps-stat-label">Gratis</span>
+                  </div>
+              </div>
+          </div>
+
+          {/* Buttons Row */}
+          <div className="gps-actions-row">
+              <div className="gps-actions-start">
+                  <Link href={playUrl || `/play/${slug}`} className="gps-btn-primary" target={playUrl ? "_blank" : undefined} rel={playUrl ? "noopener noreferrer" : undefined}>
+                      Main Sekarang
+                  </Link>
+
+                  <button className="gps-btn-text" onClick={handleShare}>
+                      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z" /></svg>
+                      Bagikan
+                  </button>
+
+                  {videoUrl && (
+                      <button className="gps-btn-trailer" onClick={onOpenTrailer}>
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M8 5v14l11-7z" />
+                          </svg>
+                          Cuplikan
+                      </button>
+                  )}
+              </div>
+          </div>
         </div>
 
-        {/* Stats Row containing Icon */}
-        <div className="gps-stats-row">
-            <div className="gps-meta-icon">
-                <img src={image} alt={title} />
-            </div>
+        {/* MOBILE LAYOUT */}
+        <div className="gps-mobile-meta d-flex d-md-none flex-column w-100">
+             <div className="d-flex align-items-center gap-4 mb-4">
+                 <div className="flex-shrink-0" style={{ width: '80px', height: '80px', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 4px 12px rgba(0,0,0,0.3)' }}>
+                     <img src={image} alt={title} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                 </div>
+                 <div className="d-flex flex-column flex-grow-1 text-start">
+                     {logo ? (
+                         <img src={logo} alt={title} style={{ maxHeight: '40px', objectFit: 'contain', marginBottom: '8px', objectPosition: 'left' }} />
+                     ) : (
+                         <h1 className="m-0 text-white" style={{ fontSize: '1.25rem', lineHeight: '1.2' }}>{title}</h1>
+                     )}
+                     <span className="mt-1" style={{ color: '#7eb8f7', fontSize: '1rem', fontWeight: 500 }}>Gameforsmart.com</span>
+                     <p className="m-0 mt-1" style={{ fontSize: '0.8rem', color: '#9aa0a6' }}>Gratis dimainkan • Langsung di browser</p>
+                 </div>
+             </div>
 
-            <div className="gps-stats-blocks">
-                <div className="gps-stat-item">
-                    <span className="gps-stat-val">
-                        {rating}
-                        <span style={{ color: '#ff8c00', marginLeft: '2px' }}>★</span>
-                    </span>
-                    <span className="gps-stat-label">{players} ulasan</span>
-                </div>
-                <div className="gps-stat-divider" />
-                <div className="gps-stat-item">
-                    <span className="gps-stat-val">{players}</span>
-                    <span className="gps-stat-label">Pemain aktif</span>
-                </div>
-                <div className="gps-stat-divider" />
-                <div className="gps-stat-item">
-                    <span className="gps-stat-val" style={{ display: 'flex', justifyContent: 'center' }}>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="2" y1="12" x2="22" y2="12"></line>
-                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                        </svg>
-                    </span>
-                    <span className="gps-stat-label">Gratis</span>
-                </div>
-            </div>
-        </div>
-
-        {/* Buttons Row */}
-        <div className="gps-actions-row">
-            <div className="gps-actions-start">
-                <Link href={playUrl || `/play/${slug}`} className="gps-btn-primary" target={playUrl ? "_blank" : undefined} rel={playUrl ? "noopener noreferrer" : undefined}>
-                    Main Sekarang
-                </Link>
-
-                <button className="gps-btn-text" onClick={handleShare}>
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z" /></svg>
-                    Bagikan
-                </button>
-
-                {videoUrl && (
-                    <button className="gps-btn-trailer" onClick={onOpenTrailer}>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M8 5v14l11-7z" />
-                        </svg>
-                        Cuplikan
+             <div className="d-flex gap-3 w-100 mb-2">
+                 {videoUrl ? (
+                    <button 
+                      className="btn w-50 fw-semibold rounded-pill d-flex align-items-center justify-content-center gap-2" 
+                      style={{ backgroundColor: 'transparent', color: '#fff', border: '1px solid rgba(255,255,255,0.2)', padding: '10px 0' }}
+                      onClick={onOpenTrailer}
+                    >
+                       Cuplikan
                     </button>
-                )}
-            </div>
+                 ) : (
+                    <button 
+                      className="btn w-50 fw-semibold rounded-pill d-flex align-items-center justify-content-center gap-2" 
+                      style={{ backgroundColor: 'transparent', color: '#fff', border: '1px solid rgba(255,255,255,0.2)', padding: '10px 0' }}
+                      onClick={handleShare}
+                    >
+                       Bagikan
+                    </button>
+                 )}
+                 <Link 
+                    href={playUrl || `/play/${slug}`} 
+                    target={playUrl ? "_blank" : undefined}
+                    className="btn w-50 fw-bold rounded-pill d-flex align-items-center justify-content-center" 
+                    style={{ backgroundColor: '#7eb8f7', color: '#042b59', border: 'none', padding: '10px 0' }}
+                 >
+                    Mainkan
+                 </Link>
+             </div>
         </div>
-        
-        {/* <p className="gps-footer-note">
-            Google Play Games di PC diperlukan untuk menginstal game ini di Windows. Dengan
-            mendownload aplikasi dan game, kamu menyetujui <a href="#">Persyaratan Layanan Google</a> dan <a href="#">Persyaratan Layanan Google Play</a>. <a href="#">Pelajari lebih lanjut</a>.
-        </p> */}
-
       </div>
 
       <style jsx>{`

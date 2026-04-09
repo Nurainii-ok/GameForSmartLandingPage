@@ -222,6 +222,14 @@ export default function GameHero({
         }
 
         @media (max-width: 768px) {
+          .hero-section {
+            min-height: auto;
+            background: transparent;
+            padding-top: 80px; /* Leave space for main header */
+          }
+          .hero-bg {
+            display: none; /* Hide full banner on mobile for Play Store look */
+          }
           .fade-left {
             background: linear-gradient(
               to right,
@@ -235,13 +243,13 @@ export default function GameHero({
             width: 25%;
           }
           .hero-content-wrap {
-            min-height: 50vh;
+            min-height: auto;
             padding-left: clamp(16px, 4vw, 24px);
             padding-right: clamp(16px, 4vw, 24px);
           }
           .hero-content {
             max-width: 100%;
-            padding-bottom: 32px;
+            padding-bottom: 0px;
           }
         }
       `}</style>
