@@ -123,7 +123,8 @@
       "/images/games/nitro-quiz/photo_2026-03-31_18-57-18 (3).webp"
     ],
     "logo": "/images/logos/logonitroquiz.webp",
-    "slug": "5"
+    "slug": "5",
+    "isFavorite": true
   },
   {
     "id": 6,
@@ -151,7 +152,8 @@
       "/images/games/axiom/photo_2026-03-30_21-57-45.webp"
     ],
     "logo": "/images/logos/logoaxiom.webp",
-    "slug": "6"
+    "slug": "6",
+    "isFavorite": true
   },
   {
     "id": 7,
@@ -178,6 +180,7 @@
       "/images/games/zigma/photo_2026-03-30_15-49-52.webp"
     ],
     "logo": "/images/logos/logozigma.webp",
-    "slug": "7"
+    "slug": "7",
+    "isFavorite": true
   }
 ]
