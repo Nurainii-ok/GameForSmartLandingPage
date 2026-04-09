@@ -33,7 +33,7 @@ export default function BlogView() {
   return (
     <>
       <Header />
-      <main className="main-container container-fluid d-flex align-items-start pt-sm-16 pt-12 pb-20 px-0 position-relative" style={{ overflow: "visible" }}>
+      <main className="main-container container-fluid d-flex align-items-start pt-20 pb-20 px-0 position-relative" style={{ overflow: "visible" }}>
         <Sidebar />
         <article className="main-content mt-lg-10 blog-root">
           <section className="pb-120">

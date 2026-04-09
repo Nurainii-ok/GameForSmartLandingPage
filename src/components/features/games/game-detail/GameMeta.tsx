@@ -139,6 +139,8 @@ export default function GameMeta({
           color: #fff;
           margin: 0;
           line-height: 1.1;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
         }
 
         .gps-subtitle {
@@ -312,33 +314,65 @@ export default function GameMeta({
 
         @media (max-width: 768px) {
           .gps-logo-wrap {
-            max-width: 280px;
+            max-width: 200px;
           }
           .gps-logo {
-            max-height: 80px;
+            max-height: 60px;
           }
           .gps-meta {
             padding: 16px 0 0;
+            gap: 12px;
           }
           .gps-title {
-            font-size: 2rem;
+            font-size: 1.5rem;
+          }
+          .gps-stat-val {
+            font-size: 0.85rem;
+          }
+          .gps-stat-label {
+            font-size: 0.7rem;
+          }
+          .gps-meta-icon {
+            width: 56px;
+            height: 56px;
           }
           .gps-stats-row {
-            flex-direction: column;
-            align-items: flex-start;
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+          }
+          .gps-stats-blocks {
+            flex-wrap: wrap;
+            gap: 10px;
           }
           .gps-actions-start {
-             flex-direction: column;
-             align-items: stretch;
+             display: grid;
+             grid-template-columns: 1fr 1fr;
+             gap: 12px;
              width: 100%;
           }
-          .gps-btn-primary, .gps-btn-default, .gps-btn-text {
+          .gps-actions-start > :global(.gps-btn-primary), .gps-actions-start > :first-child {
+             grid-column: span 2;
              justify-content: center;
              width: 100%;
+             text-align: center;
+             order: 3;
+          }
+          .gps-btn-text {
+             order: 1;
+          }
+          .gps-btn-trailer {
+             order: 2;
+          }
+          .gps-btn-text, .gps-btn-trailer {
+             justify-content: center;
+             width: 100%;
+             padding: 10px 0; /* consistent padding */
+             font-size: 0.85rem;
           }
           .gps-actions-row {
-             flex-direction: column;
-             align-items: stretch;
+             width: 100%;
           }
         }
       `}</style>

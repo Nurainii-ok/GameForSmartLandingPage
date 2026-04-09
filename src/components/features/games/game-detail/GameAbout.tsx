@@ -178,12 +178,15 @@ export default function GameAbout({ description, genre, platform, date, features
                 /* Meta Grid */
                 .gps-meta-grid {
                     display: grid;
-                    grid-template-columns: repeat(3, 1fr);
+                    grid-template-columns: repeat(3, minmax(0, 1fr));
                     gap: 10px;
                     margin-bottom: 18px;
                 }
                 @media (max-width: 600px) {
-                    .gps-meta-grid { grid-template-columns: repeat(2, 1fr); }
+                    .gps-meta-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+                }
+                @media (max-width: 400px) {
+                    .gps-meta-grid { grid-template-columns: minmax(0, 1fr); }
                 }
 
                 .gps-meta-card {

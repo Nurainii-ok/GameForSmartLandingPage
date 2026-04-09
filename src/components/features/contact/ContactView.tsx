@@ -421,7 +421,7 @@ export default function ContactView() {
 
       <Header />
       <main
-        className="main-container container-fluid d-flex align-items-start pt-sm-20 pt-15 pb-20 px-0 position-relative"
+        className="main-container container-fluid d-flex align-items-start pt-20 pb-20 px-0 position-relative"
         style={{ overflow: "visible" }}
       >
         <Sidebar />

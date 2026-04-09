@@ -67,6 +67,8 @@ export default function GameHero({
         .hero-section {
           position: relative;
           width: 100%;
+          max-width: 100vw;
+          box-sizing: border-box;
           min-height: 70vh;
           background: #0a0c12;
           overflow: hidden;
@@ -91,7 +93,7 @@ export default function GameHero({
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: left center;
+          object-position: center center;
           display: block;
         }
 
@@ -192,6 +194,9 @@ export default function GameHero({
           display: flex;
           align-items: flex-end;
           min-height: 70vh;
+          width: 100%;
+          max-width: 100vw;
+          box-sizing: border-box;
           padding-left: calc(var(--sidebar-w, 105px) + clamp(20px, 4vw, 72px));
           padding-right: clamp(20px, 4vw, 72px);
         }
@@ -201,6 +206,7 @@ export default function GameHero({
           max-width: 480px;
           text-align: left;
           padding-bottom: 64px;
+          box-sizing: border-box;
         }
 
         @media (max-width: 1024px) {
@@ -228,8 +234,14 @@ export default function GameHero({
           .fade-right {
             width: 25%;
           }
+          .hero-content-wrap {
+            min-height: 50vh;
+            padding-left: clamp(16px, 4vw, 24px);
+            padding-right: clamp(16px, 4vw, 24px);
+          }
           .hero-content {
             max-width: 100%;
+            padding-bottom: 32px;
           }
         }
       `}</style>

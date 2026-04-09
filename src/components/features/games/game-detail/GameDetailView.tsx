@@ -179,7 +179,9 @@ export default function GameDetailView({ game }: GameDetailViewProps) {
                     min-height: 100vh;
                     color: var(--text-primary);
                     font-family: 'Outfit', 'DM Sans', system-ui, sans-serif;
-                    overflow: visible;
+                    overflow-x: hidden;
+                    max-width: 100vw;
+                    box-sizing: border-box;
                     padding-top: var(--space-xl);
                     padding-bottom: var(--space-xl);
                 }
@@ -195,6 +197,7 @@ export default function GameDetailView({ game }: GameDetailViewProps) {
                     gap: var(--space-lg);
                     padding: 0 var(--page-px) var(--space-2xl);
                     width: 100%;
+                    box-sizing: border-box;
                 }
 
                 /* ── Column widths ── */

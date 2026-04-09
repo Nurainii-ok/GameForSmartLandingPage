@@ -13,7 +13,7 @@ export default function TermsConditionPage() {
     return (
         <>
             <Header />
-            <main className="main-container container-fluid d-flex align-items-start pt-sm-16 pt-12 pb-20 px-0 position-relative" style={{ overflow: "visible" }}>
+            <main className="main-container container-fluid d-flex align-items-start pt-20 pb-20 px-0 position-relative" style={{ overflow: "visible" }}>
                 <Sidebar />
                 <article className="main-content mt-lg-10">
                     <div className="container-fluid px-lg-15 px-md-10 px-6">

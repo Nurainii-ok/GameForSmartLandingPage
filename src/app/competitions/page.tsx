@@ -145,7 +145,7 @@ export default function TournamentsPage() {
   return (
     <>
       <Header />
-      <main className="main-container container-fluid d-flex pt-16 pb-20 px-0 position-relative">
+      <main className="main-container container-fluid d-flex align-items-start pt-20 pb-20 px-0 position-relative" style={{ overflow: "visible" }}>
         <Sidebar />
         <article className="main-content mt-0">
           <section className="tournament-section pb-120">
