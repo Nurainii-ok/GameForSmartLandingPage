@@ -157,6 +157,20 @@ export default function GameSidebar({
           width: 300px;
           flex-shrink: 0;
           padding-top: 24px;
+          position: sticky;
+          top: 100px;
+          align-self: flex-start;
+          max-height: calc(100vh - 100px);
+          overflow-y: auto;
+        }
+        
+        /* Hide scrollbar for cleaner look like main sidebar */
+        .gps-sidebar-col::-webkit-scrollbar {
+          width: 4px;
+        }
+        .gps-sidebar-col::-webkit-scrollbar-thumb {
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 4px;
         }
         .gps-sidebar-card {
           background: var(--bg-surface);
