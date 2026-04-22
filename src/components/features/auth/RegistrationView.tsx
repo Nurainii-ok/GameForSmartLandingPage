@@ -359,7 +359,7 @@ export default function RegistrationView({
               method: 'POST',
               headers: { 
                 'Content-Type': 'application/json',
-                'ngrok-skip-browser-warning': 'true' // Bypass halaman peringatan ngrok
+              //  'ngrok-skip-browser-warning': 'true' // Bypass halaman peringatan ngrok
               },
               body: JSON.stringify({
                 pesertaId: partId,
