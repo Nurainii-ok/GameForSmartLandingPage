@@ -785,11 +785,49 @@ export default function GameGallery({ media, activeIndex, onSelect, onOpenVideo 
                 @media (max-width: 900px) {
                     .gps-gallery-item { width: 300px !important; }
                     .gps-lb-nav { display: none; }
-                    .gps-lb-img-wrap { max-width: 100vw; border-radius: 0; max-height: 60vh; }
-                    .gps-lb-img { border-radius: 0; }
-                    .gps-lb-topbar { padding: 16px 20px 10px; }
+                    
+                    /* Centering everything around the image */
+                    .gps-lightbox { justify-content: center; }
+                    
+                    /* Remove fixed absolute positions to stack them nicely */
+                    .gps-lb-topbar { 
+                        position: relative; 
+                        height: 40px; 
+                        padding: 0 16px; /* Removed right padding so progress bar can span full width */
+                        background: transparent; 
+                    }
+                    .gps-lb-close {
+                        right: 16px;
+                        top: -50px; /* Moved up into the empty space */
+                        transform: none; /* Override desktop vertical centering */
+                    }
+                    
+                    .gps-lb-swiper { 
+                        flex: 0 0 auto; 
+                        width: 100%;
+                        height: auto !important;
+                        aspect-ratio: 16 / 9;
+                        margin: 8px 0; 
+                    }
+                    .gps-lb-img-wrap { 
+                        padding: 0; 
+                        width: 100%;
+                        height: 100%; 
+                        max-height: none; 
+                        border-radius: 0; 
+                        opacity: 1; /* override desktop opacity transition issues on mobile */
+                        transform: scale(1);
+                    }
+                    .gps-lb-img { border-radius: 0; width: 100%; height: 100%; object-fit: contain; }
+                    
+                    .gps-lb-thumbs { 
+                        position: relative; 
+                        background: transparent; 
+                        border-top: none;
+                        padding: 8px 16px;
+                        gap: 8px;
+                    }
                     .gps-lb-thumb { width: 56px; height: 32px; border-radius: 6px; }
-                    .gps-lb-thumbs { gap: 6px; padding: 12px 16px 20px; }
                 }
                 @media (max-width: 500px) {
                     .gps-gallery-item { width: 240px !important; }
