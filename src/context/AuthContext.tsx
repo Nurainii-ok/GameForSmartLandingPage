@@ -1,6 +1,6 @@
 "use client";
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { supabase, getSessionFromCookie, syncSessionCookie } from "@/lib/supabase";
+import { supabase } from "@/lib/supabase";
 
 interface Profile {
   id: string
@@ -125,6 +125,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isRestoringSession, setIsRestoringSession] = useState(true);
 
   useEffect(() => {
+    let currentUserId: string | null | undefined = undefined;
+
     const getUser = async () => {
       try {
         // 1. Cek local sesi
@@ -132,13 +134,29 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
         // 2. Fallback baca SSO Token di URL (dari sistem legacy landing page)
         const urlParams = new URLSearchParams(window.location.search);
-        const tokenFromUrl = urlParams.get("token");
+        const rawToken = urlParams.get("token");
+        
+        let tokenFromUrl = rawToken;
+        let refreshTokenFromUrl = rawToken;
+
+        if (rawToken) {
+          // Jika token adalah string JSON yang berisi access_token dan refresh_token
+          if (rawToken.startsWith("{") && rawToken.includes("access_token")) {
+            try {
+              const parsed = JSON.parse(rawToken);
+              if (parsed.access_token) {
+                tokenFromUrl = parsed.access_token;
+                refreshTokenFromUrl = parsed.refresh_token || parsed.access_token;
+              }
+            } catch (e) {}
+          }
+        }
 
         if (tokenFromUrl && !session) {
           const { data, error } = await supabase.auth.getUser(tokenFromUrl);
           if (!error && data?.user) {
             // PENTING: Gunakan setSession agar supabase tercatat fully login
-            await supabase.auth.setSession({ access_token: tokenFromUrl, refresh_token: tokenFromUrl })
+            await supabase.auth.setSession({ access_token: tokenFromUrl, refresh_token: refreshTokenFromUrl as string })
             const url = new URL(window.location.href);
             url.searchParams.delete("token");
             window.history.replaceState({}, '', url.toString());
@@ -147,28 +165,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           }
         }
 
-        // 3. Fallback SSO Cookie
-        if (!session) {
-          const cookieSession = getSessionFromCookie()
-          if (cookieSession) {
-            const { data, error } = await supabase.auth.setSession(cookieSession)
-            if (!error && data.session) {
-              session = data.session
-            } else {
-              syncSessionCookie(null)
-            }
-          }
-        }
-
         const currentUser = session?.user ?? null
+        currentUserId = currentUser?.id || null;
         setUser(currentUser)
 
         if (currentUser && session) {
-          // Sync tokens ke shared cookie
-          syncSessionCookie({
-            access_token: session.access_token,
-            refresh_token: session.refresh_token
-          })
           await loadProfile(currentUser, setProfile, setIsLoggedIn, setLoading)
         } else {
           setUser(null)
@@ -186,64 +187,54 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
     getUser()
 
+    const checkSession = async () => {
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        const newUserId = user?.id || null;
+
+        if (currentUserId !== undefined && newUserId !== currentUserId) {
+          console.log("[AuthContext] Session change detected across tabs/subdomains! Reloading...");
+          window.location.reload();
+        }
+      } catch (err) {
+        console.error("[AuthContext] Error checking session:", err);
+      }
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        checkSession();
+      }
+    };
+
+    window.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("focus", checkSession);
+
     const { data: listener } = supabase.auth.onAuthStateChange(
       async (event, session) => {
         const currentUser = session?.user ?? null
         setUser(currentUser)
 
-        if (event === 'SIGNED_IN' && currentUser && session) {
-          syncSessionCookie({
-            access_token: session.access_token,
-            refresh_token: session.refresh_token
-          })
+        if (event === 'SIGNED_IN' && currentUser) {
           loadProfile(currentUser, setProfile, setIsLoggedIn).catch(console.error)
-        } else if (event === 'TOKEN_REFRESHED' && session) {
-          syncSessionCookie({
-            access_token: session.access_token,
-            refresh_token: session.refresh_token
-          })
+          checkSession();
         } else if (!currentUser || event === 'SIGNED_OUT') {
-          syncSessionCookie(null)
           setProfile(null)
           setIsLoggedIn(false)
+          checkSession();
         }
       }
     )
 
-    // SINKRONISASI ANTAR-TAB: Axiom logic
-    const syncFromCookie = async () => {
-      const cookieSession = getSessionFromCookie()
-
-      if (!cookieSession) {
-        const { data: { session: localSession } } = await supabase.auth.getSession()
-        if (localSession) {
-          await supabase.auth.signOut()
-        }
-        return
-      }
-
-      const { data: { session: localSession } } = await supabase.auth.getSession()
-      if (!localSession || localSession.access_token !== cookieSession.access_token) {
-        await supabase.auth.setSession(cookieSession)
-      }
-    }
-
-    window.addEventListener('focus', syncFromCookie)
-    const onVisibilityChange = () => {
-      if (document.visibilityState === 'visible') syncFromCookie()
-    }
-    window.addEventListener('visibilitychange', onVisibilityChange)
-
     return () => {
       listener.subscription.unsubscribe()
-      window.removeEventListener('focus', syncFromCookie)
-      window.removeEventListener('visibilitychange', onVisibilityChange)
+      window.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("focus", checkSession);
     }
   }, [])
 
   const handleLogout = async () => {
     try {
-      syncSessionCookie(null); // hapus cookie DULU
       await supabase.auth.signOut(); // invalidate di server juga
     } catch (e) { }
 
